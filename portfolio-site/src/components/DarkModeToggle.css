@@ -1,0 +1,112 @@
+.dark-mode-toggle {
+  position: relative;
+  width: 50px;
+  height: 28px;
+  border-radius: 14px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0;
+  z-index: 1000;
+}
+
+.dark-mode-toggle:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+  background: #f5f5f5;
+}
+
+.dark-mode .dark-mode-toggle {
+  background: #1a1a1a;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .dark-mode-toggle:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: #2a2a2a;
+}
+
+.toggle-icon {
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.dark-mode-toggle:hover .toggle-icon {
+  transform: scale(1.1);
+}
+
+@media (max-width: 720px) {
+  .dark-mode-toggle {
+    width: 45px;
+    height: 25px;
+  }
+  
+  .toggle-icon {
+    font-size: 14px;
+  }
+}
+
+/* Dark mode styles for the portfolio */
+body.dark-mode {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .page {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .company {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode #root,
+body.dark-mode html,
+body.dark-mode .sections,
+body.dark-mode main,
+body.dark-mode .nav,
+body.dark-mode header,
+body.dark-mode .hero {
+  background: #000000 !important;
+}
+
+body.dark-mode .nav {
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode .company-logo {
+  background: transparent !important;
+  border: none !important;
+}
+
+body.dark-mode .nav-link {
+  color: #cccccc !important;
+}
+
+body.dark-mode .nav-link:hover,
+body.dark-mode .nav-link.active {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode .company-name,
+body.dark-mode .company-role,
+body.dark-mode .company-period,
+body.dark-mode .company-bullets,
+body.dark-mode .company-desc,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode p {
+  color: #ffffff !important;
+}
