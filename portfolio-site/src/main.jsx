@@ -12,7 +12,9 @@ const router = createBrowserRouter([
   { path: "/projects", element: <Projects /> },
   { path: "/music", element: <Music /> },
   { path: "/company/:slug", element: <CompanyDetail /> },
-]);
+], {
+  basename: "/port-site",
+});
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
