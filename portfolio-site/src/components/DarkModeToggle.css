@@ -1,0 +1,117 @@
+.dark-mode-toggle-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#background {
+  display: none;
+}
+
+.dark-mode-toggle-container svg {
+  transform: scale(0.2);
+  z-index: 2;
+  pointer-events: none;
+}
+
+#day,
+#night {
+  width: 80px;
+  height: 40px;
+  background: white;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 100px;
+  background: #9cd6ef;
+  border: 3px solid #65c0e7;
+  transition: background 1s ease, border-color 1s ease;
+}
+
+#night {
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  .dark-mode-toggle-container {
+    top: 10px;
+    right: 10px;
+    height: 35px;
+  }
+
+  #day,
+  #night {
+    width: 70px;
+    height: 35px;
+  }
+
+  .dark-mode-toggle-container svg {
+    transform: scale(0.18);
+  }
+}
+
+/* Dark mode styles for the portfolio */
+body.dark-mode {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .page {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .company {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode #root,
+body.dark-mode html,
+body.dark-mode .sections,
+body.dark-mode main,
+body.dark-mode .nav,
+body.dark-mode header,
+body.dark-mode .hero {
+  background: #000000 !important;
+}
+
+body.dark-mode .nav {
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode .company-logo {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode .nav-link {
+  color: #cccccc !important;
+}
+
+body.dark-mode .nav-link:hover,
+body.dark-mode .nav-link.active {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode .company-name,
+body.dark-mode .company-role,
+body.dark-mode .company-period,
+body.dark-mode .company-bullets,
+body.dark-mode .company-desc,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode p {
+  color: #ffffff !important;
+}
+
