@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import DarkModeToggle from "../components/DarkModeToggle";
 import "../App.css";
+import "./Projects.css";
 
 function Projects() {
   const navRef = useRef(null);
-  const contentRef = useRef(null);
+  const booksContainerRef = useRef(null);
 
   useEffect(() => {
     if (!navRef.current) return;
@@ -48,27 +49,99 @@ function Projects() {
         }
       );
     }
+  }, []);
 
-    // Content animation
-    if (contentRef.current) {
-      const contentElements = Array.from(contentRef.current.querySelectorAll("h1, p"));
-      if (contentElements.length > 0) {
-        gsap.fromTo(contentElements,
-          {
-            opacity: 0,
-            y: 30,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "power3.out",
-            delay: 0.3,
-          }
-        );
+  useEffect(() => {
+    if (!booksContainerRef.current) return;
+
+    const books = booksContainerRef.current.querySelectorAll('.wrap-original-transform');
+    const eventHandlers = [];
+
+    const shiftBooks = (activeBook) => {
+      let isPrev = true;
+      books.forEach((book) => {
+        if (book === activeBook) {
+          isPrev = false;
+        } else if (isPrev) {
+          book.classList.add('prev');
+          book.style.transform = 'translateX(-350px)';
+        } else {
+          book.style.transform = 'translateX(700px)';
+        }
+      });
+    };
+
+    const resetBooks = () => {
+      books.forEach((book) => {
+        book.classList.remove('prev');
+        book.style.transform = 'translateX(0)';
+      });
+    };
+
+    books.forEach((book) => {
+      const leftSide = book.querySelector('.leftSide');
+      const front = book.querySelector('.front');
+
+      // Create event handlers
+      const handleMouseEnter = () => {
+        book.classList.add('active');
+        shiftBooks(book);
+      };
+
+      const handleMouseLeave = () => {
+        book.classList.remove('active');
+        resetBooks();
+      };
+
+      const handleLeftSideClick = (e) => {
+        e.stopPropagation();
+        book.classList.add('active');
+        shiftBooks(book);
+      };
+
+      const handleFrontClick = (e) => {
+        e.stopPropagation();
+        book.classList.remove('active');
+        resetBooks();
+      };
+
+      // Add event listeners
+      book.addEventListener('mouseenter', handleMouseEnter);
+      book.addEventListener('mouseleave', handleMouseLeave);
+      
+      if (leftSide) {
+        leftSide.addEventListener('click', handleLeftSideClick);
       }
-    }
+
+      if (front) {
+        front.addEventListener('click', handleFrontClick);
+      }
+
+      // Store handlers for cleanup
+      eventHandlers.push({
+        book,
+        leftSide,
+        front,
+        handleMouseEnter,
+        handleMouseLeave,
+        handleLeftSideClick,
+        handleFrontClick,
+      });
+    });
+
+    // Cleanup
+    return () => {
+      eventHandlers.forEach(({ book, leftSide, front, handleMouseEnter, handleMouseLeave, handleLeftSideClick, handleFrontClick }) => {
+        book.removeEventListener('mouseenter', handleMouseEnter);
+        book.removeEventListener('mouseleave', handleMouseLeave);
+        if (leftSide) {
+          leftSide.removeEventListener('click', handleLeftSideClick);
+        }
+        if (front) {
+          front.removeEventListener('click', handleFrontClick);
+        }
+      });
+    };
   }, []);
 
   return (
@@ -87,13 +160,105 @@ function Projects() {
         </div>
         <DarkModeToggle />
       </nav>
-      <main className="content" ref={contentRef}>
-        <h1>Projects</h1>
-        <p>Coming soon.</p>
+      <main className="content projects-content">
+        <div className="books-container" ref={booksContainerRef}>
+          <div className="wrap-original-transform book-1">
+            <div className="original-transform">
+              <div className="front"></div>
+              <div className="back"></div>
+              <div className="rightSide"></div>
+              <div className="leftSide">
+                <span className="author">LEO RASTOGI</span>
+                <span className="title">ayam discover your beautiful self</span>
+              </div>
+              <div className="top"></div>
+              <div className="bottom"></div>
+            </div>
+            <div className="text-container">
+              <h2>Book Title</h2>
+              <p>This is a description of the book. It contains interesting details about the content.</p>
+              <button>Buy Now</button>
+            </div>
+          </div>
+
+          <div className="wrap-original-transform book-2">
+            <div className="original-transform">
+              <div className="front"></div>
+              <div className="back"></div>
+              <div className="rightSide"></div>
+              <div className="leftSide">
+                <span className="author">LEO RASTOGI</span>
+                <span className="title">The Lost Mysteries of Egypt</span>
+              </div>
+              <div className="top"></div>
+              <div className="bottom"></div>
+            </div>
+            <div className="text-container">
+              <h2>Book Title</h2>
+              <p>This is a description of the book. It contains interesting details about the content.</p>
+              <button>Buy Now</button>
+            </div>
+          </div>
+
+          <div className="wrap-original-transform book-3">
+            <div className="original-transform">
+              <div className="front"></div>
+              <div className="back"></div>
+              <div className="rightSide"></div>
+              <div className="leftSide">
+                <span className="author">LEO RASTOGI</span>
+                <span className="title">Many Paths, Many Truths</span>
+              </div>
+              <div className="top"></div>
+              <div className="bottom"></div>
+            </div>
+          </div>
+
+          <div className="wrap-original-transform book-4">
+            <div className="original-transform">
+              <div className="front"></div>
+              <div className="back"></div>
+              <div className="rightSide"></div>
+              <div className="leftSide">
+                <span className="author">LEO RASTOGI</span>
+                <span className="title">Life is Good</span>
+              </div>
+              <div className="top"></div>
+              <div className="bottom"></div>
+            </div>
+          </div>
+
+          <div className="wrap-original-transform book-5">
+            <div className="original-transform">
+              <div className="front"></div>
+              <div className="back"></div>
+              <div className="rightSide"></div>
+              <div className="leftSide">
+                <span className="author">LEO RASTOGI</span>
+                <span className="title">To Discover or To Believe</span>
+              </div>
+              <div className="top"></div>
+              <div className="bottom"></div>
+            </div>
+          </div>
+
+          <div className="wrap-original-transform book-6">
+            <div className="original-transform">
+              <div className="front"></div>
+              <div className="back"></div>
+              <div className="rightSide"></div>
+              <div className="leftSide">
+                <span className="author">LEO RASTOGI</span>
+                <span className="title">Vedanta</span>
+              </div>
+              <div className="top"></div>
+              <div className="bottom"></div>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   );
 }
 
 export default Projects;
-

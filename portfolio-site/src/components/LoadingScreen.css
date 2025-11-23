@@ -4,142 +4,318 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #111;
+  background: #ededed;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
 }
 
-.bookshelf-loader {
-  width: 100vw;
-  height: 100vh;
-  min-height: 350px;
-  margin: 0;
-  position: relative;
-  background-color: #111;
-  background-image: 
-    linear-gradient(to top, #222 5%, #111 6%, #111 7%, transparent 7%),
-    linear-gradient(to bottom, #111 30%, transparent 30%),
-    linear-gradient(to right, #222, #2e2e2e 5%, transparent 5%),
-    linear-gradient(to right, transparent 6%, #222 6%, #2e2e2e 9%, transparent 9%),
-    linear-gradient(to right, transparent 27%, #222 27%, #2e2e2e 34%, transparent 34%),
-    linear-gradient(to right, transparent 51%, #222 51%, #2e2e2e 57%, transparent 57%),
-    linear-gradient(to bottom, #111 35%, transparent 35%),
-    linear-gradient(to right, transparent 42%, #222 42%, #2e2e2e 44%, transparent 44%),
-    linear-gradient(to right, transparent 45%, #222 45%, #2e2e2e 47%, transparent 47%),
-    linear-gradient(to right, transparent 48%, #222 48%, #2e2e2e 50%, transparent 50%),
-    linear-gradient(to right, transparent 87%, #222 87%, #2e2e2e 91%, transparent 91%),
-    linear-gradient(to bottom, #111 37.5%, transparent 37.5%),
-    linear-gradient(to right, transparent 14%, #222 14%, #2e2e2e 20%, transparent 20%),
-    linear-gradient(to bottom, #111 40%, transparent 40%),
-    linear-gradient(to right, transparent 10%, #222 10%, #2e2e2e 13%, transparent 13%),
-    linear-gradient(to right, transparent 21%, #1a1a1a 21%, #1c1c1c 25%, transparent 25%),
-    linear-gradient(to right, transparent 58%, #222 58%, #2e2e2e 64%, transparent 64%),
-    linear-gradient(to right, transparent 92%, #222 92%, #2e2e2e 95%, transparent 95%),
-    linear-gradient(to bottom, #111 48%, transparent 48%),
-    linear-gradient(to right, transparent 96%, #1a1a1a 96%, #1c1c1c 99%, transparent 99%),
-    linear-gradient(to bottom, transparent 68.5%, transparent 76%, #111 76%, #111 77.5%, transparent 77.5%, transparent 86%, #111 86%, #111 87.5%, transparent 87.5%),
-    linear-gradient(to right, transparent 35%, #222 35%, #2e2e2e 41%, transparent 41%),
-    linear-gradient(to bottom, #111 68%, transparent 68%),
-    linear-gradient(to right, transparent 78%, #333 78%, #333 80%, transparent 80%, transparent 82%, #333 82%, #333 83%, transparent 83%),
-    linear-gradient(to right, transparent 66%, #222 66%, #2e2e2e 85%, transparent 85%);
-  background-size: 300px 150px;
-  background-position: center bottom;
+[data-theme="dark"] .loading-screen {
+  background: #1a1a1a;
 }
 
-.bookshelf-loader::before {
-  content: '';
+.snowflakes {
+  text-align: center;
   width: 100%;
   height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: #111;
-  background-image: 
-    linear-gradient(to top, #d2b48c 5%, #111 6%, #111 7%, transparent 7%),
-    linear-gradient(to bottom, #111 30%, transparent 30%),
-    linear-gradient(to right, #b22222, #9a1e1e 5%, transparent 5%),
-    linear-gradient(to right, transparent 6%, #ff6347 6%, #e5553d 9%, transparent 9%),
-    linear-gradient(to right, transparent 27%, #556b2f 27%, #4a5d28 34%, transparent 34%),
-    linear-gradient(to right, transparent 51%, #fa8072 51%, #e87062 57%, transparent 57%),
-    linear-gradient(to bottom, #111 35%, transparent 35%),
-    linear-gradient(to right, transparent 42%, #008080 42%, #006d6d 44%, transparent 44%),
-    linear-gradient(to right, transparent 45%, #008080 45%, #006d6d 47%, transparent 47%),
-    linear-gradient(to right, transparent 48%, #008080 48%, #006d6d 50%, transparent 50%),
-    linear-gradient(to right, transparent 87%, #778899 87%, #5f6d7a 91%, transparent 91%),
-    linear-gradient(to bottom, #111 37.5%, transparent 37.5%),
-    linear-gradient(to right, transparent 14%, #bdb76b 14%, #a8a05a 20%, transparent 20%),
-    linear-gradient(to bottom, #111 40%, transparent 40%),
-    linear-gradient(to right, transparent 10%, #808000 10%, #737300 13%, transparent 13%),
-    linear-gradient(to right, transparent 21%, #8b4513 21%, #7d3d11 25%, transparent 25%),
-    linear-gradient(to right, transparent 58%, #8b4513 58%, #7d3d11 64%, transparent 64%),
-    linear-gradient(to right, transparent 92%, #2f4f4f 92%, #2a4545 95%, transparent 95%),
-    linear-gradient(to bottom, #111 48%, transparent 48%),
-    linear-gradient(to right, transparent 96%, #2f4f4f 96%, #2a4545 99%, transparent 99%),
-    linear-gradient(to bottom, transparent 68.5%, transparent 76%, #111 76%, #111 77.5%, transparent 77.5%, transparent 86%, #111 86%, #111 87.5%, transparent 87.5%),
-    linear-gradient(to right, transparent 35%, #cd5c5c 35%, #b84d4d 41%, transparent 41%),
-    linear-gradient(to bottom, #111 68%, transparent 68%),
-    linear-gradient(to right, transparent 78%, #bc8f8f 78%, #bc8f8f 80%, transparent 80%, transparent 82%, #bc8f8f 82%, #bc8f8f 83%, transparent 83%),
-    linear-gradient(to right, transparent 66%, #a52a2a 66%, #8f2424 85%, transparent 85%);
-  background-size: 300px 150px;
-  background-position: center bottom;
-  clip-path: circle(150px at center center);
-  animation: flashlight 5000ms infinite;
+  position: relative;
 }
 
-.bookshelf-loader::after {
-  content: '';
-  width: 25px;
-  height: 10px;
-  position: absolute;
-  left: calc(50% + 59px);
-  bottom: 100px;
-  background-repeat: no-repeat;
-  background-image: 
-    radial-gradient(circle, white 50%, transparent 50%),
-    radial-gradient(circle, white 50%, transparent 50%);
-  background-size: 10px 10px;
-  background-position: left center, right center;
-  animation: eyes 5000ms infinite;
+/* customizable snowflake styling */
+.snowflake {
+  color: #fff;
+  font-size: 1em;
+  font-family: Arial, sans-serif;
+  text-shadow: 0 0 1px #000;
+  position: fixed;
+  top: -10%;
+  z-index: 9999;
+  user-select: none;
+  cursor: default;
+  animation-name: snowflakes-fall, snowflakes-shake;
+  animation-duration: 5s, 2s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-play-state: running, running;
 }
 
-@keyframes flashlight {
-  0%, 9% {
-    opacity: 0;
-    clip-path: circle(150px at 45% 10%);
+.snowflake img {
+  display: block;
+}
+
+@keyframes snowflakes-fall {
+  0% {
+    top: -10%;
   }
-  10%, 15%, 85% {
-    opacity: 1;
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes snowflakes-shake {
+  0% {
+    transform: translateX(0px);
   }
   50% {
-    clip-path: circle(150px at 60% 20%);
+    transform: translateX(80px);
   }
-  54%, 100% {
-    clip-path: circle(150px at 55% 92%);
-  }
-  88%, 100% {
-    opacity: 0;
+  100% {
+    transform: translateX(0px);
   }
 }
 
-@keyframes eyes {
-  0%, 52% {
-    opacity: 0;
-  }
-  53%, 87% {
-    opacity: 1;
-  }
-  64% {
-    transform: scaleY(1);
-  }
-  67% {
-    transform: scaleY(0);
-  }
-  70% {
-    transform: scaleY(1);
-  }
-  88%, 100% {
-    opacity: 0;
-  }
+/* Layer 1 - First wave (CDs 1-10) - Start immediately with random delays */
+.snowflake:nth-of-type(1) {
+  left: 2%;
+  animation-delay: 0s, 0s;
+}
+
+.snowflake:nth-of-type(2) {
+  left: 8%;
+  animation-delay: 0.3s, 0.2s;
+}
+
+.snowflake:nth-of-type(3) {
+  left: 15%;
+  animation-delay: 0.1s, 0.4s;
+}
+
+.snowflake:nth-of-type(4) {
+  left: 22%;
+  animation-delay: 0.5s, 0.1s;
+}
+
+.snowflake:nth-of-type(5) {
+  left: 28%;
+  animation-delay: 0.2s, 0.3s;
+}
+
+.snowflake:nth-of-type(6) {
+  left: 35%;
+  animation-delay: 0.4s, 0.5s;
+}
+
+.snowflake:nth-of-type(7) {
+  left: 42%;
+  animation-delay: 0.1s, 0.2s;
+}
+
+.snowflake:nth-of-type(8) {
+  left: 48%;
+  animation-delay: 0.6s, 0.3s;
+}
+
+.snowflake:nth-of-type(9) {
+  left: 55%;
+  animation-delay: 0.2s, 0.4s;
+}
+
+.snowflake:nth-of-type(10) {
+  left: 62%;
+  animation-delay: 0.4s, 0.1s;
+}
+
+/* Layer 2 - Second wave (CDs 11-20) - Start after 2s with random delays */
+.snowflake:nth-of-type(11) {
+  left: 68%;
+  animation-delay: 2.2s, 2.1s;
+}
+
+.snowflake:nth-of-type(12) {
+  left: 75%;
+  animation-delay: 2.5s, 2.3s;
+}
+
+.snowflake:nth-of-type(13) {
+  left: 82%;
+  animation-delay: 2.1s, 2.5s;
+}
+
+.snowflake:nth-of-type(14) {
+  left: 88%;
+  animation-delay: 2.7s, 2.2s;
+}
+
+.snowflake:nth-of-type(15) {
+  left: 5%;
+  animation-delay: 2.3s, 2.4s;
+}
+
+.snowflake:nth-of-type(16) {
+  left: 12%;
+  animation-delay: 2.4s, 2.6s;
+}
+
+.snowflake:nth-of-type(17) {
+  left: 18%;
+  animation-delay: 2.1s, 2.3s;
+}
+
+.snowflake:nth-of-type(18) {
+  left: 25%;
+  animation-delay: 2.6s, 2.2s;
+}
+
+.snowflake:nth-of-type(19) {
+  left: 32%;
+  animation-delay: 2.3s, 2.5s;
+}
+
+.snowflake:nth-of-type(20) {
+  left: 38%;
+  animation-delay: 2.5s, 2.1s;
+}
+
+/* Layer 3 - Third wave (CDs 21-30) - Start after 4s with random delays */
+.snowflake:nth-of-type(21) {
+  left: 45%;
+  animation-delay: 4.2s, 4.1s;
+}
+
+.snowflake:nth-of-type(22) {
+  left: 52%;
+  animation-delay: 4.5s, 4.3s;
+}
+
+.snowflake:nth-of-type(23) {
+  left: 58%;
+  animation-delay: 4.1s, 4.5s;
+}
+
+.snowflake:nth-of-type(24) {
+  left: 65%;
+  animation-delay: 4.7s, 4.2s;
+}
+
+.snowflake:nth-of-type(25) {
+  left: 72%;
+  animation-delay: 4.3s, 4.4s;
+}
+
+.snowflake:nth-of-type(26) {
+  left: 78%;
+  animation-delay: 4.4s, 4.6s;
+}
+
+.snowflake:nth-of-type(27) {
+  left: 85%;
+  animation-delay: 4.1s, 4.3s;
+}
+
+.snowflake:nth-of-type(28) {
+  left: 92%;
+  animation-delay: 4.6s, 4.2s;
+}
+
+.snowflake:nth-of-type(29) {
+  left: 3%;
+  animation-delay: 4.3s, 4.5s;
+}
+
+.snowflake:nth-of-type(30) {
+  left: 7%;
+  animation-delay: 4.5s, 4.1s;
+}
+
+/* Layer 4 - Fourth wave (CDs 31-40) - Start after 6s with random delays */
+.snowflake:nth-of-type(31) {
+  left: 11%;
+  animation-delay: 6.2s, 6.1s;
+}
+
+.snowflake:nth-of-type(32) {
+  left: 16%;
+  animation-delay: 6.5s, 6.3s;
+}
+
+.snowflake:nth-of-type(33) {
+  left: 20%;
+  animation-delay: 6.1s, 6.5s;
+}
+
+.snowflake:nth-of-type(34) {
+  left: 24%;
+  animation-delay: 6.7s, 6.2s;
+}
+
+.snowflake:nth-of-type(35) {
+  left: 29%;
+  animation-delay: 6.3s, 6.4s;
+}
+
+.snowflake:nth-of-type(36) {
+  left: 33%;
+  animation-delay: 6.4s, 6.6s;
+}
+
+.snowflake:nth-of-type(37) {
+  left: 37%;
+  animation-delay: 6.1s, 6.3s;
+}
+
+.snowflake:nth-of-type(38) {
+  left: 41%;
+  animation-delay: 6.6s, 6.2s;
+}
+
+.snowflake:nth-of-type(39) {
+  left: 46%;
+  animation-delay: 6.3s, 6.5s;
+}
+
+.snowflake:nth-of-type(40) {
+  left: 50%;
+  animation-delay: 6.5s, 6.1s;
+}
+
+/* Layer 5 - Fifth wave (CDs 41-50) - Start after 8s with random delays */
+.snowflake:nth-of-type(41) {
+  left: 54%;
+  animation-delay: 8.2s, 8.1s;
+}
+
+.snowflake:nth-of-type(42) {
+  left: 59%;
+  animation-delay: 8.5s, 8.3s;
+}
+
+.snowflake:nth-of-type(43) {
+  left: 63%;
+  animation-delay: 8.1s, 8.5s;
+}
+
+.snowflake:nth-of-type(44) {
+  left: 67%;
+  animation-delay: 8.7s, 8.2s;
+}
+
+.snowflake:nth-of-type(45) {
+  left: 71%;
+  animation-delay: 8.3s, 8.4s;
+}
+
+.snowflake:nth-of-type(46) {
+  left: 76%;
+  animation-delay: 8.4s, 8.6s;
+}
+
+.snowflake:nth-of-type(47) {
+  left: 80%;
+  animation-delay: 8.1s, 8.3s;
+}
+
+.snowflake:nth-of-type(48) {
+  left: 84%;
+  animation-delay: 8.6s, 8.2s;
+}
+
+.snowflake:nth-of-type(49) {
+  left: 89%;
+  animation-delay: 8.3s, 8.5s;
+}
+
+.snowflake:nth-of-type(50) {
+  left: 93%;
+  animation-delay: 8.5s, 8.1s;
 }

@@ -23,7 +23,7 @@ function LoadingScreen({ onComplete }) {
           }
         }, 500);
       }
-    }, 5000); // Show loading for 5 seconds (matches animation duration)
+    }, 5000); // Show loading for 5 seconds
 
     return () => {
       clearTimeout(fadeTimeout);
@@ -32,7 +32,13 @@ function LoadingScreen({ onComplete }) {
 
   return (
     <div className="loading-screen">
-      <div className="bookshelf-loader" ref={loaderRef}></div>
+      <div className="snowflakes" ref={loaderRef}>
+        {Array.from({ length: 50 }, (_, i) => (
+          <div key={i} className="snowflake">
+            <img src="https://bestanimations.com/media/discs/895872755cd-animated-gif-9.gif" width="50" alt="snowflake" />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
