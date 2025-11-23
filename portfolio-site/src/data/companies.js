@@ -1,3 +1,6 @@
+// Get base URL for assets (works in both dev and production)
+const baseUrl = import.meta.env.BASE_URL;
+
 export const companies = [
   {
     id: 1,
@@ -7,7 +10,7 @@ export const companies = [
     logoAlt: "Connecteam logo",
     background:
       "linear-gradient(180deg, rgba(33, 150, 243, 0.14), rgba(33, 150, 243, 0.04))",
-    image: "/connecteam.png",
+    image: `${baseUrl}connecteam.png`,
     slug: "connecteam",
     bullets: [
       "Handled and qualified 50–100+ inbound leads weekly via chat, email, and demo requests",
@@ -22,7 +25,7 @@ export const companies = [
     logoAlt: "Haika Real Estate logo",
     background:
       "linear-gradient(180deg, rgba(255, 213, 79, 0.16), rgba(255, 213, 79, 0.04))",
-    image: "/haikalo.png",
+    image: `${baseUrl}haikalo.png`,
     slug: "haika",
     bullets: [
       "Managed a sales team of 10 representatives, improving performance and increasing closing rates",
@@ -38,7 +41,7 @@ export const companies = [
     logoAlt: "El Al Airlines logo",
     background:
       "linear-gradient(180deg, rgba(224, 242, 255, 0.20), rgba(21, 101, 192, 0.14))",
-    image: "/elal1.png",
+    image: `${baseUrl}elal1.png`,
     slug: "elal",
     bullets: [
       "Provided B2C administrative support by assisting customer service agents with real-time issue resolution",
@@ -54,7 +57,7 @@ export const companies = [
     logoAlt: "Abilisense logo",
     background:
       "linear-gradient(180deg, rgba(239, 83, 80, 0.14), rgba(239, 83, 80, 0.03))",
-    image: "/abilisense.png",
+    image: `${baseUrl}abilisense.png`,
     slug: "abilisense",
     bullets: [
       "Built accessible, responsive web applications using React.js, HTML5, CSS3, and Node.js",
@@ -70,7 +73,7 @@ export const companies = [
     logoAlt: "eToro logo",
     background:
       "linear-gradient(180deg, rgba(76, 175, 80, 0.14), rgba(76, 175, 80, 0.03))",
-    image: "/eToro.png",
+    image: `${baseUrl}eToro.png`,
     slug: "etoro",
     bullets: [
       "Collected and verified KYC documentation to support regulatory compliance and account activation",
