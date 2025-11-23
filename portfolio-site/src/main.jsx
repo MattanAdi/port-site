@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App.jsx";
 import Projects from "./pages/Projects.jsx";
 import Music from "./pages/Music.jsx";
+import SalesOperations from "./pages/SalesOperations.jsx";
 import CompanyDetail from "./pages/CompanyDetail.jsx";
 import Layout from "./components/Layout.jsx";
 
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   { 
     path: "/music", 
     element: <Layout><Music /></Layout> 
+  },
+  { 
+    path: "/sales-operations", 
+    element: <Layout><SalesOperations /></Layout> 
   },
   { 
     path: "/company/:slug", 

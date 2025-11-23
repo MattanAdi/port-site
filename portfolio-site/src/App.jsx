@@ -100,6 +100,9 @@ function App() {
           <Link to="/music" className="nav-link">
             Music
           </Link>
+          <Link to="/sales-operations" className="nav-link">
+            Sales Operations
+          </Link>
         </div>
         <DarkModeToggle />
       </nav>

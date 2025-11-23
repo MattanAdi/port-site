@@ -240,6 +240,9 @@ function Music() {
           <Link to="/music" className="nav-link active">
             Music
           </Link>
+          <Link to="/sales-operations" className="nav-link">
+            Sales Operations
+          </Link>
         </div>
         <DarkModeToggle />
       </nav>

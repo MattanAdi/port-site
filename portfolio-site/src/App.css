@@ -275,15 +275,16 @@
 
 /* Content Pages */
 .content {
-  max-width: 800px;
+  max-width: 90%;
+  width: 90%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 4rem;
   text-align: center;
 }
 
 .content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  margin-bottom: 3rem;
   color: #ffffff;
 }
 
@@ -291,6 +292,129 @@
   font-size: 1.1rem;
   color: #cccccc;
   line-height: 1.6;
+}
+
+/* Sales Operations Page Styles */
+.sales-ops-description {
+  margin-bottom: 5rem;
+}
+
+.sales-ops-description p {
+  text-align: left;
+  max-width: 100%;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.haika-section,
+.connecteam-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  margin-top: 6rem;
+  padding: 3rem 0;
+}
+
+.haika-description,
+.connecteam-description {
+  text-align: left;
+}
+
+.connecteam-section {
+  grid-template-columns: 1fr 1fr;
+}
+
+.connecteam-section .connecteam-logo-container {
+  order: 1;
+}
+
+.connecteam-section .connecteam-description {
+  order: 2;
+}
+
+.haika-description h2,
+.connecteam-description h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2.5rem;
+  color: #ffffff;
+}
+
+.haika-description p,
+.connecteam-description p {
+  font-size: 1.2rem;
+  color: #cccccc;
+  line-height: 2;
+  margin-bottom: 2rem;
+}
+
+.haika-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.haika-list li {
+  font-size: 1.2rem;
+  color: #cccccc;
+  line-height: 2;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.haika-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.haika-logo-container,
+.connecteam-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.haika-logo,
+.connecteam-logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: auto;
+  -ms-interpolation-mode: bicubic;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* To easily change the Connecteam logo size, modify the maxWidth and maxHeight 
+   in the inline style in SalesOperations.jsx (around line 110) */
+
+@media (max-width: 768px) {
+  .haika-section,
+  .connecteam-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .connecteam-section .connecteam-logo-container {
+    order: 1;
+  }
+  
+  .connecteam-section .connecteam-description {
+    order: 2;
+  }
+  
+  .haika-logo,
+  .connecteam-logo {
+    max-width: 250px !important;
+    max-height: 250px !important;
+  }
 }
 
 /* Music Page Styles */

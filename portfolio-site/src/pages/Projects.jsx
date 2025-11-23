@@ -16,26 +16,8 @@ function Projects() {
     const navLinks = navRef.current.querySelector('.nav-links');
     if (navLinks) {
       const navChildren = Array.from(navLinks.children);
-      if (navChildren.length > 0) {
-        gsap.fromTo(navChildren,
-          {
-            opacity: 0,
-            y: -20,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: "power3.out",
-          }
-        );
-      }
-    }
-    // Animate dark mode toggle
-    const darkModeToggle = navRef.current.querySelector('.dark-mode-toggle');
-    if (darkModeToggle) {
-      gsap.fromTo(darkModeToggle,
+    if (navChildren.length > 0) {
+      gsap.fromTo(navChildren,
         {
           opacity: 0,
           y: -20,
@@ -44,8 +26,26 @@ function Projects() {
           opacity: 1,
           y: 0,
           duration: 0.6,
-          delay: 0.3,
+          stagger: 0.1,
           ease: "power3.out",
+        }
+      );
+    }
+    }
+    // Animate dark mode toggle
+    const darkModeToggle = navRef.current.querySelector('.dark-mode-toggle');
+    if (darkModeToggle) {
+      gsap.fromTo(darkModeToggle,
+          {
+            opacity: 0,
+          y: -20,
+          },
+          {
+            opacity: 1,
+            y: 0,
+          duration: 0.6,
+          delay: 0.3,
+            ease: "power3.out",
         }
       );
     }
@@ -148,14 +148,17 @@ function Projects() {
     <div className="page">
       <nav className="nav" ref={navRef}>
         <div className="nav-links">
-          <Link to="/" className="nav-link">
-            Resume
-          </Link>
-          <Link to="/projects" className="nav-link active">
-            Projects
-          </Link>
-          <Link to="/music" className="nav-link">
-            Music
+        <Link to="/" className="nav-link">
+          Resume
+        </Link>
+        <Link to="/projects" className="nav-link active">
+          Projects
+        </Link>
+        <Link to="/music" className="nav-link">
+          Music
+        </Link>
+          <Link to="/sales-operations" className="nav-link">
+            Sales Operations
           </Link>
         </div>
         <DarkModeToggle />

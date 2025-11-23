@@ -31,7 +31,7 @@ export const companies = [
     logoAlt: "Haika Real Estate logo",
     background:
       "linear-gradient(180deg, rgba(255, 213, 79, 0.16), rgba(255, 213, 79, 0.04))",
-    image: getImagePath('haikalo.png'),
+    image: getImagePath('hakiala.png'),
     slug: "haika",
     bullets: [
       "Managed a sales team of 10 representatives, improving performance and increasing closing rates",
