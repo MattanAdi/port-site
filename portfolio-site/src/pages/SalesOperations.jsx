@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import DarkModeToggle from "../components/DarkModeToggle";
+import ToolsCarousel from "../components/ToolsCarousel";
 import "../App.css";
 
 // Get image path helper (same as in companies.js)
@@ -59,7 +60,7 @@ function SalesOperations() {
 
     // Content animation
     if (contentRef.current) {
-      const contentElements = Array.from(contentRef.current.querySelectorAll("h1, .sales-ops-description, .haika-section, .connecteam-section"));
+      const contentElements = Array.from(contentRef.current.querySelectorAll("h1, .sales-ops-description, .connecteam-section, .haika-section, .abilisense-section, .elal-section, .etoro-section, .tools-carousel-section"));
       if (contentElements.length > 0) {
         gsap.fromTo(contentElements,
           {
@@ -106,6 +107,30 @@ function SalesOperations() {
           </p>
         </div>
 
+        <div className="connecteam-section">
+          <div className="connecteam-logo-container">
+            {/* Logo size can be adjusted by changing the max-width and max-height values below */}
+            <img 
+              src={getImagePath('connecteam.png')} 
+              alt="Connecteam logo" 
+              className="connecteam-logo"
+              style={{ maxWidth: '400px', maxHeight: '400px' }}
+            />
+          </div>
+          <div className="connecteam-description">
+            <h2>Connecteam</h2>
+            <p>
+              As an SDR, I strengthened my operational expertise through hands-on daily workflows using Salesloft, HubSpot, and Looker.
+            </p>
+            <p>
+              I was also assigned to identify friction in the team's workflow, which led to the creation and implementation of HighlightZone - a tool that improved accuracy and significantly sped up the lead review process.
+            </p>
+            <p>
+              This gave me a unique mix of SDR experience + operational thinking + technical problem-solving.
+            </p>
+          </div>
+        </div>
+
         <div className="haika-section">
           <div className="haika-description">
             <h2>Haika Real Estate</h2>
@@ -134,29 +159,79 @@ function SalesOperations() {
           </div>
         </div>
 
-        <div className="connecteam-section">
-          <div className="connecteam-logo-container">
+        <div className="abilisense-section">
+          <div className="abilisense-logo-container">
             {/* Logo size can be adjusted by changing the max-width and max-height values below */}
             <img 
-              src={getImagePath('connecteam.png')} 
-              alt="Connecteam logo" 
-              className="connecteam-logo"
+              src={getImagePath('abil.png')} 
+              alt="Abilisense logo" 
+              className="abilisense-logo"
               style={{ maxWidth: '400px', maxHeight: '400px' }}
             />
           </div>
-          <div className="connecteam-description">
-            <h2>Connecteam</h2>
+          <div className="abilisense-description">
+            <h2>Abilisense</h2>
             <p>
-              As an SDR, I strengthened my operational expertise through hands-on daily workflows using Salesloft, HubSpot, and Looker.
+              As a Full Stack Developer at Abilisense, I built end-to-end web applications using React.js, HTML5, CSS3, and Node.js.
             </p>
             <p>
-              I was also assigned to identify friction in the team's workflow, which led to the creation and implementation of HighlightZone - a tool that improved accuracy and significantly sped up the lead review process.
+              I integrated RESTful APIs to connect front-end interfaces with scalable back-end systems, and collaborated on debugging and performance optimization to ensure smooth user experiences across platforms.
             </p>
             <p>
-              This gave me a unique mix of SDR experience + operational thinking + technical problem-solving.
+              This technical foundation strengthened my problem-solving abilities and gave me hands-on experience building tools that support operational workflows—skills I've since applied to creating sales operations solutions.
             </p>
           </div>
         </div>
+
+        <div className="elal-section">
+          <div className="elal-description">
+            <h2>El Al Airlines</h2>
+            <p>
+              As a Back Office Representative, I provided administrative support and coordinated between internal departments to ensure efficient operations.
+            </p>
+            <p>
+              I assisted customer service agents with real-time issue resolution, retrieved and verified passenger information quickly, and streamlined operational processes to meet service-level deadlines.
+            </p>
+            <p>
+              This experience taught me the importance of cross-departmental communication, data accuracy, and process efficiency—all critical skills I now apply to sales operations and workflow optimization.
+            </p>
+          </div>
+          <div className="elal-logo-container">
+            {/* Logo size can be adjusted by changing the max-width and max-height values below */}
+            <img 
+              src={getImagePath('elal1.png')} 
+              alt="El Al Airlines logo" 
+              className="elal-logo"
+              style={{ maxWidth: '400px', maxHeight: '400px' }}
+            />
+          </div>
+        </div>
+
+        <div className="etoro-section">
+          <div className="etoro-logo-container">
+            {/* Logo size can be adjusted by changing the max-width and max-height values below */}
+            <img 
+              src={getImagePath('eToro.png')} 
+              alt="eToro logo" 
+              className="etoro-logo"
+              style={{ maxWidth: '400px', maxHeight: '400px' }}
+            />
+          </div>
+          <div className="etoro-description">
+            <h2>eToro</h2>
+            <p>
+              As a Technical Support representative at eToro, a leading multi-asset investment and social trading platform, I provided technical assistance to users trading stocks, cryptocurrencies, commodities, and other financial instruments.
+            </p>
+            <p>
+              I resolved platform issues, investigated trade execution problems, and helped users navigate the platform's social trading features. I also managed account verification processes and ensured compliance with regulatory requirements.
+            </p>
+            <p>
+              This role developed my technical troubleshooting skills, attention to detail in financial data, and ability to communicate complex technical concepts clearly—all valuable in sales operations where system reliability and data accuracy are critical.
+            </p>
+          </div>
+        </div>
+
+        <ToolsCarousel />
       </main>
     </div>
   );

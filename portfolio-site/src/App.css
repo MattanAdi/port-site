@@ -1,12 +1,10 @@
 /* Portfolio Styles */
 .page {
   min-height: 100vh;
-  background: #ffffff;
+  background-color: #ffffff;
   color: #000000;
   font-family: system-ui, -apple-system, sans-serif;
   transform-origin: center center;
-  position: relative;
-  z-index: 10;
 }
 
 #canvas {
@@ -33,9 +31,6 @@
   padding: 2rem 0;
   border-bottom: none;
   margin-bottom: 3rem;
-  position: relative;
-  z-index: 10;
-  background: #ffffff;
 }
 
 .nav-links {
@@ -46,7 +41,7 @@
 }
 
 .nav-link {
-  color: #888;
+  color: var(--text-color, #000000);
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -69,8 +64,12 @@
 }
 
 .nav-link:hover {
-  color: #000000;
+  color: var(--text-color, #000000);
   background: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .nav-link:hover::after {
@@ -78,8 +77,12 @@
 }
 
 .nav-link.active {
-  color: #000000;
+  color: var(--text-color, #000000);
   background: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .nav-link.active {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-link.active::after {
@@ -95,7 +98,6 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem 4rem;
-  background: #ffffff;
 }
 
 .hero-text {
@@ -114,7 +116,7 @@
 
 .tagline {
   font-size: 1.25rem;
-  color: #888;
+  color: var(--text-color, #000000);
   margin: 0 0 1.5rem 0;
   font-weight: 500;
 }
@@ -122,7 +124,7 @@
 .bio {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #cccccc;
+  color: var(--text-color, #000000);
   margin: 0;
 }
 
@@ -148,7 +150,6 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  background: #ffffff;
 }
 
 .company {
@@ -194,8 +195,6 @@
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  background: transparent;
-  border: none;
 }
 
 .logo-img {
@@ -239,27 +238,27 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
-  color: #000000;
+  color: var(--text-color, #000000);
 }
 
 .company-role {
   font-size: 1.1rem;
   font-weight: 500;
   margin: 0;
-  color: #888;
+  color: var(--text-color, #000000);
 }
 
 .company-period {
   font-size: 0.9rem;
   margin: 0;
-  color: #666;
+  color: var(--text-color, #000000);
   font-weight: 500;
 }
 
 .company-bullets {
   margin: 1rem 0 0 0;
   padding-left: 1.5rem;
-  color: #333333;
+  color: var(--text-color, #000000);
   line-height: 1.6;
 }
 
@@ -269,7 +268,7 @@
 
 .company-desc {
   margin: 1rem 0 0 0;
-  color: #333333;
+  color: var(--text-color, #000000);
   line-height: 1.6;
 }
 
@@ -284,19 +283,19 @@
 
 .content h1 {
   font-size: 3rem;
-  margin-bottom: 3rem;
-  color: #ffffff;
+  margin-bottom: 1.5rem;
+  color: var(--text-color, #000000);
 }
 
 .content p {
   font-size: 1.1rem;
-  color: #cccccc;
+  color: var(--text-color, #000000);
   line-height: 1.6;
 }
 
 /* Sales Operations Page Styles */
 .sales-ops-description {
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 }
 
 .sales-ops-description p {
@@ -304,21 +303,27 @@
   max-width: 100%;
   margin: 0 auto;
   font-size: 1.2rem;
-  line-height: 1.8;
+  line-height: 1.6;
 }
 
 .haika-section,
-.connecteam-section {
+.connecteam-section,
+.abilisense-section,
+.elal-section,
+.etoro-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  gap: 2rem;
   align-items: center;
-  margin-top: 6rem;
-  padding: 3rem 0;
+  margin-top: 2rem;
+  padding: 1rem 0;
 }
 
 .haika-description,
-.connecteam-description {
+.connecteam-description,
+.abilisense-description,
+.elal-description,
+.etoro-description {
   text-align: left;
 }
 
@@ -335,31 +340,37 @@
 }
 
 .haika-description h2,
-.connecteam-description h2 {
+.connecteam-description h2,
+.abilisense-description h2,
+.elal-description h2,
+.etoro-description h2 {
   font-size: 2.5rem;
-  margin-bottom: 2.5rem;
-  color: #ffffff;
+  margin-bottom: 1rem;
+  color: var(--text-color, #000000);
 }
 
 .haika-description p,
-.connecteam-description p {
+.connecteam-description p,
+.abilisense-description p,
+.elal-description p,
+.etoro-description p {
   font-size: 1.2rem;
-  color: #cccccc;
-  line-height: 2;
-  margin-bottom: 2rem;
+  color: var(--text-color, #000000);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
 }
 
 .haika-list {
   list-style: none;
   padding: 0;
-  margin: 1.5rem 0 2rem 0;
+  margin: 0.75rem 0 0.75rem 0;
 }
 
 .haika-list li {
   font-size: 1.2rem;
-  color: #cccccc;
-  line-height: 2;
-  margin-bottom: 1rem;
+  color: var(--text-color, #000000);
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
   padding-left: 1.5rem;
   position: relative;
 }
@@ -368,19 +379,25 @@
   content: "•";
   position: absolute;
   left: 0;
-  color: #ffffff;
+  color: var(--text-color, #000000);
   font-size: 1.5rem;
 }
 
 .haika-logo-container,
-.connecteam-logo-container {
+.connecteam-logo-container,
+.abilisense-logo-container,
+.elal-logo-container,
+.etoro-logo-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .haika-logo,
-.connecteam-logo {
+.connecteam-logo,
+.abilisense-logo,
+.elal-logo,
+.etoro-logo {
   width: 100%;
   height: auto;
   object-fit: contain;
@@ -397,11 +414,15 @@
 
 @media (max-width: 768px) {
   .haika-section,
-  .connecteam-section {
+  .connecteam-section,
+  .abilisense-section,
+  .elal-section,
+  .etoro-section {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
   
+  /* Connecteam: Logo on top, description below */
   .connecteam-section .connecteam-logo-container {
     order: 1;
   }
@@ -410,10 +431,192 @@
     order: 2;
   }
   
+  /* Haika: Logo on top, description below */
+  .haika-section .haika-logo-container {
+    order: 1;
+  }
+  
+  .haika-section .haika-description {
+    order: 2;
+  }
+  
+  /* Abilisense: Logo on top, description below */
+  .abilisense-section .abilisense-logo-container {
+    order: 1;
+  }
+  
+  .abilisense-section .abilisense-description {
+    order: 2;
+  }
+  
+  /* El Al: Logo on top, description below */
+  .elal-section .elal-logo-container {
+    order: 1;
+  }
+  
+  .elal-section .elal-description {
+    order: 2;
+  }
+  
+  /* eToro: Logo on top, description below */
+  .etoro-section .etoro-logo-container {
+    order: 1;
+  }
+  
+  .etoro-section .etoro-description {
+    order: 2;
+  }
+  
   .haika-logo,
-  .connecteam-logo {
+  .connecteam-logo,
+  .abilisense-logo,
+  .elal-logo,
+  .etoro-logo {
     max-width: 250px !important;
     max-height: 250px !important;
+  }
+}
+
+/* Tools Carousel Styles */
+.tools-carousel-section {
+  margin-top: 3rem;
+  padding: 2rem 0;
+}
+
+.tools-carousel-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-color, #000000);
+  text-align: center;
+}
+
+/* Category Navbar */
+.tools-category-navbar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tools-category-item {
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--text-color, #000000);
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.tools-category-item:hover,
+.tools-category-item.active {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tools-carousel-empty {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--text-color, #000000);
+  font-size: 1.1rem;
+  opacity: 0.7;
+}
+
+.tools-carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.tools-carousel {
+  display: flex;
+  width: 100%;
+}
+
+.tools-carousel-track {
+  display: flex;
+  gap: 3rem;
+  width: fit-content;
+  animation: scroll-tools 40s linear infinite;
+  will-change: transform;
+}
+
+.tools-carousel-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.tools-carousel-item:hover {
+  transform: scale(1.75);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tools-carousel-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(0.3);
+  transition: filter 0.3s ease;
+}
+
+.tools-carousel-item:hover .tools-carousel-logo {
+  filter: grayscale(0);
+}
+
+@keyframes scroll-tools {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+@media (max-width: 768px) {
+  .tools-carousel-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tools-category-navbar {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tools-category-item {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .tools-carousel-item {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .tools-carousel-track {
+    gap: 2rem;
+    animation-duration: 30s;
+  }
+  
+  .tools-carousel-empty {
+    padding: 2rem 1rem;
+    font-size: 1rem;
   }
 }
 
