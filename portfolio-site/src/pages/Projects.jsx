@@ -158,7 +158,7 @@ function Projects() {
           Music
         </Link>
           <Link to="/sales-operations" className="nav-link">
-            Sales Operations
+            Employment History
           </Link>
         </div>
         <DarkModeToggle />

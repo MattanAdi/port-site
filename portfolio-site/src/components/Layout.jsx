@@ -1,32 +1,51 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import LoadingScreen from "./LoadingScreen";
+import DarkModeToggle from "./DarkModeToggle";
 
 function Layout({ children }) {
-  const [isLoading, setIsLoading] = useState(true);
-  const location = useLocation();
+  const location = useLocation(); // kept in case we later want route-based behavior
 
-  useEffect(() => {
-    // Show loading screen on every route change
-    setIsLoading(true);
-    
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 5000); // Match animation duration
+  const baseUrl = import.meta.env.BASE_URL || "/";
+  const chefLogoSrc = `${baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`}chef.png`;
 
-    return () => clearTimeout(timer);
-  }, [location.pathname]);
+  const [showWelcome, setShowWelcome] = useState(true);
+  const [isZooming, setIsZooming] = useState(false);
 
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
+  const handleWelcomeClick = () => {
+    if (isZooming) return;
+    setIsZooming(true);
+
+    // After the zoom animation, hide the welcome screen and reveal the main page
+    setTimeout(() => {
+      setShowWelcome(false);
+    }, 950);
   };
 
   return (
     <>
-      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
-      <div style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.5s ease' }}>
-        {children}
+      {showWelcome && (
+        <div className={`welcome-overlay ${isZooming ? "welcome-overlay--zooming" : ""}`}>
+          <div className="welcome-logo-wrap">
+            <img
+              src={`${baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`}tools/chefwelcome.png`}
+              alt="Chef welcome logo"
+              className={`welcome-logo ${isZooming ? "welcome-logo--zooming" : ""}`}
+              onClick={handleWelcomeClick}
+            />
+          </div>
+        </div>
+      )}
+
+      <div className="top-bar">
+        <div className="top-bar-left">
+          <img src={chefLogoSrc} alt="Chef logo" className="top-bar-logo" />
+        </div>
+        <div className="top-bar-right">
+          <DarkModeToggle />
+        </div>
       </div>
+
+      {children}
     </>
   );
 }

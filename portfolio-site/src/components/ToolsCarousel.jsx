@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import "../App.css";
 
 // Get image path helper
@@ -17,94 +17,110 @@ const createToolImages = (filenames) => {
   }));
 };
 
-// Category definitions - add filenames to each array as needed
-// To add a logo: 1. Add image to public/tools/ folder, 2. Add filename to the appropriate category array below
-const categories = {
+const baseCategories = {
   design: {
     name: "Design, Media, and Creative Tools",
     filenames: [
-      // Add filenames here (e.g., 'Figma.png', 'Adobe.png')
+      "Adobe_Photoshop_CC_icon.svg.png",
+      "figma.png",
+      "canva.png",
+      "protopie.png"
     ]
   },
   business: {
-    name: "Business and Operations Platforms",
+    name: "Business and Ops Platforms",
     filenames: [
-      // Add filenames here (e.g., 'Salesforce.png', 'Hubspot.png')
+      "Salesforce.png",
+      "Hubspot.png",
+      "Looker.png",
+      "GoogleAn.png",
+      "salesloft.png",
+      "Clarity.png",
+      "BTT.png",
+      "fireberry.png"
     ]
   },
   development: {
-    name: "Development and Engineering",
+    name: "Development, Data & Infra",
     filenames: [
-      // Add filenames here (e.g., 'React.png', 'Node.png')
+      "react.png",
+      "Node.png",
+      "nextjs.png",
+      "Mongo.png",
+      "Javascript.png",
+      "CSS.png",
+      "html.png",
+      "Github.png",
+      "amazon-s3.png"
     ]
   }
 };
 
+const allToolFilenames = Array.from(
+  new Set(
+    Object.values(baseCategories).flatMap((category) => category.filenames)
+  )
+);
+
+const categories = {
+  all: {
+    name: "All Tools",
+    filenames: allToolFilenames,
+  },
+  ...baseCategories,
+};
+
+const slugify = (name) =>
+  name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-+|-+$)/g, "");
+
+const smallToolSlugs = new Set(["javascript", "css", "nextjs", "html"]);
+
 function ToolsCarousel() {
-  const [activeCategory, setActiveCategory] = useState(null);
-  const carouselRef = useRef(null);
+  const [activeCategory, setActiveCategory] = useState("all");
   
-  // Get images for the active category
   const getActiveCategoryImages = () => {
-    if (!activeCategory) return [];
     const category = categories[activeCategory];
     return createToolImages(category.filenames);
   };
   
   const activeImages = getActiveCategoryImages();
-  
-  // Create multiple duplicates for seamless infinite scroll
-  const duplicatedImages = activeImages.length > 0 ? [
-    ...activeImages, 
-    ...activeImages, 
-    ...activeImages, 
-    ...activeImages
-  ] : [];
 
   return (
     <div className="tools-carousel-section">
       <h2 className="tools-carousel-title">Tools & Technologies</h2>
-      
-      {/* Category Navbar */}
       <div className="tools-category-navbar">
-        {Object.keys(categories).map((key) => (
-          <div
+        {Object.entries(categories).map(([key, category]) => (
+          <button
             key={key}
             className={`tools-category-item ${activeCategory === key ? 'active' : ''}`}
-            onMouseEnter={() => setActiveCategory(key)}
-            onMouseLeave={() => setActiveCategory(null)}
+            onClick={() => setActiveCategory(key)}
           >
-            {categories[key].name}
-          </div>
+            {category.name}
+          </button>
         ))}
       </div>
-      
-      {/* Carousel - only shows when a category is hovered */}
-      {activeCategory && activeImages.length > 0 && (
-        <div className="tools-carousel-wrapper">
-          <div className="tools-carousel" ref={carouselRef}>
-            <div className="tools-carousel-track">
-              {duplicatedImages.map((tool, index) => (
-                <div key={`${tool.name}-${index}`} className="tools-carousel-item">
-                  <img 
-                    src={tool.src} 
-                    alt={tool.name}
-                    className="tools-carousel-logo"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
+      <div className="tools-grid">
+        {activeImages.map((tool) => {
+          const slug = slugify(tool.name);
+          const isCompact = smallToolSlugs.has(slug);
+          return (
+            <div
+              key={tool.name}
+              className={`tools-card ${isCompact ? "tools-card--compact" : ""} tools-card-${slug}`}
+            >
+              <img src={tool.src} alt={tool.name} className="tools-card-logo" loading="lazy" />
             </div>
-          </div>
-        </div>
-      )}
-      
-      {/* Show message when category is hovered but empty */}
-      {activeCategory && activeImages.length === 0 && (
+          );
+        })}
+        {activeImages.length === 0 && (
         <div className="tools-carousel-empty">
           <p>No tools in this category yet. Add logos to see them here.</p>
         </div>
       )}
+      </div>
     </div>
   );
 }

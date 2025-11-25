@@ -169,15 +169,18 @@ function CompanyDetail() {
     return (
       <div className="page" ref={pageRef}>
         <nav className="nav" ref={navRef}>
-          <Link to="/" className="nav-link">
-            Resume
-          </Link>
-          <Link to="/projects" className="nav-link">
-            Projects
-          </Link>
-          <Link to="/music" className="nav-link">
-            Music
-          </Link>
+          <div className="nav-links">
+            <Link to="/" className="nav-link">
+              Sales
+            </Link>
+            <Link to="/code" className="nav-link">
+              code
+            </Link>
+            <Link to="/business-ops" className="nav-link">
+              Business Ops
+            </Link>
+          </div>
+          <DarkModeToggle />
         </nav>
         <main className="content">
           <h1>Company Not Found</h1>
@@ -193,16 +196,16 @@ function CompanyDetail() {
       <nav className="nav" ref={navRef}>
         <div className="nav-links">
           <Link to="/" className="nav-link">
-            Resume
+            Sales
           </Link>
-          <Link to="/projects" className="nav-link">
-            Projects
+          <Link to="/code" className="nav-link">
+            code
           </Link>
-          <Link to="/music" className="nav-link">
-            Music
+          <Link to="/business-ops" className="nav-link">
+            Business Ops
           </Link>
           <Link to="/sales-operations" className="nav-link">
-            Sales Operations
+            Employment History
           </Link>
         </div>
         <DarkModeToggle />

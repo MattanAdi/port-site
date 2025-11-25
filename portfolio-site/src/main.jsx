@@ -2,37 +2,26 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import App from "./App.jsx";
-import Projects from "./pages/Projects.jsx";
-import Music from "./pages/Music.jsx";
-import SalesOperations from "./pages/SalesOperations.jsx";
-import CompanyDetail from "./pages/CompanyDetail.jsx";
 import Layout from "./components/Layout.jsx";
+import SalesOperations from "./pages/SalesOperations.jsx";
 
-const router = createBrowserRouter([
-  { 
-    path: "/", 
-    element: <Layout><App /></Layout> 
-  },
-  { 
-    path: "/projects", 
-    element: <Layout><Projects /></Layout> 
-  },
-  { 
-    path: "/music", 
-    element: <Layout><Music /></Layout> 
-  },
-  { 
-    path: "/sales-operations", 
-    element: <Layout><SalesOperations /></Layout> 
-  },
-  { 
-    path: "/company/:slug", 
-    element: <Layout><CompanyDetail /></Layout> 
-  },
-], {
-  basename: process.env.NODE_ENV === 'production' ? '/port-site' : '/',
-});
+// For now, the app only shows the Employment History (SalesOperations) page.
+// Other routes/components are left in the codebase but not wired up.
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: (
+        <Layout>
+          <SalesOperations />
+        </Layout>
+      ),
+    },
+  ],
+  {
+    basename: process.env.NODE_ENV === "production" ? "/port-site" : "/",
+  }
+);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

@@ -8,6 +8,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  padding-top: 7rem;
 }
 
 #canvas {
@@ -77,6 +78,75 @@ body.dark-mode .nav-link:hover {
 
 .nav-link:hover::after {
   width: 80%;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap");
+
+/* Invisible top bar: logo left, dark mode toggle right */
+.top-bar {
+  position: fixed;
+  top: 0.75rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 9998;
+  pointer-events: none; /* let underlying content be clickable except controls inside */
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.top-bar-right {
+  pointer-events: auto; /* allow clicking the dark mode toggle */
+}
+
+.top-bar-logo {
+  width: 80px;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+/* Welcome screen */
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  z-index: 10000;
+  transition: opacity 1.1s ease;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.welcome-overlay--zooming {
+  opacity: 0;
+}
+
+.welcome-logo {
+  width: min(95vw, 900px);
+  height: auto;
+  cursor: pointer;
+  transform-origin: center center;
+  transition: transform 1.1s ease;
+}
+
+.welcome-logo--zooming {
+  transform: scale(20) translate(-15%, -8%);
+}
+
+.welcome-logo-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .nav-link.active {
@@ -311,6 +381,129 @@ body.dark-mode .nav-link.active {
   line-height: 1.6;
 }
 
+.sales-ops-title {
+  margin-bottom: 2rem;
+}
+
+.baseball-row {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.baseball-card {
+  width: 100%;
+  max-width: 360px;
+  height: 480px;
+  margin: 0 auto;
+  perspective: 900px;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.baseball-card:hover {
+  transform: scale(1.35);
+}
+
+.baseball-card article {
+  width: 100%;
+  height: 100%;
+  border: solid 1px #ccc;
+  transition: 1s;
+  transform-style: preserve-3d;
+  position: relative;
+  border-radius: 3px;
+  font-family: helvetica, arial, sans-serif;
+}
+
+.baseball-card article.flipped {
+  transform: rotateY(180deg);
+}
+
+.baseball-card .front,
+.baseball-card .back {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.baseball-card .front {
+  background-color: #f8f8ee;
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.baseball-card .back {
+  box-sizing: border-box;
+  background-color: #ff9088;
+  transform: rotateY(180deg);
+  padding: 0;
+}
+
+.player-name {
+  font-style: normal;
+  color: #cf0000;
+  font-weight: bold;
+  font-size: 1.4em;
+  margin-top: 0.8em;
+  margin-left: 6em;
+}
+
+.player-photo {
+  height: 86%;
+  width: 86%;
+  top: 10%;
+  left: 7%;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-image: url("/tools/IMG_0477.JPG");
+  border: solid 1px #7d7c3c;
+  border-radius: 10px;
+  box-shadow: 0px 0px 0px 4px #ffff69, 0px 0px 0px 5px #7d7c3c;
+}
+
+.position,
+.team {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  color: white;
+  display: block;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: -1px -1px 0 #666, 1px -1px 0 #666, -1px 1px 0 #666, 1px 1px 0 #666;
+  font-size: 0.65em;
+  transform: rotate(-15deg);
+}
+
+.team {
+  font-size: 1.4em;
+  transform: rotate(-12deg);
+}
+
+.position {
+  top: 39px;
+  left: 23px;
+  z-index: 1;
+}
+
+.team {
+  bottom: 25px;
+  right: 35px;
+  z-index: 1;
+}
+
+.baseball-card .bio {
+  font-size: 0.75rem;
+  margin: 0 12px;
+}
+
 .haika-section,
 .connecteam-section,
 .abilisense-section,
@@ -321,7 +514,12 @@ body.dark-mode .nav-link.active {
   gap: 2rem;
   align-items: center;
   margin-top: 2rem;
-  padding: 1rem 0;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.sales-ops-section {
+  opacity: 0;
 }
 
 .haika-description,
@@ -485,12 +683,12 @@ body.dark-mode .nav-link.active {
 /* Tools Carousel Styles */
 .tools-carousel-section {
   margin-top: 3rem;
-  padding: 2rem 0;
+  padding: 2rem 0 1rem;
 }
 
 .tools-carousel-title {
   font-size: 2.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   color: var(--text-color, #000000);
   text-align: center;
 }
@@ -499,132 +697,118 @@ body.dark-mode .nav-link.active {
 .tools-category-navbar {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
 }
 
 .tools-category-item {
-  padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  padding: 0.9rem 1.8rem;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
   color: var(--text-color, #000000);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: center;
+  transition: all 0.2s ease;
 }
 
-.tools-category-item:hover,
 .tools-category-item.active {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.18);
+  border-color: rgba(0, 0, 0, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.tools-card {
+  padding: 2.2rem;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 160px;
+  max-width: 260px;
+  min-height: 230px;
+  transition: transform 0.25s ease;
+}
+
+.tools-card:hover {
+  transform: scale(1.2);
+}
+
+.tools-card-logo {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+}
+
+.tools-card--compact .tools-card-logo {
+  width: 120px;
+  height: 120px;
+}
+
+body.dark-mode .tools-card-fireberry .tools-card-logo {
+  filter: invert(1) brightness(1.2);
+}
+
+body.dark-mode .tools-card-mongo .tools-card-logo,
+body.dark-mode .tools-card-github .tools-card-logo,
+body.dark-mode .tools-card-node .tools-card-logo {
+  filter: invert(1) brightness(1.2);
 }
 
 .tools-carousel-empty {
+  width: 100%;
   text-align: center;
-  padding: 3rem 2rem;
+  padding: 2rem 1rem;
   color: var(--text-color, #000000);
   font-size: 1.1rem;
   opacity: 0.7;
 }
 
-.tools-carousel-wrapper {
-  overflow: hidden;
-  width: 100%;
-  position: relative;
-}
-
-.tools-carousel {
-  display: flex;
-  width: 100%;
-}
-
-.tools-carousel-track {
-  display: flex;
-  gap: 3rem;
-  width: fit-content;
-  animation: scroll-tools 40s linear infinite;
-  will-change: transform;
-}
-
-.tools-carousel-item {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 150px;
-  height: 150px;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.tools-carousel-item:hover {
-  transform: scale(1.75);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.tools-carousel-logo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: grayscale(0.3);
-  transition: filter 0.3s ease;
-}
-
-.tools-carousel-item:hover .tools-carousel-logo {
-  filter: grayscale(0);
-}
-
-@keyframes scroll-tools {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-25%);
-  }
-}
-
 @media (max-width: 768px) {
   .tools-carousel-title {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
   
   .tools-category-navbar {
-    gap: 1rem;
+    gap: 0.75rem;
     margin-bottom: 1.5rem;
   }
   
   .tools-category-item {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.95rem;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
     flex: 1;
     min-width: 0;
   }
   
-  .tools-carousel-item {
-    width: 100px;
-    height: 100px;
+  .tools-grid {
+    gap: 1rem;
+  }
+
+  .tools-card {
+    min-width: 150px;
+    min-height: 150px;
   }
   
-  .tools-carousel-track {
-    gap: 2rem;
-    animation-duration: 30s;
-  }
-  
-  .tools-carousel-empty {
-    padding: 2rem 1rem;
-    font-size: 1rem;
+  .tools-card-logo {
+    width: 80px;
+    height: 80px;
   }
 }
-
 /* Music Page Styles */
 .music-page .content {
   text-align: left;
