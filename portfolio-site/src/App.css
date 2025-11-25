@@ -5,6 +5,9 @@
   color: #000000;
   font-family: system-ui, -apple-system, sans-serif;
   transform-origin: center center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 #canvas {
@@ -277,8 +280,10 @@ body.dark-mode .nav-link.active {
   max-width: 90%;
   width: 90%;
   margin: 0 auto;
-  padding: 3rem 4rem;
+  padding: 2rem 4rem;
   text-align: center;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .content h1 {

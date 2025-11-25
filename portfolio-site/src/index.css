@@ -30,7 +30,8 @@ body {
   min-height: 100vh;
   background-color: #ffffff;
   color: #000000;
-  touch-action: none;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
 }
 
 #root {
