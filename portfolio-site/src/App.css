@@ -515,9 +515,8 @@ body.dark-mode .nav-link.active {
   gap: 0.35rem;
   justify-items: center;
   align-items: center;
-  max-height: 140px;
-  overflow-y: auto;
-  padding-right: 0.35rem;
+  padding-right: 0;
+  overflow: visible;
 }
 
 .tool-logos-grid-item {
