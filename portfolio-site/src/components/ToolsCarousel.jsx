@@ -9,12 +9,22 @@ const getImagePath = (filename) => {
   return `${cleanBase}${cleanFilename}`;
 };
 
-export const formatToolLabel = (filename) =>
-  filename
+const toolLabelOverrides = {
+  "Adobe_Photoshop_CC_icon.svg.png": "Photoshop",
+  "GoogleAn.png": "Google Analytics",
+};
+
+export const formatToolLabel = (filename) => {
+  if (toolLabelOverrides[filename]) {
+    return toolLabelOverrides[filename];
+  }
+
+  return filename
     .replace(/\.[^.]+$/, "")
     .replace(/([A-Z])/g, " $1")
     .replace(/_/g, " ")
     .trim();
+};
 
 // Helper to convert filenames to image objects
 const createToolImages = (filenames) => {
