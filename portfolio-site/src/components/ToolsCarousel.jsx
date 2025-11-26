@@ -56,7 +56,7 @@ const baseCategories = {
   }
 };
 
-const allToolFilenames = Array.from(
+export const allToolFilenames = Array.from(
   new Set(
     Object.values(baseCategories).flatMap((category) => category.filenames)
   )

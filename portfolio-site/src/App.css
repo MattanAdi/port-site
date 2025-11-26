@@ -441,7 +441,11 @@ body.dark-mode .nav-link.active {
   box-sizing: border-box;
   background-color: #ff9088;
   transform: rotateY(180deg);
-  padding: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  align-items: stretch;
 }
 
 .player-name {
@@ -502,6 +506,40 @@ body.dark-mode .nav-link.active {
 .baseball-card .bio {
   font-size: 0.75rem;
   margin: 0 12px;
+}
+
+.tool-logos-grid {
+  margin: 0 0.5rem 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(32px, 1fr));
+  gap: 0.35rem;
+  justify-items: center;
+  align-items: center;
+  max-height: 140px;
+  overflow-y: auto;
+  padding-right: 0.35rem;
+}
+
+.tool-logos-grid img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.tool-logos-grid::-webkit-scrollbar {
+  width: 4px;
+}
+
+.tool-logos-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tool-logos-grid::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 999px;
 }
 
 .haika-section,

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ToolsCarousel from "../components/ToolsCarousel";
+import ToolsCarousel, { allToolFilenames } from "../components/ToolsCarousel";
 import "../App.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,6 +13,13 @@ const getImagePath = (filename) => {
   const cleanFilename = filename.startsWith('/') ? filename.slice(1) : filename;
   return `${cleanBase}${cleanFilename}`;
 };
+
+const formatToolLabel = (filename) =>
+  filename
+    .replace(/\.[^.]+$/, "")
+    .replace(/([A-Z])/g, " $1")
+    .replace(/_/g, " ")
+    .trim();
 
 function SalesOperations() {
   const contentRef = useRef(null);
@@ -104,42 +111,37 @@ function SalesOperations() {
                 <address className="player-name">MATTAN ADI</address>
                 <div className="player-photo" role="image" />
                 <p className="position">Sales Ops</p>
-                <p className="team">Programmer</p>
+                <p className="team">Click here to flip!</p>
               </section>
               <section className="back">
-                <header>
-                  <p className="card-number">
-                    01
-                    <svg id="stitching" width="40" height="11" viewBox="0 0 87 22">
-                      <path
-                        style={{ fill: "rgba(0,0,0,0.75)" }}
-                        d="m 72.939882,20.915961 c -0.395728,-1.03125 -0.17466,-1.875 0.491264,-1.875 0.665923,0 1.210769,-0.84375 1.210769,-1.875 0,-2.328779 -2.176226,-2.328779 -6.25,0 -4.073774,2.328779 -6.25,2.328779 -6.25,0 0,-1.03125 0.595697,-1.875 1.323771,-1.875 0.728074,0 0.976128,-0.5625 0.551229,-1.25 -1.409021,-2.279845 -6.065519,-1.295684 -9.517526,2.011549 -3.778707,3.620231 -6.93969,3.129108 -4.860854,-0.755233 1.73653,-3.244737 1.593136,-3.756316 -1.052885,-3.756316 -1.268446,0 -3.324378,1.125 -4.568735,2.5 -1.244358,1.375 -3.056944,2.5 -4.027969,2.5 -1.196656,0 -1.509845,-0.805499 -0.972031,-2.5 1.096892,-3.456003 -1.353984,-3.19412 -6.444511,0.688614 l -4.180489,3.188615 0,-3.188615 c 0,-2.00099 -0.698359,-3.188614 -1.875,-3.188614 -2.108854,0 -6.875,4.33286 -6.875,6.25 0,0.6875 -0.84375,1.25 -1.875,1.25 -1.03125,0 -1.875,-0.84375 -1.875,-1.875 0,-2.840046 -4.600359,-2.243176 -6.788451,0.880762 l -1.9302107,2.755763 -3.3743548,-2.51932 c -4.8602615,-3.628709 -5.0587242,-5.492205 -0.584921,-5.492205 4.5248465,0 6.5170405,-2.383866 2.8037074,-3.3549242 -2.967625,-0.776051 -3.6091191,-4.145076 -0.7892615,-4.145076 1.0100794,0 4.0215636,1.138915 6.6921866,2.530922 2.685809,1.399921 5.799374,2.16879 6.967456,1.720555 1.959579,-0.751961 1.96393,-0.973735 0.06036,-3.077154 -3.791251,-4.189287 -0.747381,-5.244738 5.329853,-1.848108 5.732682,3.204058 9.113636,4.010483 9.113636,2.173785 0,-0.55 -0.615251,-1.615251 -1.367225,-2.367225 -0.751974,-0.751974 -1.173849,-2.308333 -0.9375,-3.45857502 0.349919,-1.702953 1.377815,-1.278209 5.534782,2.28706602 4.728004,4.055031 7.970903,5.004441 10.036888,2.938456 0.461619,-0.461619 0.127775,-1.69665 -0.741875,-2.744514 -1.329179,-1.601562 -1.172806,-1.905208 0.981149,-1.905208 1.409282,0 3.627225,1.353793 4.928761,3.008429 1.301536,1.654636 3.732989,3.201511 5.403225,3.4375 2.626844,0.371149 3.005026,-0.03497 2.801465,-3.008429 -0.328224,-4.79442102 2.457546,-4.35967102 4.901284,0.764899 1.102191,2.311319 3.175122,4.5086572 4.606515,4.8829752 2.19585,0.574227 2.602531,0.112874 2.602531,-2.9523982 0,-5.003868 2.048758,-4.549522 4.679616,1.037782 2.721214,5.7791932 6.570384,7.0631892 6.570384,2.1917312 0,-4.0285462 2.929953,-3.6208072 3.533455,0.491723 0.516704,3.521049 -1.493545,5.941997 -7.462535,8.987148 -5.670665,2.892957 -5.619214,2.888747 -6.522953,0.53364 z"
-                      id="path4484"
-                    />
-                  </svg>
+                <p className="bio">
+                  🔥 Tech-savvy problem solver with a passion for building things
+                  that actually work. I mix creativity 🎨, full-stack fundamentals
+                  💻, and strong sales-ops instincts 📊 to streamline processes,
+                  improve workflows, and deliver clean, modern digital experiences.
                 </p>
-                <div className="flex-grid header-grid">
-                  <div className="flex-row">
-                    <h2 className="flex-cell text-center width-12 header-player-name">
-                      Mookie Betts
-                    </h2>
-                  </div>
-                  <div className="flex-row">
-                    <span className="flex-cell width-04 header-player-position text-left">
-                      Outfield
-                    </span>
-                    <span className="flex-cell width-08 header-player-team text-right">
-                      Boston RedSox
-                    </span>
-                  </div>
+                <p className="bio">
+                  I love working with AI tools 🤖, modern dev stacks like React ⚛️,
+                  and platforms that help teams move faster and smarter. Whether it’s
+                  optimizing operations, designing a portfolio component, or figuring
+                  out how to make something easier, I’m all about efficiency, clarity,
+                  and results 🚀.
+                </p>
+                <p className="bio">
+                  Always learning, always improving, always building something new ✨.
+                </p>
+                <div className="tool-logos-grid" role="list" aria-label="Tools logos">
+                  {allToolFilenames.map((toolName) => (
+                    <img
+                      key={toolName}
+                      src={getImagePath(`tools/${toolName}`)}
+                      alt={`${formatToolLabel(toolName)} logo`}
+                      loading="lazy"
+                    />
+                  ))}
                 </div>
-              </header>
-              <p className="bio">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                in leo erat. Quisque ac velit ut dolor tempor posuere.
-              </p>
-            </section>
-          </article>
+              </section>
+            </article>
         </div>
       </div>
 
