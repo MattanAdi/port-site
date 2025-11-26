@@ -528,9 +528,9 @@ body.dark-mode .nav-link.active {
 
 .tool-logos-grid-item-label {
   position: absolute;
-  bottom: 38px;
+  top: calc(100% + 6px);
   left: 50%;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.75);
   color: #fff;
   font-size: 0.55rem;
@@ -546,7 +546,7 @@ body.dark-mode .nav-link.active {
 
 .tool-logos-grid-item:hover .tool-logos-grid-item-label {
   opacity: 1;
-  transform: translateX(-50%) translateY(-10px);
+  transform: translateX(-50%) translateY(4px);
 }
 
 .tool-grid-title {
