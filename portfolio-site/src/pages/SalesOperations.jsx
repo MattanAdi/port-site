@@ -37,11 +37,9 @@ function SalesOperations() {
         contentElements,
         {
           opacity: 0,
-          y: 40,
         },
         {
           opacity: 1,
-          y: 0,
           duration: 0.8,
           stagger: 0.18,
           ease: "power3.out",
@@ -58,16 +56,12 @@ function SalesOperations() {
     const triggers = [];
 
     sections.forEach((section) => {
-      const direction = section.dataset.direction || "right";
-      const offset = direction === "left" ? -120 : 120;
-
-      const animation = gsap.fromTo(section,
+      const animation = gsap.fromTo(
+        section,
         {
-          x: offset,
           opacity: 0,
         },
         {
-          x: 0,
           opacity: 1,
           ease: "power3.out",
           scrollTrigger: {
@@ -76,6 +70,7 @@ function SalesOperations() {
             end: "bottom 10%",
             scrub: true,
             invalidateOnRefresh: true,
+            toggleActions: "play reverse play reverse",
           },
         }
       );
@@ -93,7 +88,7 @@ function SalesOperations() {
   return (
     <div className="page sales-ops-page">
       <main className="content" ref={contentRef}>
-        <div className="baseball-row">
+        <div id="baseball" className="baseball-row">
           <div
             id="baseballCard"
             className="baseball-card"
@@ -143,7 +138,8 @@ function SalesOperations() {
         </div>
       </div>
 
-        <div className="sales-ops-section connecteam-section" data-direction="right">
+        <section id="companies" className="companies-section">
+          <div className="sales-ops-section connecteam-section" data-direction="right">
           <div className="connecteam-logo-container">
             {/* Logo size can be adjusted by changing the max-width and max-height values below */}
             <img 
@@ -243,7 +239,7 @@ function SalesOperations() {
           </div>
         </div>
 
-        <div className="sales-ops-section etoro-section" data-direction="right">
+          <div className="sales-ops-section etoro-section" data-direction="right">
           <div className="etoro-logo-container">
             {/* Logo size can be adjusted by changing the max-width and max-height values below */}
             <img 
@@ -265,9 +261,49 @@ function SalesOperations() {
               This role developed my technical troubleshooting skills, attention to detail in financial data, and ability to communicate complex technical concepts clearly—all valuable in sales operations where system reliability and data accuracy are critical.
             </p>
           </div>
-        </div>
+          </div>
+        </section>
 
-        <ToolsCarousel />
+        <section id="tools" className="tools-anchor" aria-label="Tools carousel">
+          <ToolsCarousel />
+        </section>
+        <section id="projects" className="projects-list" aria-label="Projects">
+          <header className="projects-list__header">
+            <p>Projects</p>
+            <h2>Tools I’ve shipped</h2>
+          </header>
+          <div className="projects-list__grid">
+            <article className="highlightzone-card">
+              <div className="highlightzone-card__header">
+                <div className="highlightzone-card__icon" aria-hidden="true" />
+                <div>
+                  <p className="highlightzone-card__eyebrow">Chrome extension</p>
+                  <h3>HighlightZone</h3>
+                  <span>November 2025 · Manifest V3</span>
+                </div>
+              </div>
+              <p className="highlightzone-card__description">
+                HighlightZone detects the timezone and local time for any U.S. or Canadian phone number you highlight
+                in the browser, so you can instantly understand when it’s best to connect without copying anything out
+                of the page.
+              </p>
+              <ul className="highlightzone-card__bullets">
+                <li>🕒 Instantly shows timezone &amp; local time for every highlighted number.</li>
+                <li>⚡ Works inline on any webpage, no external tooling required.</li>
+                <li>🔒 Built with privacy in mind—no data collection, just local computation.</li>
+              </ul>
+              <div className="highlightzone-card__actions">
+                <a
+                  href="https://chromewebstore.google.com/detail/highlightzone/ioijeggbkkmefoolcebgaogdmnnfompj?utm_source=chatgpt.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Visit HighlightZone on Chrome Web Store
+                </a>
+              </div>
+            </article>
+          </div>
+        </section>
       </main>
     </div>
   );

@@ -164,7 +164,8 @@ function Projects() {
         <DarkModeToggle />
       </nav>
       <main className="content projects-content">
-        <div className="books-container" ref={booksContainerRef}>
+        <section className="books-wrapper">
+          <div className="books-container" ref={booksContainerRef}>
           <div className="wrap-original-transform book-1">
             <div className="original-transform">
               <div className="front"></div>
@@ -259,6 +260,42 @@ function Projects() {
             </div>
           </div>
         </div>
+        </section>
+        <section className="projects-showcase">
+          <div className="section-heading">
+            <p>Projects</p>
+            <h2>Tools I’ve shipped</h2>
+          </div>
+          <div className="project-card highlight-zone">
+            <div className="project-card__header">
+              <div className="project-card__icon" aria-hidden="true" />
+              <div>
+                <h3>HighlightZone</h3>
+                <span>Chrome Extension · November 2025</span>
+              </div>
+            </div>
+            <p>
+              HighlightZone detects timezones and current local time for any U.S. or Canadian phone number
+              you highlight. The minimal popup works on top of any webpage without copying or leaving the
+              browser, keeps privacy front and center, and stays Manifest V3 compliant for secure extension
+              installs.
+            </p>
+            <ul className="project-card__features">
+              <li>🕒 Instant timezone &amp; local time detection for every highlighted phone number.</li>
+              <li>⚡ Inline popup that works on any webpage—no copying, no external tooling.</li>
+              <li>🔒 Privacy-first; zero data collection or third-party requests.</li>
+            </ul>
+            <div className="project-card__actions">
+              <a
+                href="https://chromewebstore.google.com/detail/highlightzone/ioijeggbkkmefoolcebgaogdmnnfompj?utm_source=chatgpt.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Visit on Chrome Web Store
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );

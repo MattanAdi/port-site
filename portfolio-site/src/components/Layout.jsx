@@ -21,6 +21,13 @@ function Layout({ children }) {
     }, 950);
   };
 
+  const sectionLinks = [
+    { id: "baseball", label: "Baseball card" },
+    { id: "companies", label: "Companies" },
+    { id: "tools", label: "Tools & Technologies" },
+    { id: "projects", label: "Projects" },
+  ];
+
   return (
     <>
       {showWelcome && (
@@ -44,6 +51,14 @@ function Layout({ children }) {
           <DarkModeToggle />
         </div>
       </div>
+
+      <nav className="vertical-section-nav" aria-label="Jump to sections">
+        {sectionLinks.map((link) => (
+          <a key={link.id} href={`#${link.id}`}>
+            {link.label}
+          </a>
+        ))}
+      </nav>
 
       {children}
     </>
