@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ToolsCarousel, { allToolFilenames } from "../components/ToolsCarousel";
+import ToolsCarousel, { allToolFilenames, formatToolLabel } from "../components/ToolsCarousel";
 import "../App.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,13 +13,6 @@ const getImagePath = (filename) => {
   const cleanFilename = filename.startsWith('/') ? filename.slice(1) : filename;
   return `${cleanBase}${cleanFilename}`;
 };
-
-const formatToolLabel = (filename) =>
-  filename
-    .replace(/\.[^.]+$/, "")
-    .replace(/([A-Z])/g, " $1")
-    .replace(/_/g, " ")
-    .trim();
 
 function SalesOperations() {
   const contentRef = useRef(null);
@@ -130,14 +123,19 @@ function SalesOperations() {
                 <p className="bio">
                   Always learning, always improving, always building something new ✨.
                 </p>
+                <h3 className="tool-grid-title">Tools and Technologies</h3>
                 <div className="tool-logos-grid" role="list" aria-label="Tools logos">
                   {allToolFilenames.map((toolName) => (
-                    <img
-                      key={toolName}
-                      src={getImagePath(`tools/${toolName}`)}
-                      alt={`${formatToolLabel(toolName)} logo`}
-                      loading="lazy"
-                    />
+                    <div key={toolName} className="tool-logos-grid-item">
+                      <img
+                        src={getImagePath(`tools/${toolName}`)}
+                        alt={`${formatToolLabel(toolName)} logo`}
+                        loading="lazy"
+                      />
+                      <span className="tool-logos-grid-item-label">
+                        {formatToolLabel(toolName)}
+                      </span>
+                    </div>
                   ))}
                 </div>
               </section>

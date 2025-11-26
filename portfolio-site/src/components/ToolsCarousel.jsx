@@ -3,17 +3,25 @@ import "../App.css";
 
 // Get image path helper
 const getImagePath = (filename) => {
-  const baseUrl = import.meta.env.BASE_URL || '/';
-  const cleanBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
-  const cleanFilename = filename.startsWith('/') ? filename.slice(1) : filename;
+  const baseUrl = import.meta.env.BASE_URL || "/";
+  const cleanBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+  const cleanFilename = filename.startsWith("/") ? filename.slice(1) : filename;
   return `${cleanBase}${cleanFilename}`;
 };
 
+export const formatToolLabel = (filename) =>
+  filename
+    .replace(/\.[^.]+$/, "")
+    .replace(/([A-Z])/g, " $1")
+    .replace(/_/g, " ")
+    .trim();
+
 // Helper to convert filenames to image objects
 const createToolImages = (filenames) => {
-  return filenames.map(filename => ({
+  return filenames.map((filename) => ({
     src: getImagePath(`tools/${filename}`),
-    name: filename.replace(/\.[^.]+$/, '').replace(/([A-Z])/g, ' $1').trim()
+    label: formatToolLabel(filename),
+    filename,
   }));
 };
 
@@ -103,15 +111,23 @@ function ToolsCarousel() {
         ))}
       </div>
       <div className="tools-grid">
-        {activeImages.map((tool) => {
-          const slug = slugify(tool.name);
+        {activeImages.map((tool, idx) => {
+          const slug = slugify(tool.filename);
           const isCompact = smallToolSlugs.has(slug);
           return (
             <div
-              key={tool.name}
+              key={`${tool.filename}-${idx}`}
               className={`tools-card ${isCompact ? "tools-card--compact" : ""} tools-card-${slug}`}
             >
-              <img src={tool.src} alt={tool.name} className="tools-card-logo" loading="lazy" />
+              <div className="tools-card-inner">
+                <img
+                  src={tool.src}
+                  alt={`${tool.label} logo`}
+                  className="tools-card-logo"
+                  loading="lazy"
+                />
+                <span className="tools-card-tooltip">{tool.label}</span>
+              </div>
             </div>
           );
         })}
