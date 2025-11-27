@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import "./DarkModeToggle.css";
 
+const darkModeFireberryFilter =
+  "invert(1) brightness(1.6) contrast(1.3) saturate(1.4)";
+const lightModeFireberryFilter =
+  "invert(1) brightness(1.4) contrast(1.1) saturate(1.2)";
+
 function DarkModeToggle() {
   const [isDark, setIsDark] = useState(true);
   const toggleRef = useRef(null);
@@ -22,85 +27,112 @@ function DarkModeToggle() {
   const applyDarkMode = () => {
     // Fast dark mode application
     document.body.classList.add("dark-mode");
-    document.documentElement.style.setProperty('--bg-color', '#000000');
-    document.documentElement.style.setProperty('--text-color', '#ffffff');
-    
+    document.documentElement.style.setProperty("--bg-color", "#000000");
+    document.documentElement.style.setProperty("--text-color", "#ffffff");
+
     // Apply to all containers
-    const containers = document.querySelectorAll('body, #root, html, .page, .sections, main, .nav, header, .hero');
-    containers.forEach(el => {
+    const containers = document.querySelectorAll(
+      "body, #root, html, .page, .sections, main, .nav, header, .hero"
+    );
+    containers.forEach((el) => {
       if (el) {
-        el.style.backgroundColor = '#000000';
-        el.style.color = '#ffffff';
+        el.style.backgroundColor = "#000000";
+        el.style.color = "#ffffff";
       }
     });
 
     // Company cards
-    const companies = document.querySelectorAll('.company');
-    companies.forEach(company => {
-      company.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-      company.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+    const companies = document.querySelectorAll(".company");
+    companies.forEach((company) => {
+      company.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
+      company.style.borderColor = "rgba(255, 255, 255, 0.1)";
     });
 
     // Text elements
-    const textElements = document.querySelectorAll('.nav-link, .company-name, .company-role, .company-period, .company-bullets, .company-bullets li, .company-desc, h1, h2, h3, h4, h5, h6, p');
-    textElements.forEach(el => {
-      if (el) el.style.color = '#ffffff';
+    const textElements = document.querySelectorAll(
+      ".nav-link, .company-name, .company-role, .company-period, .company-bullets, .company-bullets li, .company-desc, h1, h2, h3, h4, h5, h6, p"
+    );
+    textElements.forEach((el) => {
+      if (el) el.style.color = "#ffffff";
     });
 
     // Company logos
-    const logos = document.querySelectorAll('.company-logo');
-    logos.forEach(logo => {
-      logo.style.backgroundColor = 'transparent';
-      logo.style.border = 'none';
+    const logos = document.querySelectorAll(".company-logo");
+    logos.forEach((logo) => {
+      logo.style.backgroundColor = "transparent";
+      logo.style.border = "none";
     });
+    broadcastDarkMode(true);
+    updateFireberryFilter(true);
   };
 
   const applyLightMode = () => {
     // Fast light mode application
     document.body.classList.remove("dark-mode");
-    document.documentElement.style.setProperty('--bg-color', '#ffffff');
-    document.documentElement.style.setProperty('--text-color', '#000000');
-    
+    document.documentElement.style.setProperty("--bg-color", "#ffffff");
+    document.documentElement.style.setProperty("--text-color", "#000000");
+
     // Apply to all containers
-    const containers = document.querySelectorAll('body, #root, html, .page, .sections, main, .nav, header, .hero');
-    containers.forEach(el => {
+    const containers = document.querySelectorAll(
+      "body, #root, html, .page, .sections, main, .nav, header, .hero"
+    );
+    containers.forEach((el) => {
       if (el) {
-        el.style.backgroundColor = '#ffffff';
-        el.style.color = '#000000';
+        el.style.backgroundColor = "#ffffff";
+        el.style.color = "#000000";
       }
     });
 
     // Company cards - restore original backgrounds
-    const companies = document.querySelectorAll('.company');
-    companies.forEach(company => {
-      const originalBg = company.getAttribute('data-original-bg');
+    const companies = document.querySelectorAll(".company");
+    companies.forEach((company) => {
+      const originalBg = company.getAttribute("data-original-bg");
       if (originalBg) {
         company.style.backgroundColor = originalBg;
       } else {
-        company.style.backgroundColor = '';
+        company.style.backgroundColor = "";
       }
-      company.style.borderColor = 'rgba(0, 0, 0, 0.1)';
+      company.style.borderColor = "rgba(0, 0, 0, 0.1)";
     });
 
     // Text elements
-    const textElements = document.querySelectorAll('.nav-link, .company-name, .company-role, .company-period, .company-bullets, .company-bullets li, .company-desc, h1, h2, h3, h4, h5, h6, p');
-    textElements.forEach(el => {
-      if (el) el.style.color = '#000000';
+    const textElements = document.querySelectorAll(
+      ".nav-link, .company-name, .company-role, .company-period, .company-bullets, .company-bullets li, .company-desc, h1, h2, h3, h4, h5, h6, p"
+    );
+    textElements.forEach((el) => {
+      if (el) el.style.color = "#000000";
     });
 
     // Company logos
-    const logos = document.querySelectorAll('.company-logo');
-    logos.forEach(logo => {
-      logo.style.backgroundColor = 'transparent';
-      logo.style.border = 'none';
+    const logos = document.querySelectorAll(".company-logo");
+    logos.forEach((logo) => {
+      logo.style.backgroundColor = "transparent";
+      logo.style.border = "none";
+    });
+    broadcastDarkMode(false);
+    updateFireberryFilter(false);
+  };
+
+  const broadcastDarkMode = (isActive) => {
+    if (typeof window === "undefined") return;
+    window.dispatchEvent(
+      new CustomEvent("dark-mode-change", { detail: { isDark: isActive } })
+    );
+  };
+
+  const updateFireberryFilter = (isDark) => {
+    if (typeof document === "undefined") return;
+    const filter = isDark ? darkModeFireberryFilter : lightModeFireberryFilter;
+    document.querySelectorAll(".tools-card-logo--fireberry").forEach((logo) => {
+      logo.style.filter = filter;
     });
   };
 
   const handleToggle = () => {
     const newMode = !isDark;
     setIsDark(newMode);
-    localStorage.setItem('darkMode', newMode.toString());
-    
+    localStorage.setItem("darkMode", newMode.toString());
+
     if (newMode) {
       applyDarkMode();
     } else {

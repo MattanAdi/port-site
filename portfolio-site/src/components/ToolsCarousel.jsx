@@ -95,10 +95,11 @@ const slugify = (name) =>
     .replace(/(^-+|-+$)/g, "");
 
 const smallToolSlugs = new Set(["javascript", "css", "nextjs", "html"]);
+const invertLogoSlugs = new Set(["fireberry", "github", "mongo", "node"]);
 
 function ToolsCarousel() {
   const [activeCategory, setActiveCategory] = useState("all");
-  
+
   const getActiveCategoryImages = () => {
     const category = categories[activeCategory];
     return createToolImages(category.filenames);
@@ -124,6 +125,13 @@ function ToolsCarousel() {
         {activeImages.map((tool, idx) => {
           const slug = slugify(tool.filename);
           const isCompact = smallToolSlugs.has(slug);
+          const logoClassNames = ["tools-card-logo"];
+          if (invertLogoSlugs.has(slug)) {
+            logoClassNames.push("tools-card-logo--invertible");
+          }
+          if (slug === "fireberry") {
+            logoClassNames.push("tools-card-logo--fireberry");
+          }
           return (
             <div
               key={`${tool.filename}-${idx}`}
@@ -133,7 +141,7 @@ function ToolsCarousel() {
                 <img
                   src={tool.src}
                   alt={`${tool.label} logo`}
-                  className="tools-card-logo"
+                  className={logoClassNames.join(" ")}
                   loading="lazy"
                 />
                 <span className="tools-card-tooltip">{tool.label}</span>

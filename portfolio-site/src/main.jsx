@@ -4,11 +4,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Layout from "./components/Layout.jsx";
 import SalesOperations from "./pages/SalesOperations.jsx";
+import Welcome from "./pages/Welcome.jsx";
 
 // For now, the app only shows the Employment History (SalesOperations) page.
 // Other routes/components are left in the codebase but not wired up.
 const router = createBrowserRouter(
   [
+    {
+      path: "/welcome",
+      element: <Welcome />,
+    },
     {
       path: "/",
       element: (

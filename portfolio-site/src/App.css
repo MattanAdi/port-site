@@ -126,7 +126,7 @@ body.dark-mode .nav-link:hover {
   padding: 0.5rem 1rem;
   padding-left: 0.9rem;
   margin-left: -0.25rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: transparent;
 }
 
 .vertical-section-nav a {
@@ -148,19 +148,18 @@ body.dark-mode .nav-link:hover {
   transform: translateY(-1px);
 }
 
-.page[data-theme="dark"] .vertical-section-nav {
-  background: rgba(15, 10, 37, 0.9);
-  border-right-color: rgba(255, 255, 255, 0.25);
+body.dark-mode .vertical-section-nav {
+  border-right-color: rgba(255, 255, 255, 0.3);
 }
 
-.page[data-theme="dark"] .vertical-section-nav a {
-  color: #fff;
+body.dark-mode .vertical-section-nav a {
+  color: #ffffff;
 }
 
-.page[data-theme="dark"] .vertical-section-nav a:hover,
-.page[data-theme="dark"] .vertical-section-nav a:focus-visible {
+body.dark-mode .vertical-section-nav a:hover,
+body.dark-mode .vertical-section-nav a:focus-visible {
   background: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  color: #ffffff;
 }
 
 @media (max-width: 1100px) {
@@ -169,7 +168,6 @@ body.dark-mode .nav-link:hover {
   }
 }
 
-#baseball,
 #companies,
 #tools,
 #projects {
@@ -460,129 +458,6 @@ body.dark-mode .nav-link.active {
 
 .sales-ops-title {
   margin-bottom: 2rem;
-}
-
-.baseball-row {
-  margin-top: 1.25rem;
-  display: flex;
-  justify-content: center;
-}
-
-.baseball-card {
-  width: 100%;
-  max-width: 320px;
-  height: 420px;
-  margin: 0 auto;
-  perspective: 900px;
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.baseball-card:hover {
-  transform: scale(1.05);
-}
-
-.baseball-card article {
-  width: 100%;
-  height: 100%;
-  border: solid 1px #ccc;
-  transition: 1s;
-  transform-style: preserve-3d;
-  position: relative;
-  border-radius: 3px;
-  font-family: helvetica, arial, sans-serif;
-}
-
-.baseball-card article.flipped {
-  transform: rotateY(180deg);
-}
-
-.baseball-card .front,
-.baseball-card .back {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  box-shadow: 2px 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-.baseball-card .front {
-  background-color: #f8f8ee;
-  z-index: 2;
-  transform: rotateY(0deg);
-}
-
-.baseball-card .back {
-  box-sizing: border-box;
-  background-color: #ff9088;
-  transform: rotateY(180deg);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  align-items: stretch;
-}
-
-.player-name {
-  font-style: normal;
-  color: #cf0000;
-  font-weight: bold;
-  font-size: 1.4em;
-  margin-top: 0.8em;
-  margin-left: 6em;
-}
-
-.player-photo {
-  height: 86%;
-  width: 86%;
-  top: 10%;
-  left: 7%;
-  position: absolute;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-image: url("/tools/IMG_0477.JPG");
-  border: solid 1px #7d7c3c;
-  border-radius: 10px;
-  box-shadow: 0px 0px 0px 4px #ffff69, 0px 0px 0px 5px #7d7c3c;
-}
-
-.position,
-.team {
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  color: white;
-  display: block;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-shadow: -1px -1px 0 #666, 1px -1px 0 #666, -1px 1px 0 #666, 1px 1px 0 #666;
-  font-size: 0.65em;
-  transform: rotate(-15deg);
-}
-
-.team {
-  font-size: 1.4em;
-  transform: rotate(-12deg);
-}
-
-.position {
-  top: 39px;
-  left: 23px;
-  z-index: 1;
-}
-
-.team {
-  bottom: 25px;
-  right: 35px;
-  z-index: 1;
-}
-
-.baseball-card .bio {
-  font-size: 0.75rem;
-  margin: 0 12px;
 }
 
 .tool-logos-grid {
@@ -1089,14 +964,16 @@ body.dark-mode .nav-link.active {
   transform: translate(-50%, -4px);
 }
 
-body.dark-mode .tools-card-fireberry .tools-card-logo {
-  filter: invert(1) brightness(1.2);
+body.dark-mode .tools-card-logo--invertible {
+  filter: invert(1) brightness(1.6) contrast(1.2) saturate(1.2) !important;
 }
 
-body.dark-mode .tools-card-mongo .tools-card-logo,
-body.dark-mode .tools-card-github .tools-card-logo,
-body.dark-mode .tools-card-node .tools-card-logo {
-  filter: invert(1) brightness(1.2);
+body.dark-mode .tools-card-logo--fireberry {
+  filter: invert(1) brightness(1.7) contrast(1.3) saturate(1.4) !important;
+}
+
+body:not(.dark-mode) .tools-card-logo--fireberry {
+  filter: invert(1) brightness(1.2) contrast(1.1) saturate(1.05) !important;
 }
 
 .tools-carousel-empty {

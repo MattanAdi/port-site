@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ToolsCarousel, { allToolFilenames, formatToolLabel } from "../components/ToolsCarousel";
@@ -17,18 +17,12 @@ const getImagePath = (filename) => {
 function SalesOperations() {
   const contentRef = useRef(null);
 
-  const [isCardFlipped, setIsCardFlipped] = useState(false);
-
-  const toggleCard = () => {
-    setIsCardFlipped((prev) => !prev);
-  };
-
   useEffect(() => {
     if (!contentRef.current) return;
 
     const contentElements = Array.from(
       contentRef.current.querySelectorAll(
-        ".sales-ops-section, .tools-carousel-section, .baseball-row"
+        ".sales-ops-section, .tools-carousel-section"
       )
     );
 
@@ -88,56 +82,6 @@ function SalesOperations() {
   return (
     <div className="page sales-ops-page">
       <main className="content" ref={contentRef}>
-        <div id="baseball" className="baseball-row">
-          <div
-            id="baseballCard"
-            className="baseball-card"
-            onClick={toggleCard}
-          >
-            <article id="flipper" className={isCardFlipped ? "flipped" : ""}>
-              <section className="front">
-                <address className="player-name">MATTAN ADI</address>
-                <div className="player-photo" role="image" />
-                <p className="position">Sales Ops</p>
-                <p className="team">Click here to flip!</p>
-              </section>
-              <section className="back">
-                <p className="bio">
-                  🔥 Tech-savvy problem solver with a passion for building things
-                  that actually work. I mix creativity 🎨, full-stack fundamentals
-                  💻, and strong sales-ops instincts 📊 to streamline processes,
-                  improve workflows, and deliver clean, modern digital experiences.
-                </p>
-                <p className="bio">
-                  I love working with AI tools 🤖, modern dev stacks like React ⚛️,
-                  and platforms that help teams move faster and smarter. Whether it’s
-                  optimizing operations, designing a portfolio component, or figuring
-                  out how to make something easier, I’m all about efficiency, clarity,
-                  and results 🚀.
-                </p>
-                <p className="bio">
-                  Always learning, always improving, always building something new ✨.
-                </p>
-                <h3 className="tool-grid-title">Tools and Technologies</h3>
-                <div className="tool-logos-grid" role="list" aria-label="Tools logos">
-                  {allToolFilenames.map((toolName) => (
-                    <div key={toolName} className="tool-logos-grid-item">
-                      <img
-                        src={getImagePath(`tools/${toolName}`)}
-                        alt={`${formatToolLabel(toolName)} logo`}
-                        loading="lazy"
-                      />
-                      <span className="tool-logos-grid-item-label">
-                        {formatToolLabel(toolName)}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            </article>
-        </div>
-      </div>
-
         <section id="companies" className="companies-section">
           <div className="sales-ops-section connecteam-section" data-direction="right">
           <div className="connecteam-logo-container">
