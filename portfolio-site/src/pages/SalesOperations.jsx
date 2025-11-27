@@ -238,11 +238,59 @@ function SalesOperations() {
               </ul>
               <div className="highlightzone-card__actions">
                 <a
+                  className="highlightzone-card__action"
                   href="https://chromewebstore.google.com/detail/highlightzone/ioijeggbkkmefoolcebgaogdmnnfompj?utm_source=chatgpt.com"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Visit HighlightZone on Chrome Web Store
+                  View
+                </a>
+                <a
+                  className="highlightzone-card__action highlightzone-card__action--github"
+                  href="https://github.com/MattanAdi/Highlightzone"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub
+                </a>
+              </div>
+            </article>
+
+            <article className="highlightzone-card weatherhunt-card">
+              <div className="highlightzone-card__header">
+                <div className="highlightzone-card__icon" aria-hidden="true" />
+                <div>
+                  <p className="highlightzone-card__eyebrow">Web app</p>
+                  <h3>Weather Hunt</h3>
+                  <span>2025 · React · AccuWeather API</span>
+                </div>
+              </div>
+              <p className="highlightzone-card__description">
+                Weather Hunt is a Create React App that surfaces current conditions by fetching AccuWeather data; it
+                keeps your API key out of the bundle by asking you to paste it into the search card and storing it in
+                localStorage so searches remain usable between reloads.
+              </p>
+              <ul className="highlightzone-card__bullets">
+                <li>🛰️ Powered by the AccuWeather REST API for localized weather snapshots.</li>
+                <li>🧠 Stores the key inside the browser so deployments (even GitHub Pages) stay client-side.</li>
+                <li>🎯 Built with Create React App for fast iterations and easy builds.</li>
+              </ul>
+              <div className="highlightzone-card__actions">
+                <a
+                  className="highlightzone-card__action"
+                  href="https://mattanadi.github.io/WeatherHunt/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View
+                </a>
+                <a
+                  className="highlightzone-card__action highlightzone-card__action--github"
+                  href="https://github.com/MattanAdi/WeatherHunt"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub
                 </a>
               </div>
             </article>

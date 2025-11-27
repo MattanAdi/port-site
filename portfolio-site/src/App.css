@@ -336,6 +336,7 @@ body.dark-mode .nav-link.active {
   align-items: center;
   justify-content: center;
   border-radius: 8px;
+  transition: transform 0.85s ease;
 }
 
 .logo-img {
@@ -343,6 +344,49 @@ body.dark-mode .nav-link.active {
   max-height: 60px;
   object-fit: contain;
   border-radius: 4px;
+  transition: transform 0.85s ease;
+}
+
+.sales-ops-section {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.sales-ops-section:hover,
+.sales-ops-section:focus-within {
+  transform: translateY(-3px);
+}
+
+.sales-ops-section:hover .connecteam-logo,
+.sales-ops-section:focus-within .connecteam-logo,
+.sales-ops-section:hover .haika-logo,
+.sales-ops-section:focus-within .haika-logo,
+.sales-ops-section:hover .abilisense-logo,
+.sales-ops-section:focus-within .abilisense-logo,
+.sales-ops-section:hover .elal-logo,
+.sales-ops-section:focus-within .elal-logo {
+  transform: scale(1.25);
+}
+
+.sales-ops-section:hover .etoro-logo,
+.sales-ops-section:focus-within .etoro-logo {
+  transform: scale(1.25);
+}
+
+.sales-ops-section:hover .connecteam-logo img,
+.sales-ops-section:focus-within .connecteam-logo img,
+.sales-ops-section:hover .haika-logo img,
+.sales-ops-section:focus-within .haika-logo img,
+.sales-ops-section:hover .abilisense-logo img,
+.sales-ops-section:focus-within .abilisense-logo img,
+.sales-ops-section:hover .elal-logo img,
+.sales-ops-section:focus-within .elal-logo img {
+  transform: scale(1.15);
+}
+
+.sales-ops-section:hover .etoro-logo img,
+.sales-ops-section:focus-within .etoro-logo img {
+  transform: scale(1.15);
 }
 
 /* Make Abilisense logo bigger */
@@ -828,6 +872,13 @@ body.dark-mode .nav-link.active {
   margin-top: 0.5rem;
 }
 
+.highlightzone-card__actions {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 .highlightzone-card__actions a {
   display: inline-flex;
   align-items: center;
@@ -845,6 +896,10 @@ body.dark-mode .nav-link.active {
 .highlightzone-card__actions a:hover {
   transform: translateY(-2px);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+}
+
+.projects-list__grid article *:not(.highlightzone-card__action) {
+  color: #fff !important;
 }
 
 .page[data-theme="dark"] .highlightzone-card {
