@@ -110,31 +110,6 @@ function AboutMeSection() {
           </div>
         </section>
 
-        <section className="about-footer">
-          <h2>Let's Connect</h2>
-          <p>Want to collaborate or learn more? I'm just a message away.</p>
-          <div className="about-footer-links">
-            <a
-              href="https://www.linkedin.com/in/mattan-adi/"
-              target="_blank"
-              rel="noreferrer"
-              className="about-footer-btn"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://github.com/MattanAdi"
-              target="_blank"
-              rel="noreferrer"
-              className="about-footer-btn"
-            >
-              GitHub
-            </a>
-            <a href="mailto:mattanadi1@gmail.com" className="about-footer-btn">
-              Email
-            </a>
-          </div>
-        </section>
       </div>
     </section>
   );

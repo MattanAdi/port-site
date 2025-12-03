@@ -2,6 +2,12 @@
   scroll-margin-top: 140px;
 }
 
+@media (max-width: 768px) {
+  #about-me {
+    scroll-margin-top: 110px;
+  }
+}
+
 .about-me-section {
   position: relative;
   background: radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.12), transparent 45%),
@@ -13,6 +19,21 @@
   overflow: hidden;
   box-shadow: 0 40px 80px rgba(2, 6, 23, 0.5);
   border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.about-me-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(94, 234, 212, 0.2), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(59, 130, 246, 0.2), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-me-section > * {
+  position: relative;
+  z-index: 1;
 }
 
 body:not(.dark-mode) .about-me-section {
@@ -27,6 +48,7 @@ body:not(.dark-mode) .about-me-section {
   display: flex;
   flex-direction: column;
   gap: 4rem;
+  padding: 0 2rem;
 }
 
 .about-hero {
@@ -100,18 +122,20 @@ body:not(.dark-mode) .about-hero-image {
 }
 
 .about-background-section,
-.about-topic,
-.about-footer {
+.about-topic {
   background: rgba(15, 23, 42, 0.35);
   border: 1px solid rgba(148, 163, 184, 0.2);
   padding: 3.5rem clamp(1.5rem, 4vw, 4rem);
+  border-radius: 2.25rem;
+  box-shadow: 0 25px 50px rgba(2, 6, 23, 0.35);
+  backdrop-filter: blur(6px);
 }
 
 body:not(.dark-mode) .about-background-section,
-body:not(.dark-mode) .about-topic,
-body:not(.dark-mode) .about-footer {
+body:not(.dark-mode) .about-topic {
   background: rgba(255, 255, 255, 0.9);
   border-color: rgba(15, 23, 42, 0.08);
+  box-shadow: 0 25px 45px rgba(15, 23, 42, 0.12);
 }
 
 .about-background-section {
@@ -211,59 +235,6 @@ body:not(.dark-mode) .about-topic-text p {
   color: #475569;
 }
 
-.about-footer {
-  text-align: center;
-}
-
-.about-footer h2 {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin-bottom: 0.75rem;
-}
-
-.about-footer p {
-  color: rgba(226, 232, 240, 0.8);
-  margin-bottom: 2rem;
-  font-size: 1.05rem;
-}
-
-body:not(.dark-mode) .about-footer p {
-  color: #475569;
-}
-
-.about-footer-links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.about-footer-btn {
-  display: inline-block;
-  padding: 0.95rem 2.2rem;
-  border: 2px solid #5eead4;
-  color: #5eead4;
-  text-decoration: none;
-  font-family: "Courier New", monospace;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.about-footer-btn:hover {
-  transform: translateY(-2px);
-  background: rgba(94, 234, 212, 0.1);
-}
-
-body:not(.dark-mode) .about-footer-btn {
-  border-color: #0ea5e9;
-  color: #0ea5e9;
-}
-
-body:not(.dark-mode) .about-footer-btn:hover {
-  background: rgba(14, 165, 233, 0.1);
-}
-
 @media (max-width: 1024px) {
   .about-hero,
   .about-topic,
@@ -285,26 +256,81 @@ body:not(.dark-mode) .about-footer-btn:hover {
 
 @media (max-width: 768px) {
   .about-me-section {
-    padding: 4rem 0 3rem;
+    padding: 3.5rem 0 2.5rem;
+    margin-bottom: 2.5rem;
   }
 
   .about-me-content {
-    gap: 3rem;
+    gap: 2.75rem;
+    padding: 0 1.5rem;
   }
 
-  .about-background-section,
-  .about-topic,
-  .about-footer {
-    padding: 2.5rem 1.5rem;
+  .about-hero {
+    gap: 2rem;
+  }
+
+  .about-me-name {
+    font-size: clamp(2rem, 11vw, 3rem);
   }
 
   .about-me-tagline {
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+  }
+
+  .about-hero-intro {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .about-background-section,
+  .about-topic {
+    padding: 2.25rem 1.4rem;
+    border-radius: 1.75rem;
+  }
+
+  .about-background-text-wide,
+  .about-topic-text p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .about-topic-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
   }
 
   .about-background-img,
   .about-topic-image {
-    max-width: 300px;
-    height: auto;
+    max-width: 100%;
+    border-radius: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-me-section {
+    padding: 3rem 0 2rem;
+  }
+
+  .about-me-content {
+    padding: 0 1rem;
+    gap: 2rem;
+  }
+
+  .about-me-greeting {
+    letter-spacing: 0.18em;
+  }
+
+  .about-background-section,
+  .about-topic {
+    padding: 1.75rem 1rem;
+  }
+
+  .about-topic-label {
+    padding: 0.25rem 0.65rem;
+  }
+
+  .about-me-tagline {
+    font-size: 0.8rem;
   }
 }
