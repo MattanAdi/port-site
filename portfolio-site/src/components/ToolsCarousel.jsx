@@ -96,6 +96,9 @@ const slugify = (name) =>
 
 const smallToolSlugs = new Set(["javascript", "css", "nextjs", "html"]);
 
+// Tools that need color inversion in dark mode
+const invertInDarkMode = new Set(["github-png", "mongo-png", "fireberry-png"]);
+
 function ToolsCarousel() {
   const [activeCategory, setActiveCategory] = useState("all");
 
@@ -124,6 +127,7 @@ function ToolsCarousel() {
         {activeImages.map((tool, idx) => {
           const slug = slugify(tool.filename);
           const isCompact = smallToolSlugs.has(slug);
+          const needsInvert = invertInDarkMode.has(slug);
           return (
             <div
               key={`${tool.filename}-${idx}`}
@@ -133,7 +137,7 @@ function ToolsCarousel() {
                 <img
                   src={tool.src}
                   alt={`${tool.label} logo`}
-                  className="tools-card-logo"
+                  className={`tools-card-logo ${needsInvert ? "tools-card-logo--invert-dark" : ""}`}
                   loading="lazy"
                 />
                 <span className="tools-card-tooltip">{tool.label}</span>

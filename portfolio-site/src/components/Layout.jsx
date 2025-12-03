@@ -6,6 +6,7 @@ import "./AboutMeOverlay.css";
 function Layout({ children }) {
   const location = useLocation(); // kept in case we later want route-based behavior
   const [curtainsOpen, setCurtainsOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const baseUrl = import.meta.env.BASE_URL || "/";
   const chefLogoSrc = `${baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`}chef.png`;
@@ -19,16 +20,35 @@ function Layout({ children }) {
   const handleAboutClick = (e) => {
     e.preventDefault();
     setCurtainsOpen(true);
+    setMobileMenuOpen(false);
   };
 
   const handleCloseCurtains = () => {
     setCurtainsOpen(false);
   };
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <>
       <div className="top-bar">
         <div className="top-bar-left">
+          {/* Hamburger menu for mobile */}
+          <button 
+            className="hamburger-btn"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            <span className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></span>
+            <span className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></span>
+            <span className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></span>
+          </button>
           <img src={chefLogoSrc} alt="Chef logo" className="top-bar-logo" />
         </div>
         <div className="top-bar-right">
@@ -36,6 +56,29 @@ function Layout({ children }) {
         </div>
       </div>
 
+      {/* Mobile menu overlay */}
+      <div className={`mobile-menu-overlay ${mobileMenuOpen ? 'mobile-menu-overlay--open' : ''}`} onClick={closeMobileMenu}></div>
+      
+      {/* Mobile menu */}
+      <nav className={`mobile-nav ${mobileMenuOpen ? 'mobile-nav--open' : ''}`}>
+        <button 
+          className="mobile-nav__about-link" 
+          onClick={handleAboutClick}
+          type="button"
+        >
+          About Me
+        </button>
+        {sectionLinks.map((link) => (
+          <a key={link.id} href={`#${link.id}`} onClick={closeMobileMenu}>
+            {link.label}
+          </a>
+        ))}
+        <a className="mobile-nav__welcome-link" href="/welcome" onClick={closeMobileMenu}>
+          Welcome page
+        </a>
+      </nav>
+
+      {/* Desktop nav */}
       <nav className="vertical-section-nav" aria-label="Jump to sections">
         <button 
           className="vertical-section-nav__about-link" 
