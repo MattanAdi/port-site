@@ -10,23 +10,21 @@
 
 .about-me-section {
   position: relative;
-  background: radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.12), transparent 45%),
-    radial-gradient(circle at 90% 10%, rgba(99, 102, 241, 0.1), transparent 50%),
-    linear-gradient(135deg, #010617, #0b1226);
+  background: linear-gradient(135deg, #030303, #060606);
   color: #f8fafc;
   padding: 6rem 0 5rem;
   margin-bottom: 4rem;
   overflow: hidden;
-  box-shadow: 0 40px 80px rgba(2, 6, 23, 0.5);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .about-me-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 20%, rgba(94, 234, 212, 0.2), transparent 55%),
-    radial-gradient(circle at 80% 0%, rgba(59, 130, 246, 0.2), transparent 50%);
+  background: radial-gradient(circle at 35% 20%, rgba(255, 255, 255, 0.08), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.05), transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -37,9 +35,9 @@
 }
 
 body:not(.dark-mode) .about-me-section {
-  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-  color: #0f172a;
-  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15);
+  background: linear-gradient(135deg, #030303, #060606);
+  color: #f8fafc;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
 }
 
 .about-me-content {
@@ -67,13 +65,9 @@ body:not(.dark-mode) .about-me-section {
   font-family: "Courier New", monospace;
   letter-spacing: 0.3em;
   font-size: 0.9rem;
-  color: #5eead4;
+  color: #f5f5f5;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
-}
-
-body:not(.dark-mode) .about-me-greeting {
-  color: #0ea5e9;
 }
 
 .about-me-name {
@@ -88,23 +82,15 @@ body:not(.dark-mode) .about-me-greeting {
   font-size: 1rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(248, 250, 252, 0.7);
+  color: rgba(245, 245, 245, 0.7);
   margin-bottom: 1.5rem;
-}
-
-body:not(.dark-mode) .about-me-tagline {
-  color: rgba(15, 23, 42, 0.7);
 }
 
 .about-hero-intro {
   font-size: 1.1rem;
   line-height: 1.85;
-  color: rgba(226, 232, 240, 0.9);
+  color: rgba(245, 245, 245, 0.82);
   margin: 0;
-}
-
-body:not(.dark-mode) .about-hero-intro {
-  color: #475569;
 }
 
 .about-hero-image {
@@ -112,30 +98,25 @@ body:not(.dark-mode) .about-hero-intro {
   height: clamp(260px, 32vw, 420px);
   object-fit: cover;
   object-position: center top;
-  border: 4px solid rgba(248, 250, 252, 0.25);
-  box-shadow: 0 25px 60px rgba(2, 6, 23, 0.6);
-}
-
-body:not(.dark-mode) .about-hero-image {
-  border-color: rgba(15, 23, 42, 0.15);
-  box-shadow: 0 25px 40px rgba(15, 23, 42, 0.25);
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
 }
 
 .about-background-section,
 .about-topic {
-  background: rgba(15, 23, 42, 0.35);
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(18, 18, 18, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 3.5rem clamp(1.5rem, 4vw, 4rem);
   border-radius: 2.25rem;
-  box-shadow: 0 25px 50px rgba(2, 6, 23, 0.35);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(6px);
 }
 
 body:not(.dark-mode) .about-background-section,
 body:not(.dark-mode) .about-topic {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(15, 23, 42, 0.08);
-  box-shadow: 0 25px 45px rgba(15, 23, 42, 0.12);
+  background: rgba(18, 18, 18, 0.85);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
 }
 
 .about-background-section {
@@ -152,14 +133,9 @@ body:not(.dark-mode) .about-topic {
   font-size: 0.85rem;
   letter-spacing: 0.2em;
   padding: 0.35rem 0.9rem;
-  border: 1px solid rgba(94, 234, 212, 0.5);
-  color: #5eead4;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #f8fafc;
   margin-bottom: 1rem;
-}
-
-body:not(.dark-mode) .about-topic-label {
-  border-color: rgba(14, 165, 233, 0.3);
-  color: #0ea5e9;
 }
 
 .about-topic-title {
@@ -175,12 +151,8 @@ body:not(.dark-mode) .about-topic-label {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  color: rgba(226, 232, 240, 0.85);
+  color: rgba(245, 245, 245, 0.82);
   line-height: 1.9;
-}
-
-body:not(.dark-mode) .about-background-text-wide {
-  color: #475569;
 }
 
 .about-background-images-row {
@@ -196,12 +168,12 @@ body:not(.dark-mode) .about-background-text-wide {
   height: clamp(180px, 28vw, 360px);
   object-fit: cover;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
 }
 
 body:not(.dark-mode) .about-background-img,
 body:not(.dark-mode) .about-topic-image {
-  box-shadow: 0 20px 35px rgba(15, 23, 42, 0.2);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.35);
 }
 
 .about-background-img:hover,
@@ -227,12 +199,8 @@ body:not(.dark-mode) .about-topic-image {
 .about-topic-text p {
   font-size: 1.05rem;
   line-height: 1.85;
-  color: rgba(226, 232, 240, 0.9);
+  color: rgba(245, 245, 245, 0.82);
   margin-bottom: 1.25rem;
-}
-
-body:not(.dark-mode) .about-topic-text p {
-  color: #475569;
 }
 
 @media (max-width: 1024px) {
