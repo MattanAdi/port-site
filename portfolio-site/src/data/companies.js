@@ -31,11 +31,7 @@ export const companies = [
     background: "rgba(255, 213, 79, 0.12)",
     image: getImagePath('hakiala.png'),
     slug: "haika",
-    bullets: [
-      "Managed a sales team of 10 representatives, improving performance and increasing closing rates",
-      "Conducted weekly 1:1s and team meetings to monitor KPIs and implement improvement strategies.",
-      "Developed onboarding and training programs that reduced ramp-up time for new sales hires",
-    ],
+    description: "At Haika, I worked in a full Sales Operations role, managing Salesforce administration including reports, fields, and permissions, as well as Looker dashboards and KPI tracking. I oversaw forecasting and pipeline monitoring, maintained data integrity and operational structure, and facilitated cross-functional communication across Sales, Marketing, and Customer Success. This experience gave me a deep understanding of B2B sales cycles, key metrics, and organizational alignment, while sharpening my ability to create efficient workflows and actionable insights.",
   },
   {
     id: 3,

@@ -111,17 +111,10 @@ function SalesOperations() {
           <div className="haika-description">
             <h2>Haika Real Estate</h2>
             <p>
-              At Haika, I worked in a true Sales Operations role, handling:
+              At Haika, I worked in a full Sales Operations role, managing Salesforce administration including reports, fields, and permissions, as well as Looker dashboards and KPI tracking. I oversaw forecasting and pipeline monitoring, maintained data integrity and operational structure, and facilitated cross-functional communication across Sales, Marketing, and Customer Success.
             </p>
-            <ul className="haika-list">
-              <li>Salesforce administration (reports, fields, permissions)</li>
-              <li>Looker dashboards and KPI tracking</li>
-              <li>Forecasting and pipeline monitoring</li>
-              <li>Data integrity and operational structure</li>
-              <li>Cross-functional communication across Sales, Marketing, and CS</li>
-            </ul>
             <p>
-              This built my deep understanding of B2B sales cycles, metrics, and organizational alignment.
+              This experience gave me a deep understanding of B2B sales cycles, key metrics, and organizational alignment, while sharpening my ability to create efficient workflows and actionable insights.
             </p>
           </div>
           <div className="haika-logo-container">
@@ -130,7 +123,7 @@ function SalesOperations() {
               src={getImagePath('hakiala.png')} 
               alt="Haika logo" 
               className="haika-logo"
-              style={{ maxWidth: '800px', maxHeight: '800px' }}
+              style={{ maxWidth: '1400px', maxHeight: '1400px' }}
             />
           </div>
         </div>
@@ -286,6 +279,22 @@ function SalesOperations() {
                 </a>
               </div>
             </article>
+          </div>
+        </section>
+
+        {/* Let's Connect Footer */}
+        <section className="connect-footer" id="connect">
+          <h2 className="connect-footer__title">Let's Connect</h2>
+          <div className="connect-footer__links">
+            <a href="https://www.linkedin.com/in/mattan-adi/" target="_blank" rel="noreferrer" className="connect-footer__btn">
+              LinkedIn
+            </a>
+            <a href="https://github.com/MattanAdi" target="_blank" rel="noreferrer" className="connect-footer__btn">
+              GitHub
+            </a>
+            <a href="mailto:mattanadi1@gmail.com" className="connect-footer__btn">
+              Email
+            </a>
           </div>
         </section>
       </main>

@@ -130,7 +130,11 @@ function App() {
               <h2 className="company-name">{company.name}</h2>
               <p className="company-role">{company.role}</p>
               <p className="company-period">{company.period}</p>
-              {company.bullets ? (
+              {company.description ? (
+                <p className="company-desc">
+                  {company.description}
+                </p>
+              ) : company.bullets ? (
                 <ul className="company-bullets">
                   {company.bullets.map((b, i) => (
                     <li key={i}>{b}</li>

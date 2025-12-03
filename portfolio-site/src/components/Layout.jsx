@@ -70,94 +70,109 @@ function Layout({ children }) {
               <div className="about-hero-text">
                 <span className="about-me-greeting">Hello, I'm</span>
                 <h1 className="about-me-name">Mattan Adi</h1>
-                <div className="about-me-tagline">Developer • Designer • Creator</div>
+                <div className="about-me-tagline">Developer • Sales Specialist • Workflow Innovations</div>
                 <p className="about-hero-intro">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
-                  incididunt ut labore et dolore magna aliqua.
+                  Developer and problem solver specializing in sales operations and workflow innovations. 
+                  I build clean, functional products that bridge technology and real-world solutions, 
+                  turning ideas into efficient, user-friendly experiences.
                 </p>
               </div>
-              <div className="about-hero-image" style={{ background: '#64ffda' }} />
+              <img 
+                src={`${baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`}DSCF6463-2.JPG`}
+                alt="Mattan Adi"
+                className="about-hero-image"
+              />
             </section>
 
             {/* Topic 1 - Background */}
-            <section className="about-topic about-topic--reverse">
-              <div className="about-topic-image" style={{ background: '#ff6b6b' }} />
-              <div className="about-topic-text">
+            <section className="about-background-section">
+              <div className="about-background-header">
                 <span className="about-topic-label">01</span>
                 <h2 className="about-topic-title">Background</h2>
+              </div>
+
+              <div className="about-background-text-wide">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
-                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  I was born in Staten Island, New York, and raised in the U.S. until age 15, when I 
+                  moved to Israel through the NA'ALE program. There, I attended a boarding school until 
+                  18, after which I served in the Israeli military as a combat engineer.
                 </p>
                 <p>
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-                  fugiat nulla pariatur.
+                  Since then, I've continued to live in Israel, gaining experience in multiple 
+                  customer-facing and operations roles. Along the way, I discovered a passion for 
+                  development, combining my technical skills with practical problem-solving and a 
+                  strong understanding of workflows and real-world systems.
                 </p>
+              </div>
+              
+              <div className="about-background-images-row">
+                <img 
+                  src={`${baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`}naale.jpg`}
+                  alt="NA'ALE boarding school"
+                  className="about-background-img"
+                />
+                <img 
+                  src={`${baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`}army.jpg`}
+                  alt="Israeli military service"
+                  className="about-background-img"
+                />
               </div>
             </section>
 
-            {/* Topic 2 - Skills */}
+            {/* Topic 2 - Passions */}
             <section className="about-topic">
               <div className="about-topic-text">
                 <span className="about-topic-label">02</span>
-                <h2 className="about-topic-title">Skills & Expertise</h2>
-                <p>
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-                  mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit 
-                  voluptatem accusantium doloremque laudantium.
-                </p>
-                <p>
-                  Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto 
-                  beatae vitae dicta sunt explicabo.
-                </p>
-              </div>
-              <div className="about-topic-image" style={{ background: '#4ecdc4' }} />
-            </section>
-
-            {/* Topic 3 - Passions */}
-            <section className="about-topic about-topic--reverse">
-              <div className="about-topic-image" style={{ background: '#ffe66d' }} />
-              <div className="about-topic-text">
-                <span className="about-topic-label">03</span>
                 <h2 className="about-topic-title">Passions & Interests</h2>
                 <p>
-                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia 
-                  consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                  Outside of work, I enjoy cooking, staying active, hiking through Israel, and traveling. 
+                  I have a curiosity for history and how it shapes the world we live in today.
                 </p>
                 <p>
-                  Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, 
-                  adipisci velit, sed quia non numquam eius modi tempora incidunt.
+                  On the tech side, I like building projects, experimenting with AI tools, and finding 
+                  ways to improve workflows. I'm drawn to problem-solving and creating things that are 
+                  both practical and well-designed.
                 </p>
               </div>
+              <img 
+                src={`${baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`}IMG_0677.GIF`}
+                alt="Passions and interests"
+                className="about-topic-image"
+              />
             </section>
 
-            {/* Topic 4 - Goals */}
-            <section className="about-topic">
+            {/* Topic 3 - Goals */}
+            <section className="about-topic about-topic--reverse">
+              <img 
+                src={`${baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`}thats-so-raven-raven-symone.gif`}
+                alt="Vision for the future"
+                className="about-topic-image"
+              />
               <div className="about-topic-text">
-                <span className="about-topic-label">04</span>
-                <h2 className="about-topic-title">Goals & Vision</h2>
+                <span className="about-topic-label">03</span>
+                <h2 className="about-topic-title">Vision for the Future</h2>
                 <p>
-                  Ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, 
-                  quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid 
-                  ex ea commodi consequatur.
+                  I'm focused on building technology that makes real-world processes smarter and more 
+                  intuitive. My vision is to combine my experience in operations, development, and 
+                  creative problem-solving to design products and workflows that genuinely improve how 
+                  people work and interact with technology.
                 </p>
                 <p>
-                  Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil 
-                  molestiae consequatur.
+                  Beyond coding, I aim to continuously learn, explore new tools, and push the boundaries 
+                  of what's possible—whether through AI, full-stack development, or innovative project 
+                  design. Ultimately, I want to create solutions that are elegant, practical, and 
+                  meaningful, leaving a lasting impact for users and the teams I work with.
                 </p>
               </div>
-              <div className="about-topic-image" style={{ background: '#a855f7' }} />
             </section>
 
             {/* Footer CTA */}
             <section className="about-footer">
               <h2>Let's Connect</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               <div className="about-footer-links">
-                <a href="#" className="about-footer-btn">LinkedIn</a>
-                <a href="#" className="about-footer-btn">GitHub</a>
-                <a href="#" className="about-footer-btn">Email</a>
+                <a href="https://www.linkedin.com/in/mattan-adi/" target="_blank" rel="noreferrer" className="about-footer-btn">LinkedIn</a>
+                <a href="https://github.com/MattanAdi" target="_blank" rel="noreferrer" className="about-footer-btn">GitHub</a>
+                <a href="mailto:mattanadi1@gmail.com" className="about-footer-btn">Email</a>
               </div>
             </section>
           </div>
