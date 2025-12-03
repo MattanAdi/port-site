@@ -275,6 +275,13 @@ body.dark-mode .about-topic-text p {
     max-width: 100%;
     border-radius: 1rem;
   }
+
+  .about-hero-image {
+    width: 220px;
+    height: 280px;
+    object-position: center 5%;
+    border-width: 3px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -302,5 +309,11 @@ body.dark-mode .about-topic-text p {
 
   .about-me-tagline {
     font-size: 0.78rem;
+  }
+
+  .about-hero-image {
+    width: 180px;
+    height: 230px;
+    object-position: center 10%;
   }
 }
