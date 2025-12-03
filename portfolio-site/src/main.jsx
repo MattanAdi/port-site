@@ -24,7 +24,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: process.env.NODE_ENV === "production" ? "/port-site" : "/",
+    basename: "/",
   }
 );
 
