@@ -60,7 +60,7 @@
 }
 
 .project-card {
-  border-radius: 28px;
+  border-radius: 0;
   padding: 2rem;
   box-shadow: 0 25px 60px rgba(15, 15, 15, 0.15);
   display: flex;
@@ -70,7 +70,7 @@
 }
 
 .project-card.highlight-zone {
-  background: linear-gradient(135deg, #240b36, #1e1b4b 50%, #5f0a87);
+  background: #1e1b4b;
   color: #fff;
 }
 
@@ -100,8 +100,8 @@
 .project-card__icon {
   width: 52px;
   height: 52px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #fdbb2d, #3a1c71);
+  border-radius: 0;
+  background: #3a1c71;
   box-shadow: 0 15px 30px rgba(58, 28, 113, 0.3);
 }
 
@@ -125,7 +125,7 @@
   padding: 0.85rem 1.5rem;
   background: #111;
   color: #fff;
-  border-radius: 999px;
+  border-radius: 0;
   text-decoration: none;
   letter-spacing: 0.03rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;

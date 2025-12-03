@@ -60,7 +60,7 @@ body {
   font-weight: 500;
   transition: all 0.3s ease;
   padding: 0.5rem 1rem;
-  border-radius: 6px;
+  border-radius: 0;
   position: relative;
   overflow: hidden;
 }
@@ -72,7 +72,7 @@ body {
   left: 50%;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  background: #ffffff;
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
@@ -137,7 +137,7 @@ body.dark-mode .nav-link:hover {
   font-weight: 600;
   text-decoration: none;
   padding: 0.4rem 0.85rem;
-  border-radius: 999px;
+  border-radius: 0;
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
@@ -160,6 +160,34 @@ body.dark-mode .vertical-section-nav a:hover,
 body.dark-mode .vertical-section-nav a:focus-visible {
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
+}
+
+.vertical-section-nav__about-link {
+  background: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.3);
+  color: #0f0a25;
+  font-size: 0.75rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.vertical-section-nav__about-link:hover {
+  background: rgba(100, 255, 218, 0.2);
+  border-color: rgba(100, 255, 218, 0.5);
+  transform: translateY(-1px);
+}
+
+body.dark-mode .vertical-section-nav__about-link {
+  color: #64ffda;
+}
+
+body.dark-mode .vertical-section-nav__about-link:hover {
+  background: rgba(100, 255, 218, 0.2);
 }
 
 @media (max-width: 1100px) {
@@ -249,10 +277,7 @@ body.dark-mode .nav-link.active {
   font-size: 3.5rem;
   font-weight: 700;
   margin: 0 0 1rem 0;
-  background: linear-gradient(135deg, #ffffff, #a0a0a0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
 }
 
 .tagline {
@@ -277,7 +302,7 @@ body.dark-mode .nav-link.active {
 .photo {
   width: 200px;
   height: 200px;
-  border-radius: 50%;
+  border-radius: 0;
   object-fit: cover;
   border: 3px solid #333;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -298,7 +323,7 @@ body.dark-mode .nav-link.active {
   grid-template-columns: auto 1fr;
   gap: 2rem;
   padding: 2rem;
-  border-radius: 12px;
+  border-radius: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
   will-change: transform;
@@ -313,20 +338,16 @@ body.dark-mode .nav-link.active {
   content: "";
   position: absolute;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transition: left 0.5s ease;
+  background: rgba(255, 255, 255, 0.05);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .company-clickable:hover::before {
-  left: 100%;
+  opacity: 1;
 }
 
 .company-logo {
@@ -335,7 +356,7 @@ body.dark-mode .nav-link.active {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 0;
   transition: transform 0.85s ease;
 }
 
@@ -343,7 +364,7 @@ body.dark-mode .nav-link.active {
   max-width: 60px;
   max-height: 60px;
   object-fit: contain;
-  border-radius: 4px;
+  border-radius: 0;
   transition: transform 0.85s ease;
 }
 
@@ -410,7 +431,7 @@ body.dark-mode .nav-link.active {
   width: 40px;
   height: 40px;
   background: #333;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 .company-content {
@@ -530,7 +551,7 @@ body.dark-mode .nav-link.active {
   color: #fff;
   font-size: 0.55rem;
   padding: 2px 6px;
-  border-radius: 999px;
+  border-radius: 0;
   text-transform: capitalize;
   letter-spacing: 0.05rem;
   white-space: nowrap;
@@ -571,7 +592,7 @@ body.dark-mode .nav-link.active {
 
 .tool-logos-grid::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.4);
-  border-radius: 999px;
+  border-radius: 0;
 }
 
 .haika-section,
@@ -585,7 +606,7 @@ body.dark-mode .nav-link.active {
   align-items: center;
   margin-top: 2rem;
   padding: 2rem;
-  border-radius: 12px;
+  border-radius: 0;
 }
 
 .companies-section {
@@ -806,9 +827,9 @@ body.dark-mode .nav-link.active {
 }
 
 .highlightzone-card {
-  border-radius: 32px;
+  border-radius: 0;
   padding: 1.8rem;
-  background: linear-gradient(135deg, #2f0b3a, #1b163b 45%, #4b2b7f 100%);
+  background: #1b163b;
   color: #fff;
   box-shadow: 0 20px 45px rgba(15, 15, 15, 0.3);
   display: flex;
@@ -825,8 +846,8 @@ body.dark-mode .nav-link.active {
 .highlightzone-card__icon {
   width: 56px;
   height: 56px;
-  border-radius: 16px;
-  background: radial-gradient(circle at 30% 30%, #ffd166, #f06595 60%);
+  border-radius: 0;
+  background: #f06595;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
@@ -884,7 +905,7 @@ body.dark-mode .nav-link.active {
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.6rem;
-  border-radius: 999px;
+  border-radius: 0;
   background: #fff;
   color: #1b163b;
   font-weight: 600;
@@ -903,7 +924,7 @@ body.dark-mode .nav-link.active {
 }
 
 .page[data-theme="dark"] .highlightzone-card {
-  background: linear-gradient(135deg, #fdfdfd, #f4f4f4 45%, #e0e0e0);
+  background: #f4f4f4;
   color: #fff;
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
 }
@@ -938,7 +959,7 @@ body.dark-mode .nav-link.active {
   padding: 0.65rem 1.3rem;
   background: rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 999px;
+  border-radius: 0;
   color: var(--text-color, #000000);
   font-size: 0.85rem;
   font-weight: 500;
@@ -965,7 +986,7 @@ body.dark-mode .nav-link.active {
   padding: 1.2rem;
   background: transparent;
   border: none;
-  border-radius: 50%;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -991,8 +1012,8 @@ body.dark-mode .nav-link.active {
 }
 
 body.dark-mode .tools-grid {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.2));
-  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 0;
   padding: 1.5rem;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35), 0 25px 60px rgba(0, 0, 0, 0.45);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -1020,7 +1041,7 @@ body.dark-mode .tools-card {
   color: #fff;
   font-size: 0.7rem;
   padding: 3px 8px;
-  border-radius: 999px;
+  border-radius: 0;
   letter-spacing: 0.05rem;
   text-transform: capitalize;
   opacity: 0;
@@ -1115,7 +1136,7 @@ body:not(.dark-mode) .tools-card-logo--fireberry {
   flex-shrink: 0;
   width: 200px;
   height: 150px;
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
   text-decoration: none;
   will-change: transform;
@@ -1163,14 +1184,8 @@ body:not(.dark-mode) .tools-card-logo--fireberry {
   transform: translate(-50%, -50%);
   width: 350px;
   height: 350px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0.08) 30%,
-    rgba(255, 255, 255, 0.03) 60%,
-    transparent 100%
-  );
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.08);
   animation: glimmer 3s ease-in-out infinite;
   pointer-events: none;
   z-index: 5;
@@ -1213,7 +1228,7 @@ body:not(.dark-mode) .tools-card-logo--fireberry {
 
 .scattered-logo {
   object-fit: contain;
-  border-radius: 50%;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.05);
   padding: 12px;
   border: 2px solid rgba(255, 255, 255, 0.1);

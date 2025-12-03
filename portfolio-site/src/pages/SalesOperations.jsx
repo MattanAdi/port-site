@@ -245,14 +245,6 @@ function SalesOperations() {
                 >
                   View
                 </a>
-                <a
-                  className="highlightzone-card__action highlightzone-card__action--github"
-                  href="https://github.com/MattanAdi/Highlightzone"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                </a>
               </div>
             </article>
 

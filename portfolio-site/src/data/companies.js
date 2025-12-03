@@ -14,8 +14,7 @@ export const companies = [
     role: "Sales Development Representative",
     period: "Present",
     logoAlt: "Connecteam logo",
-    background:
-      "linear-gradient(180deg, rgba(33, 150, 243, 0.14), rgba(33, 150, 243, 0.04))",
+    background: "rgba(33, 150, 243, 0.1)",
     image: getImagePath('connecteam.png'),
     slug: "connecteam",
     bullets: [
@@ -29,8 +28,7 @@ export const companies = [
     role: "Sales Operations Manager",
     period: "2023 - 2025",
     logoAlt: "Haika Real Estate logo",
-    background:
-      "linear-gradient(180deg, rgba(255, 213, 79, 0.16), rgba(255, 213, 79, 0.04))",
+    background: "rgba(255, 213, 79, 0.12)",
     image: getImagePath('hakiala.png'),
     slug: "haika",
     bullets: [
@@ -45,8 +43,7 @@ export const companies = [
     role: "Back Office Representative",
     period: "2022",
     logoAlt: "El Al Airlines logo",
-    background:
-      "linear-gradient(180deg, rgba(224, 242, 255, 0.20), rgba(21, 101, 192, 0.14))",
+    background: "rgba(21, 101, 192, 0.12)",
     image: getImagePath('elal1.png'),
     slug: "elal",
     bullets: [
@@ -61,8 +58,7 @@ export const companies = [
     role: "Full Stack Developer",
     period: "2022",
     logoAlt: "Abilisense logo",
-    background:
-      "linear-gradient(180deg, rgba(239, 83, 80, 0.14), rgba(239, 83, 80, 0.03))",
+    background: "rgba(239, 83, 80, 0.1)",
     image: getImagePath('abilisense.png'),
     slug: "abilisense",
     bullets: [
@@ -77,8 +73,7 @@ export const companies = [
     role: "Customer Service Representative",
     period: "2019 - 2021",
     logoAlt: "eToro logo",
-    background:
-      "linear-gradient(180deg, rgba(76, 175, 80, 0.14), rgba(76, 175, 80, 0.03))",
+    background: "rgba(76, 175, 80, 0.1)",
     image: getImagePath('eToro.png'),
     slug: "etoro",
     bullets: [
