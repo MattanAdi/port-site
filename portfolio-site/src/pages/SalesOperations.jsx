@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ToolsCarousel, { allToolFilenames, formatToolLabel } from "../components/ToolsCarousel";
+import AboutMeSection from "../components/AboutMeSection";
 import "../App.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -81,6 +82,7 @@ function SalesOperations() {
 
   return (
     <div className="page sales-ops-page">
+      <AboutMeSection />
       <main className="content" ref={contentRef}>
         <section id="companies" className="companies-section">
           <div className="sales-ops-section connecteam-section" data-direction="right">
