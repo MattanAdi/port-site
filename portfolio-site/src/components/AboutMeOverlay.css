@@ -10,34 +10,16 @@
 
 .about-me-section {
   position: relative;
-  background: linear-gradient(135deg, #030303, #060606);
-  color: #f8fafc;
-  padding: 6rem 0 5rem;
-  margin-bottom: 4rem;
-  overflow: hidden;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+  color: var(--text-color, #0f0a25);
+  padding: 4.5rem 0 3.5rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.about-me-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 35% 20%, rgba(255, 255, 255, 0.08), transparent 55%),
-    radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.05), transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.about-me-section > * {
-  position: relative;
-  z-index: 1;
-}
-
-body:not(.dark-mode) .about-me-section {
-  background: linear-gradient(135deg, #030303, #060606);
-  color: #f8fafc;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+body.dark-mode .about-me-section {
+  color: #f1f5f9;
+  border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
 .about-me-content {
@@ -45,14 +27,14 @@ body:not(.dark-mode) .about-me-section {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 3rem;
   padding: 0 2rem;
 }
 
 .about-hero {
   display: flex;
   align-items: center;
-  gap: 4rem;
+  gap: 3rem;
 }
 
 .about-hero-text {
@@ -64,8 +46,8 @@ body:not(.dark-mode) .about-me-section {
   display: inline-block;
   font-family: "Courier New", monospace;
   letter-spacing: 0.3em;
-  font-size: 0.9rem;
-  color: #f5f5f5;
+  font-size: 0.85rem;
+  color: currentColor;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
 }
@@ -73,24 +55,31 @@ body:not(.dark-mode) .about-me-section {
 .about-me-name {
   font-family: "Playfair Display", Georgia, serif;
   font-size: clamp(2.75rem, 6vw, 4.75rem);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.4rem 0;
   letter-spacing: -0.02em;
-  color: inherit;
 }
 
 .about-me-tagline {
-  font-size: 1rem;
-  letter-spacing: 0.2em;
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(245, 245, 245, 0.7);
-  margin-bottom: 1.5rem;
+  color: rgba(15, 10, 37, 0.65);
+  margin-bottom: 1.1rem;
+}
+
+body.dark-mode .about-me-tagline {
+  color: rgba(241, 245, 249, 0.7);
 }
 
 .about-hero-intro {
-  font-size: 1.1rem;
-  line-height: 1.85;
-  color: rgba(245, 245, 245, 0.82);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(15, 10, 37, 0.82);
   margin: 0;
+}
+
+body.dark-mode .about-hero-intro {
+  color: rgba(241, 245, 249, 0.85);
 }
 
 .about-hero-image {
@@ -98,61 +87,72 @@ body:not(.dark-mode) .about-me-section {
   height: clamp(260px, 32vw, 420px);
   object-fit: cover;
   object-position: center top;
-  border: 4px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+  border: 4px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode .about-hero-image {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .about-background-section,
 .about-topic {
-  background: rgba(18, 18, 18, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 3.5rem clamp(1.5rem, 4vw, 4rem);
-  border-radius: 2.25rem;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
-}
-
-body:not(.dark-mode) .about-background-section,
-body:not(.dark-mode) .about-topic {
-  background: rgba(18, 18, 18, 0.85);
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  background: transparent;
+  border: none;
+  padding: 2.75rem clamp(1.5rem, 4vw, 3.5rem);
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .about-background-section {
   text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .about-background-section {
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .about-background-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .about-topic-label {
   display: inline-block;
   font-family: "Courier New", monospace;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 0.2em;
-  padding: 0.35rem 0.9rem;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #f8fafc;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: rgba(15, 10, 37, 0.75);
   margin-bottom: 1rem;
+}
+
+body.dark-mode .about-topic-label {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(241, 245, 249, 0.7);
 }
 
 .about-topic-title {
   font-family: "Playfair Display", Georgia, serif;
   font-size: clamp(2rem, 4vw, 3rem);
   margin: 0;
-  color: inherit;
 }
 
 .about-background-text-wide {
   max-width: 860px;
-  margin: 0 auto 3rem;
+  margin: 0 auto 2.3rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  color: rgba(245, 245, 245, 0.82);
-  line-height: 1.9;
+  gap: 1.4rem;
+  color: rgba(15, 10, 37, 0.82);
+  line-height: 1.8;
+}
+
+body.dark-mode .about-background-text-wide {
+  color: rgba(241, 245, 249, 0.85);
 }
 
 .about-background-images-row {
@@ -167,24 +167,33 @@ body:not(.dark-mode) .about-topic {
   width: clamp(220px, 32vw, 420px);
   height: clamp(180px, 28vw, 360px);
   object-fit: cover;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
-body:not(.dark-mode) .about-background-img,
-body:not(.dark-mode) .about-topic-image {
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.35);
+body.dark-mode .about-background-img,
+body.dark-mode .about-topic-image {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
 }
 
 .about-background-img:hover,
 .about-topic-image:hover {
-  transform: scale(1.02);
+  transform: scale(1.015);
 }
 
 .about-topic {
   display: flex;
   align-items: center;
   gap: 3rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.about-topic + .about-topic {
+  margin-top: 1.5rem;
+}
+
+body.dark-mode .about-topic {
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .about-topic--reverse {
@@ -197,10 +206,14 @@ body:not(.dark-mode) .about-topic-image {
 }
 
 .about-topic-text p {
-  font-size: 1.05rem;
-  line-height: 1.85;
-  color: rgba(245, 245, 245, 0.82);
-  margin-bottom: 1.25rem;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: rgba(15, 10, 37, 0.82);
+  margin-bottom: 1.1rem;
+}
+
+body.dark-mode .about-topic-text p {
+  color: rgba(241, 245, 249, 0.85);
 }
 
 @media (max-width: 1024px) {
@@ -229,16 +242,12 @@ body:not(.dark-mode) .about-topic-image {
   }
 
   .about-me-content {
-    gap: 2.75rem;
+    gap: 2.4rem;
     padding: 0 1.5rem;
   }
 
   .about-hero {
-    gap: 2rem;
-  }
-
-  .about-me-name {
-    font-size: clamp(2rem, 11vw, 3rem);
+    gap: 1.75rem;
   }
 
   .about-me-tagline {
@@ -247,31 +256,24 @@ body:not(.dark-mode) .about-topic-image {
   }
 
   .about-hero-intro {
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 0.98rem;
   }
 
   .about-background-section,
   .about-topic {
-    padding: 2.25rem 1.4rem;
-    border-radius: 1.75rem;
+    padding: 2rem 1.25rem;
   }
 
   .about-background-text-wide,
   .about-topic-text p {
     font-size: 0.95rem;
-    line-height: 1.75;
-  }
-
-  .about-topic-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
+    line-height: 1.7;
   }
 
   .about-background-img,
   .about-topic-image {
     max-width: 100%;
-    border-radius: 1.5rem;
+    border-radius: 1rem;
   }
 }
 
@@ -282,7 +284,7 @@ body:not(.dark-mode) .about-topic-image {
 
   .about-me-content {
     padding: 0 1rem;
-    gap: 2rem;
+    gap: 1.8rem;
   }
 
   .about-me-greeting {
@@ -291,14 +293,14 @@ body:not(.dark-mode) .about-topic-image {
 
   .about-background-section,
   .about-topic {
-    padding: 1.75rem 1rem;
+    padding: 1.6rem 1rem;
   }
 
   .about-topic-label {
-    padding: 0.25rem 0.65rem;
+    padding: 0.25rem 0.6rem;
   }
 
   .about-me-tagline {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
   }
 }
