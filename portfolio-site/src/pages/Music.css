@@ -190,6 +190,10 @@
 .vinyl-record:nth-child(7) .vinyl-disc { animation: spin 9s linear infinite; }
 .vinyl-record:nth-child(8) .vinyl-disc { animation: spin 5s linear infinite; }
 
+.vinyl-record--playable {
+  cursor: pointer;
+}
+
 .vinyl-record:hover .vinyl-disc {
   animation-play-state: paused;
   box-shadow: 
@@ -197,6 +201,26 @@
     0 0 0 6px #1a1a1a,
     0 15px 40px rgba(100, 255, 218, 0.2),
     inset 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.vinyl-record--playing .vinyl-disc {
+  animation-play-state: running !important;
+  box-shadow: 
+    0 0 0 3px #64ffda,
+    0 0 0 6px #1a1a1a,
+    0 15px 50px rgba(100, 255, 218, 0.4),
+    inset 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.vinyl-playing-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: #64ffda;
+  z-index: 10;
+  text-shadow: 0 0 10px rgba(100, 255, 218, 0.8);
 }
 
 @keyframes spin {

@@ -6,20 +6,41 @@ import "./Music.css";
 function Music() {
   const pageRef = useRef(null);
   const [activeCategory, setActiveCategory] = useState("beats");
+  const [playingId, setPlayingId] = useState(null);
+  const audioRef = useRef(null);
 
   const baseUrl = import.meta.env.BASE_URL || "/";
 
   // Vinyl records - 8 records for the music section
   const vinylRecords = [
-    { id: 1, title: "Cosign", image: `${baseUrl}Cosign.jpg`, color: "#1a1a1a" },
-    { id: 2, title: "Man Can't Stop", image: `${baseUrl}Man cant stop.jpg`, color: "#1a1a1a" },
-    { id: 3, title: "Deni Avdija", image: `${baseUrl}Deni.jpg`, color: "#1a1a1a" },
-    { id: 4, title: "SEO Anthem", image: `${baseUrl}SEO.png`, color: "#1a1a1a" },
-    { id: 5, title: "Track 5", image: null, color: "#1a1a1a" },
-    { id: 6, title: "Track 6", image: null, color: "#1a1a1a" },
-    { id: 7, title: "Track 7", image: null, color: "#1a1a1a" },
-    { id: 8, title: "Track 8", image: null, color: "#1a1a1a" },
+    { id: 1, title: "Cosign", image: `${baseUrl}Cosign.jpg`, color: "#1a1a1a", audio: null },
+    { id: 2, title: "Man Can't Stop", image: `${baseUrl}Man cant stop.jpg`, color: "#1a1a1a", audio: `${baseUrl}Kiddish x Low-j -  Man Can't Stop (Official Visualizer).mp3` },
+    { id: 3, title: "Deni Avdija", image: `${baseUrl}Deni.jpg`, color: "#1a1a1a", audio: null },
+    { id: 4, title: "SEO Anthem", image: `${baseUrl}SEO.png`, color: "#1a1a1a", audio: null },
+    { id: 5, title: "Track 5", image: null, color: "#1a1a1a", audio: null },
+    { id: 6, title: "Track 6", image: null, color: "#1a1a1a", audio: null },
+    { id: 7, title: "Track 7", image: null, color: "#1a1a1a", audio: null },
+    { id: 8, title: "Track 8", image: null, color: "#1a1a1a", audio: null },
   ];
+
+  const handleRecordClick = (record) => {
+    if (!record.audio) return;
+    
+    if (playingId === record.id) {
+      // Pause if same record clicked
+      audioRef.current?.pause();
+      setPlayingId(null);
+    } else {
+      // Play new track
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      audioRef.current = new Audio(record.audio);
+      audioRef.current.play();
+      audioRef.current.onended = () => setPlayingId(null);
+      setPlayingId(record.id);
+    }
+  };
 
   // Beats items
   const beatsItems = [
@@ -165,7 +186,11 @@ function Music() {
         <h2 className="vinyl-section-title">Records</h2>
         <div className="vinyl-grid">
           {vinylRecords.map((record) => (
-            <div key={record.id} className="vinyl-record">
+            <div 
+              key={record.id} 
+              className={`vinyl-record ${record.audio ? 'vinyl-record--playable' : ''} ${playingId === record.id ? 'vinyl-record--playing' : ''}`}
+              onClick={() => handleRecordClick(record)}
+            >
               <div className="vinyl-disc">
                 {record.image && (
                   <img src={record.image} alt={record.title} className="vinyl-overlay-image" />
@@ -179,6 +204,9 @@ function Music() {
                   )}
                 </div>
                 <div className="vinyl-center-hole"></div>
+                {playingId === record.id && (
+                  <div className="vinyl-playing-indicator">▶</div>
+                )}
               </div>
               <p className="vinyl-title">{record.title}</p>
             </div>
