@@ -121,6 +121,21 @@ function Music() {
         </div>
       </div>
 
+      {/* About Section - The Sound */}
+      <section className="music-about" id="about">
+        <div className="music-about-content">
+          <h2 className="music-about-title">The Sound</h2>
+          <p className="music-about-text">
+            Music is more than a hobby—it's an expression of creativity that runs parallel 
+            to my work in tech. From producing beats to experimenting with sound design, 
+            this page showcases my musical journey and creative projects.
+          </p>
+          <p className="music-about-text">
+            Stay tuned for new releases, sample packs, and exclusive content.
+          </p>
+        </div>
+      </section>
+
       {/* Vinyl Records Section */}
       <section className="vinyl-section" id="records">
         <div className="vinyl-section-bg">
@@ -193,21 +208,6 @@ function Music() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="music-about" id="about">
-        <div className="music-about-content">
-          <h2 className="music-about-title">The Sound</h2>
-          <p className="music-about-text">
-            Music is more than a hobby—it's an expression of creativity that runs parallel 
-            to my work in tech. From producing beats to experimenting with sound design, 
-            this page showcases my musical journey and creative projects.
-          </p>
-          <p className="music-about-text">
-            Stay tuned for new releases, sample packs, and exclusive content.
-          </p>
         </div>
       </section>
 
