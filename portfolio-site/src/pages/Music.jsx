@@ -114,22 +114,51 @@ function Music() {
     );
   }, [activeCategory]);
 
-  // Auto-play default song on page load
+  // Play default song on first user interaction (scroll or click)
   useEffect(() => {
+    let hasStarted = false;
+    
     defaultAudioRef.current = new Audio(defaultSong);
     defaultAudioRef.current.loop = true;
-    defaultAudioRef.current.volume = 0.5;
-    
-    // Try to autoplay (may be blocked by browser)
-    const playPromise = defaultAudioRef.current.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // Autoplay blocked - user needs to interact first
-        console.log("Autoplay blocked - click to play");
-      });
-    }
+    defaultAudioRef.current.volume = 0;
+
+    const fadeIn = () => {
+      let vol = 0;
+      const fadeInterval = setInterval(() => {
+        if (vol < 0.5) {
+          vol += 0.02;
+          if (defaultAudioRef.current) {
+            defaultAudioRef.current.volume = Math.min(vol, 0.5);
+          }
+        } else {
+          clearInterval(fadeInterval);
+        }
+      }, 50);
+    };
+
+    const startMusic = () => {
+      if (hasStarted || isMuted) return;
+      hasStarted = true;
+      
+      if (defaultAudioRef.current) {
+        defaultAudioRef.current.play().then(() => {
+          fadeIn();
+        }).catch(() => {
+          console.log("Audio play failed");
+        });
+      }
+      
+      // Remove listeners after first trigger
+      window.removeEventListener('scroll', startMusic);
+      window.removeEventListener('click', startMusic);
+    };
+
+    window.addEventListener('scroll', startMusic, { once: true });
+    window.addEventListener('click', startMusic, { once: true });
 
     return () => {
+      window.removeEventListener('scroll', startMusic);
+      window.removeEventListener('click', startMusic);
       if (defaultAudioRef.current) {
         defaultAudioRef.current.pause();
         defaultAudioRef.current = null;
