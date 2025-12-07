@@ -1,4 +1,4 @@
-/* Music Page - Inspired by chancestuff.com */
+/* Music Page - Vinyl Records Theme */
 
 .music-page {
   min-height: 100vh;
@@ -79,8 +79,8 @@
 /* Hero Section */
 .music-hero {
   position: relative;
-  height: 70vh;
-  min-height: 500px;
+  height: 50vh;
+  min-height: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,7 +107,7 @@
 
 .music-hero-title {
   font-family: 'Bebas Neue', 'Impact', sans-serif;
-  font-size: clamp(5rem, 20vw, 15rem);
+  font-size: clamp(5rem, 20vw, 12rem);
   font-weight: 400;
   letter-spacing: 0.15em;
   margin: 0;
@@ -124,6 +124,137 @@
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.6);
   margin: 1rem 0 0;
+}
+
+/* Vinyl Records Section */
+.vinyl-section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vinyl-section-title {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.1em;
+  margin: 0 0 3rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.vinyl-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.vinyl-record {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.vinyl-disc {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 50%, #1a1a1a 100%);
+  box-shadow: 
+    0 0 0 3px #0a0a0a,
+    0 0 0 6px #1a1a1a,
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 0 30px rgba(0, 0, 0, 0.3);
+  animation: spin 8s linear infinite;
+  animation-play-state: paused;
+  transition: box-shadow 0.3s ease;
+}
+
+.vinyl-record:hover .vinyl-disc {
+  animation-play-state: running;
+  box-shadow: 
+    0 0 0 3px #0a0a0a,
+    0 0 0 6px #1a1a1a,
+    0 15px 40px rgba(100, 255, 218, 0.2),
+    inset 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.vinyl-grooves {
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle at center,
+    transparent 0px,
+    transparent 2px,
+    rgba(40, 40, 40, 0.5) 2px,
+    rgba(40, 40, 40, 0.5) 3px
+  );
+}
+
+.vinyl-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2px solid #333;
+}
+
+.vinyl-label-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.vinyl-label-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #333 0%, #222 100%);
+  border-radius: 50%;
+}
+
+.vinyl-label-placeholder span {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.vinyl-center-hole {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8%;
+  height: 8%;
+  border-radius: 50%;
+  background: #0a0a0a;
+  border: 2px solid #333;
+}
+
+.vinyl-title {
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
 }
 
 /* Announcement Banner */
@@ -153,21 +284,26 @@
   100% { transform: translateX(-50%); }
 }
 
-/* Category Navigation */
-.music-category-nav {
+/* Shop Section */
+.shop-section {
+  padding: 3rem 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.shop-category-nav {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  padding: 3rem 2rem 2rem;
-  background: #0a0a0a;
+  margin-bottom: 2.5rem;
 }
 
-.music-nav-item {
-  padding: 0.75rem 2rem;
+.shop-nav-item {
+  padding: 0.75rem 2.5rem;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -175,41 +311,34 @@
   transition: all 0.3s ease;
 }
 
-.music-nav-item:hover {
+.shop-nav-item:hover {
   border-color: #ffffff;
 }
 
-.music-nav-item--active {
+.shop-nav-item--active {
   background: #ffffff;
   color: #000000;
   border-color: #ffffff;
 }
 
-/* Product Grid */
-.music-shop {
-  padding: 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.music-grid {
+.shop-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
-.music-card {
+.shop-card {
   background: #111111;
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
-.music-card:hover {
+.shop-card:hover {
   transform: translateY(-5px);
 }
 
-.music-card-image {
+.shop-card-image {
   aspect-ratio: 1;
   position: relative;
   display: flex;
@@ -217,7 +346,7 @@
   justify-content: center;
 }
 
-.music-card-overlay {
+.shop-card-overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
@@ -228,11 +357,11 @@
   transition: opacity 0.3s ease;
 }
 
-.music-card:hover .music-card-overlay {
+.shop-card:hover .shop-card-overlay {
   opacity: 1;
 }
 
-.music-card-action {
+.shop-card-action {
   padding: 0.75rem 2rem;
   background: #ffffff;
   color: #000000;
@@ -242,99 +371,27 @@
   letter-spacing: 0.1em;
 }
 
-.music-card-info {
+.shop-card-info {
   padding: 1.25rem;
 }
 
-.music-card-title {
+.shop-card-title {
   font-size: 1rem;
   font-weight: 600;
   margin: 0 0 0.25rem;
   color: #ffffff;
 }
 
-.music-card-subtitle {
+.shop-card-subtitle {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.5);
   margin: 0 0 0.75rem;
 }
 
-.music-card-price {
+.shop-card-price {
   font-size: 0.95rem;
   font-weight: 600;
   color: #64ffda;
-}
-
-/* Video Section */
-.music-videos {
-  padding: 4rem 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.music-section-title {
-  font-family: 'Bebas Neue', 'Impact', sans-serif;
-  font-size: 3rem;
-  letter-spacing: 0.1em;
-  margin: 0 0 2rem;
-  text-transform: uppercase;
-}
-
-.music-video-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: repeat(2, 1fr);
-  gap: 1rem;
-  height: 500px;
-}
-
-.music-video-card {
-  background: #1a1a1a;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.music-video-card--large {
-  grid-row: span 2;
-}
-
-.music-video-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
-  transition: background 0.3s ease;
-}
-
-.music-video-card:hover .music-video-placeholder {
-  background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
-}
-
-.music-video-play {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.music-video-card:hover .music-video-play {
-  background: #64ffda;
-  color: #000000;
-}
-
-.music-video-label {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.6);
 }
 
 /* About Section */
@@ -362,72 +419,6 @@
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.7);
   margin: 0 0 1.5rem;
-}
-
-/* Newsletter */
-.music-newsletter {
-  padding: 4rem 2rem;
-  text-align: center;
-  background: #0a0a0a;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.music-newsletter-title {
-  font-family: 'Bebas Neue', 'Impact', sans-serif;
-  font-size: 2.5rem;
-  letter-spacing: 0.1em;
-  margin: 0 0 0.5rem;
-  text-transform: uppercase;
-}
-
-.music-newsletter-text {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0 0 2rem;
-}
-
-.music-newsletter-form {
-  display: flex;
-  justify-content: center;
-  gap: 0;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.music-newsletter-input {
-  flex: 1;
-  padding: 1rem 1.5rem;
-  background: #1a1a1a;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-right: none;
-  color: #ffffff;
-  font-size: 0.95rem;
-  outline: none;
-}
-
-.music-newsletter-input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.music-newsletter-input:focus {
-  border-color: #64ffda;
-}
-
-.music-newsletter-btn {
-  padding: 1rem 2rem;
-  background: #ffffff;
-  border: none;
-  color: #000000;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.music-newsletter-btn:hover {
-  background: #64ffda;
 }
 
 /* Footer */
@@ -466,22 +457,13 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .music-grid {
+  .vinyl-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .shop-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .music-video-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    height: auto;
-  }
-
-  .music-video-card--large {
-    grid-row: span 1;
-  }
-
-  .music-video-placeholder {
-    min-height: 250px;
   }
 }
 
@@ -495,8 +477,8 @@
   }
 
   .music-hero {
-    height: 50vh;
-    min-height: 350px;
+    height: 40vh;
+    min-height: 280px;
   }
 
   .music-hero-title {
@@ -508,40 +490,48 @@
     letter-spacing: 0.2em;
   }
 
-  .music-category-nav {
-    flex-wrap: wrap;
+  .vinyl-section {
+    padding: 3rem 1rem;
+  }
+
+  .vinyl-section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .vinyl-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .vinyl-disc {
+    max-width: 150px;
+  }
+
+  .shop-section {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .shop-category-nav {
     gap: 0.5rem;
-    padding: 2rem 1rem;
   }
 
-  .music-nav-item {
-    padding: 0.6rem 1.25rem;
-    font-size: 0.75rem;
+  .shop-nav-item {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.8rem;
   }
 
-  .music-shop {
-    padding: 1rem;
-  }
-
-  .music-grid {
+  .shop-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
   }
 
-  .music-card-info {
+  .shop-card-info {
     padding: 1rem;
   }
 
-  .music-card-title {
+  .shop-card-title {
     font-size: 0.9rem;
-  }
-
-  .music-section-title {
-    font-size: 2rem;
-  }
-
-  .music-videos {
-    padding: 3rem 1rem;
   }
 
   .music-about {
@@ -555,27 +545,27 @@
   .music-about-text {
     font-size: 1rem;
   }
-
-  .music-newsletter {
-    padding: 3rem 1.5rem;
-  }
-
-  .music-newsletter-title {
-    font-size: 2rem;
-  }
-
-  .music-newsletter-form {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .music-newsletter-input {
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-  }
 }
 
 @media (max-width: 480px) {
-  .music-grid {
+  .vinyl-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .vinyl-disc {
+    max-width: 120px;
+  }
+
+  .vinyl-label-placeholder span {
+    font-size: 1rem;
+  }
+
+  .vinyl-title {
+    font-size: 0.8rem;
+  }
+
+  .shop-grid {
     grid-template-columns: 1fr;
   }
 
@@ -584,10 +574,8 @@
   }
 }
 
-/* Light mode adjustments - Music page stays dark themed */
+/* Light mode - Music page stays dark */
 body.light-mode .music-page {
-  /* Music page maintains dark theme regardless of site mode */
   background: #0a0a0a;
   color: #ffffff;
 }
-
