@@ -98,6 +98,15 @@ function Music() {
       {/* Hero Section */}
       <section className="music-hero">
         <div className="music-hero-bg">
+          <video 
+            className="music-hero-video"
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+          >
+            <source src={`${baseUrl}CLIP - Made with Clipchamp.mp4`} type="video/mp4" />
+          </video>
           <div className="music-hero-gradient"></div>
         </div>
         <div className="music-hero-content">
