@@ -191,6 +191,7 @@
 .vinyl-record:nth-child(8) .vinyl-disc { animation: spin 5s linear infinite; }
 
 .vinyl-record:hover .vinyl-disc {
+  animation-play-state: paused;
   box-shadow: 
     0 0 0 3px #0a0a0a,
     0 0 0 6px #1a1a1a,
@@ -286,6 +287,12 @@
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
   text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.vinyl-record:hover .vinyl-title {
+  opacity: 1;
 }
 
 /* Announcement Banner */
