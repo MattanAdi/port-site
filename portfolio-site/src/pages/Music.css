@@ -146,12 +146,39 @@
 
 /* Vinyl Records Section */
 .vinyl-section {
+  position: relative;
   padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.vinyl-section-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.vinyl-section-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+
+.vinyl-section-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.7);
 }
 
 .vinyl-section-title {
+  position: relative;
+  z-index: 1;
   font-family: 'Bebas Neue', 'Impact', sans-serif;
   font-size: 3rem;
   letter-spacing: 0.1em;
@@ -161,9 +188,13 @@
 }
 
 .vinyl-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .vinyl-record {

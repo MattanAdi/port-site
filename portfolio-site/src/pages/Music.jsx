@@ -116,6 +116,18 @@ function Music() {
 
       {/* Vinyl Records Section */}
       <section className="vinyl-section" id="records">
+        <div className="vinyl-section-bg">
+          <video 
+            className="vinyl-section-video"
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+          >
+            <source src={`${baseUrl}About Me Mattan Adi.mp4`} type="video/mp4" />
+          </video>
+          <div className="vinyl-section-overlay"></div>
+        </div>
         <h2 className="vinyl-section-title">Records</h2>
         <div className="vinyl-grid">
           {vinylRecords.map((record) => (
