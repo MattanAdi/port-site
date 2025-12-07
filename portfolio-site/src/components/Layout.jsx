@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
 
 function Layout({ children }) {
@@ -46,7 +46,9 @@ function Layout({ children }) {
             <span className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></span>
             <span className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></span>
           </button>
-          <img src={chefLogoSrc} alt="Chef logo" className="top-bar-logo" />
+          <Link to="/music" className="top-bar-logo-link">
+            <img src={chefLogoSrc} alt="Chef logo - Click for Music" className="top-bar-logo" />
+          </Link>
         </div>
         <div className="top-bar-right">
           <DarkModeToggle />
