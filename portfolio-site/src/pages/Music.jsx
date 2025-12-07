@@ -7,9 +7,12 @@ function Music() {
   const pageRef = useRef(null);
   const [activeCategory, setActiveCategory] = useState("beats");
   const [playingId, setPlayingId] = useState(null);
+  const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef(null);
+  const defaultAudioRef = useRef(null);
 
   const baseUrl = import.meta.env.BASE_URL || "/";
+  const defaultSong = `${baseUrl}Kiddish x Low-j -  Man Can't Stop (Official Visualizer).mp3`;
 
   // Vinyl records - 8 records for the music section
   const vinylRecords = [
@@ -26,18 +29,34 @@ function Music() {
   const handleRecordClick = (record) => {
     if (!record.audio) return;
     
+    // Pause default background music when clicking a record
+    if (defaultAudioRef.current) {
+      defaultAudioRef.current.pause();
+    }
+    
     if (playingId === record.id) {
       // Pause if same record clicked
       audioRef.current?.pause();
       setPlayingId(null);
+      // Resume default music
+      if (defaultAudioRef.current && !isMuted) {
+        defaultAudioRef.current.play();
+      }
     } else {
       // Play new track
       if (audioRef.current) {
         audioRef.current.pause();
       }
       audioRef.current = new Audio(record.audio);
+      audioRef.current.muted = isMuted;
       audioRef.current.play();
-      audioRef.current.onended = () => setPlayingId(null);
+      audioRef.current.onended = () => {
+        setPlayingId(null);
+        // Resume default music when track ends
+        if (defaultAudioRef.current && !isMuted) {
+          defaultAudioRef.current.play();
+        }
+      };
       setPlayingId(record.id);
     }
   };
@@ -94,6 +113,44 @@ function Music() {
       { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: "power2.out" }
     );
   }, [activeCategory]);
+
+  // Auto-play default song on page load
+  useEffect(() => {
+    defaultAudioRef.current = new Audio(defaultSong);
+    defaultAudioRef.current.loop = true;
+    defaultAudioRef.current.volume = 0.5;
+    
+    // Try to autoplay (may be blocked by browser)
+    const playPromise = defaultAudioRef.current.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay blocked - user needs to interact first
+        console.log("Autoplay blocked - click to play");
+      });
+    }
+
+    return () => {
+      if (defaultAudioRef.current) {
+        defaultAudioRef.current.pause();
+        defaultAudioRef.current = null;
+      }
+    };
+  }, []);
+
+  // Handle mute toggle
+  const toggleMute = () => {
+    if (defaultAudioRef.current) {
+      if (isMuted) {
+        defaultAudioRef.current.play();
+      } else {
+        defaultAudioRef.current.pause();
+      }
+    }
+    if (audioRef.current) {
+      audioRef.current.muted = !isMuted;
+    }
+    setIsMuted(!isMuted);
+  };
 
   return (
     <div className="music-page" ref={pageRef}>
@@ -260,6 +317,11 @@ function Music() {
         </div>
         <p className="music-footer-copy">© 2024 Mattan Adi</p>
       </footer>
+
+      {/* Mute Button */}
+      <button className="mute-btn" onClick={toggleMute} aria-label={isMuted ? "Unmute" : "Mute"}>
+        {isMuted ? "🔇" : "🔊"}
+      </button>
     </div>
   );
 }
