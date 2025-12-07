@@ -110,8 +110,7 @@ function Music() {
           <div className="music-hero-gradient"></div>
         </div>
         <div className="music-hero-content">
-          <h1 className="music-hero-title">MUSIC</h1>
-          <p className="music-hero-subtitle">Beats • Records • Merch</p>
+          <h1 className="music-hero-title">CHEF</h1>
         </div>
       </section>
 
