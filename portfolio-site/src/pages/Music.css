@@ -297,10 +297,12 @@
 
 /* Announcement Banner */
 .music-banner {
-  background: #ffffff;
-  color: #000000;
+  background: #000000;
+  color: #ffffff;
   padding: 0.75rem 0;
   overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .music-banner-scroll {
