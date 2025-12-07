@@ -18,11 +18,11 @@ function Music() {
   // Vinyl records - 8 records for the music section
   // zoom: 1.0 = normal size, 1.3 = 30% bigger, 1.5 = 50% bigger, etc.
   const vinylRecords = [
-    { id: 1, title: "Cosign", image: `${baseUrl}Cosign.jpg`, zoom: 1.3, audio: null },
-    { id: 2, title: "Man Can't Stop", image: `${baseUrl}Man cant stop.jpg`, zoom: 1.3, audio: `${baseUrl}Kiddish x Low-j -  Man Can't Stop (Official Visualizer).mp3` },
-    { id: 3, title: "Deni Avdija", image: `${baseUrl}Deni.jpg`, zoom: 1.3, audio: null },
+    { id: 1, title: "Cosign", image: `${baseUrl}Cosign.jpg`, zoom: 1, audio: null },
+    { id: 2, title: "Man Can't Stop", image: `${baseUrl}Man cant stop.jpg`, zoom: 1, audio: `${baseUrl}Kiddish x Low-j -  Man Can't Stop (Official Visualizer).mp3` },
+    { id: 3, title: "Deni Avdija", image: `${baseUrl}Deni.jpg`, zoom: 1, audio: null },
     { id: 4, title: "SEO Anthem", image: `${baseUrl}SEO.png`, zoom: 1.3, audio: null },
-    { id: 5, title: "MAD", image: `${baseUrl}MAD.jpg`, zoom: 1.3, audio: null },
+    { id: 5, title: "MAD", image: `${baseUrl}MAD.jpg`, zoom: 1, audio: null },
     { id: 6, title: "Track 6", image: null, zoom: 1.3, audio: null },
     { id: 7, title: "Track 7", image: null, zoom: 1.3, audio: null },
     { id: 8, title: "Track 8", image: null, zoom: 1.3, audio: null },
@@ -254,21 +254,6 @@ function Music() {
           <span>•</span>
         </div>
       </div>
-
-      {/* About Section - The Sound */}
-      <section className="music-about" id="about">
-        <div className="music-about-content">
-          <h2 className="music-about-title">The Sound</h2>
-          <p className="music-about-text">
-            Music is more than a hobby—it's an expression of creativity that runs parallel 
-            to my work in tech. From producing beats to experimenting with sound design, 
-            this page showcases my musical journey and creative projects.
-          </p>
-          <p className="music-about-text">
-            Stay tuned for new releases, sample packs, and exclusive content.
-          </p>
-        </div>
-      </section>
 
       {/* Vinyl Records Section */}
       <section className="vinyl-section" id="records">
