@@ -1,0 +1,593 @@
+/* Music Page - Inspired by chancestuff.com */
+
+.music-page {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Header */
+.music-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.music-back-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.music-back-link:hover {
+  color: #64ffda;
+}
+
+.music-top-nav {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.music-top-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.music-top-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #64ffda;
+  transition: width 0.3s ease;
+}
+
+.music-top-nav a:hover::after {
+  width: 100%;
+}
+
+.music-header-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Hero Section */
+.music-hero {
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.music-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+.music-hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.6) 100%);
+}
+
+.music-hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.music-hero-title {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-size: clamp(5rem, 20vw, 15rem);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  margin: 0;
+  line-height: 0.9;
+  background: linear-gradient(180deg, #ffffff 0%, #888888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.music-hero-subtitle {
+  font-size: 1.2rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 1rem 0 0;
+}
+
+/* Announcement Banner */
+.music-banner {
+  background: #ffffff;
+  color: #000000;
+  padding: 0.75rem 0;
+  overflow: hidden;
+}
+
+.music-banner-scroll {
+  display: flex;
+  gap: 2rem;
+  animation: scrollBanner 20s linear infinite;
+  white-space: nowrap;
+}
+
+.music-banner-scroll span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@keyframes scrollBanner {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Category Navigation */
+.music-category-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem 2rem 2rem;
+  background: #0a0a0a;
+}
+
+.music-nav-item {
+  padding: 0.75rem 2rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.music-nav-item:hover {
+  border-color: #ffffff;
+}
+
+.music-nav-item--active {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+/* Product Grid */
+.music-shop {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.music-card {
+  background: #111111;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.music-card:hover {
+  transform: translateY(-5px);
+}
+
+.music-card-image {
+  aspect-ratio: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.music-card:hover .music-card-overlay {
+  opacity: 1;
+}
+
+.music-card-action {
+  padding: 0.75rem 2rem;
+  background: #ffffff;
+  color: #000000;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.music-card-info {
+  padding: 1.25rem;
+}
+
+.music-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  color: #ffffff;
+}
+
+.music-card-subtitle {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 0.75rem;
+}
+
+.music-card-price {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #64ffda;
+}
+
+/* Video Section */
+.music-videos {
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.music-section-title {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.1em;
+  margin: 0 0 2rem;
+  text-transform: uppercase;
+}
+
+.music-video-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+  height: 500px;
+}
+
+.music-video-card {
+  background: #1a1a1a;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.music-video-card--large {
+  grid-row: span 2;
+}
+
+.music-video-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+  transition: background 0.3s ease;
+}
+
+.music-video-card:hover .music-video-placeholder {
+  background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
+}
+
+.music-video-play {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.music-video-card:hover .music-video-play {
+  background: #64ffda;
+  color: #000000;
+}
+
+.music-video-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* About Section */
+.music-about {
+  padding: 6rem 2rem;
+  background: #111111;
+}
+
+.music-about-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.music-about-title {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-size: 4rem;
+  letter-spacing: 0.1em;
+  margin: 0 0 2rem;
+  text-transform: uppercase;
+}
+
+.music-about-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 1.5rem;
+}
+
+/* Newsletter */
+.music-newsletter {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.music-newsletter-title {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+}
+
+.music-newsletter-text {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 2rem;
+}
+
+.music-newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.music-newsletter-input {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: none;
+  color: #ffffff;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.music-newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.music-newsletter-input:focus {
+  border-color: #64ffda;
+}
+
+.music-newsletter-btn {
+  padding: 1rem 2rem;
+  background: #ffffff;
+  border: none;
+  color: #000000;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.music-newsletter-btn:hover {
+  background: #64ffda;
+}
+
+/* Footer */
+.music-footer {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.music-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.music-footer-links a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color 0.3s ease;
+}
+
+.music-footer-links a:hover {
+  color: #64ffda;
+}
+
+.music-footer-copy {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .music-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .music-video-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+  }
+
+  .music-video-card--large {
+    grid-row: span 1;
+  }
+
+  .music-video-placeholder {
+    min-height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .music-header {
+    padding: 1rem;
+  }
+
+  .music-top-nav {
+    display: none;
+  }
+
+  .music-hero {
+    height: 50vh;
+    min-height: 350px;
+  }
+
+  .music-hero-title {
+    font-size: 4rem;
+  }
+
+  .music-hero-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+  }
+
+  .music-category-nav {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 2rem 1rem;
+  }
+
+  .music-nav-item {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.75rem;
+  }
+
+  .music-shop {
+    padding: 1rem;
+  }
+
+  .music-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .music-card-info {
+    padding: 1rem;
+  }
+
+  .music-card-title {
+    font-size: 0.9rem;
+  }
+
+  .music-section-title {
+    font-size: 2rem;
+  }
+
+  .music-videos {
+    padding: 3rem 1rem;
+  }
+
+  .music-about {
+    padding: 4rem 1.5rem;
+  }
+
+  .music-about-title {
+    font-size: 2.5rem;
+  }
+
+  .music-about-text {
+    font-size: 1rem;
+  }
+
+  .music-newsletter {
+    padding: 3rem 1.5rem;
+  }
+
+  .music-newsletter-title {
+    font-size: 2rem;
+  }
+
+  .music-newsletter-form {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .music-newsletter-input {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media (max-width: 480px) {
+  .music-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .music-hero-title {
+    font-size: 3rem;
+  }
+}
+
+/* Light mode adjustments - Music page stays dark themed */
+body.light-mode .music-page {
+  /* Music page maintains dark theme regardless of site mode */
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
