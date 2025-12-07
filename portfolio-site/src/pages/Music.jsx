@@ -144,28 +144,39 @@ function Music() {
     }, 50);
   };
 
-  // Start music on first scroll or click
+  // Start music on first scroll or click (after a delay to avoid initial events)
   useEffect(() => {
     if (hasInteracted) return;
 
-    const handleInteraction = () => {
-      if (!hasInteracted) {
-        setHasInteracted(true);
-        setIsMuted(false);
-        if (defaultAudioRef.current) {
-          defaultAudioRef.current.play().then(() => {
-            fadeInAudio();
-          }).catch(err => console.log("Play failed:", err));
-        }
+    let canTrigger = false;
+    
+    // Wait 500ms before listening for interactions to avoid initial page load events
+    const timeout = setTimeout(() => {
+      canTrigger = true;
+    }, 500);
+
+    const handleInteraction = (e) => {
+      if (!canTrigger || hasInteracted) return;
+      
+      // Ignore clicks on the mute button itself
+      if (e.target.closest('.mute-btn')) return;
+      
+      setHasInteracted(true);
+      setIsMuted(false);
+      if (defaultAudioRef.current) {
+        defaultAudioRef.current.play().then(() => {
+          fadeInAudio();
+        }).catch(err => console.log("Play failed:", err));
       }
     };
 
     window.addEventListener('scroll', handleInteraction);
-    window.addEventListener('click', handleInteraction);
+    document.addEventListener('click', handleInteraction);
 
     return () => {
+      clearTimeout(timeout);
       window.removeEventListener('scroll', handleInteraction);
-      window.removeEventListener('click', handleInteraction);
+      document.removeEventListener('click', handleInteraction);
     };
   }, [hasInteracted]);
 
