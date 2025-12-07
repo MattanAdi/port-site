@@ -207,6 +207,10 @@
   mix-blend-mode: screen;
 }
 
+.vinyl-overlay-image--zoomed {
+  transform: scale(1.4);
+}
+
 .vinyl-grooves {
   position: absolute;
   inset: 15%;
