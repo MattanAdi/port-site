@@ -318,9 +318,9 @@ function Music() {
         <p className="music-footer-copy">© 2024 Mattan Adi</p>
       </footer>
 
-      {/* Mute Button */}
-      <button className="mute-btn" onClick={toggleMute} aria-label={isMuted ? "Unmute" : "Mute"}>
-        {isMuted ? "🔇" : "🔊"}
+      {/* Play/Pause Button */}
+      <button className="mute-btn" onClick={toggleMute} aria-label={isMuted ? "Play" : "Pause"}>
+        {isMuted ? "▶" : "⏸"}
       </button>
     </div>
   );
