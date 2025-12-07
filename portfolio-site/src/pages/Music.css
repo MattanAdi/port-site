@@ -106,7 +106,7 @@
 /* Vinyl Records Section */
 .vinyl-section {
   position: relative;
-  padding: 4rem 2rem;
+  padding: 2rem 2rem;
   max-width: 100%;
   overflow: hidden;
 }
@@ -141,7 +141,7 @@
   font-family: 'Bebas Neue', 'Impact', sans-serif;
   font-size: 3rem;
   letter-spacing: 0.1em;
-  margin: 0 0 3rem;
+  margin: 0 0 1.5rem;
   text-transform: uppercase;
   text-align: center;
 }
