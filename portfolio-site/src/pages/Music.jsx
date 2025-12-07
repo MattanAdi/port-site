@@ -16,15 +16,16 @@ function Music() {
   const defaultSong = `${baseUrl}Kiddish x Low-j -  Man Can't Stop (Official Visualizer).mp3`;
 
   // Vinyl records - 8 records for the music section
+  // zoom: 1.0 = normal size, 1.3 = 30% bigger, 1.5 = 50% bigger, etc.
   const vinylRecords = [
-    { id: 1, title: "Cosign", image: `${baseUrl}Cosign.jpg`, color: "#1a1a1a", audio: null },
-    { id: 2, title: "Man Can't Stop", image: `${baseUrl}Man cant stop.jpg`, color: "#1a1a1a", audio: `${baseUrl}Kiddish x Low-j -  Man Can't Stop (Official Visualizer).mp3` },
-    { id: 3, title: "Deni Avdija", image: `${baseUrl}Deni.jpg`, color: "#1a1a1a", audio: null },
-    { id: 4, title: "SEO Anthem", image: `${baseUrl}SEO.png`, color: "#1a1a1a", audio: null },
-    { id: 5, title: "MAD", image: `${baseUrl}MAD.jpg`, color: "#1a1a1a", audio: null },
-    { id: 6, title: "Track 6", image: null, color: "#1a1a1a", audio: null },
-    { id: 7, title: "Track 7", image: null, color: "#1a1a1a", audio: null },
-    { id: 8, title: "Track 8", image: null, color: "#1a1a1a", audio: null },
+    { id: 1, title: "Cosign", image: `${baseUrl}Cosign.jpg`, zoom: 1.3, audio: null },
+    { id: 2, title: "Man Can't Stop", image: `${baseUrl}Man cant stop.jpg`, zoom: 1.3, audio: `${baseUrl}Kiddish x Low-j -  Man Can't Stop (Official Visualizer).mp3` },
+    { id: 3, title: "Deni Avdija", image: `${baseUrl}Deni.jpg`, zoom: 1.3, audio: null },
+    { id: 4, title: "SEO Anthem", image: `${baseUrl}SEO.png`, zoom: 1.3, audio: null },
+    { id: 5, title: "MAD", image: `${baseUrl}MAD.jpg`, zoom: 1.3, audio: null },
+    { id: 6, title: "Track 6", image: null, zoom: 1.3, audio: null },
+    { id: 7, title: "Track 7", image: null, zoom: 1.3, audio: null },
+    { id: 8, title: "Track 8", image: null, zoom: 1.3, audio: null },
   ];
 
   const handleRecordClick = (record) => {
@@ -293,7 +294,12 @@ function Music() {
             >
               <div className="vinyl-disc">
                 {record.image && (
-                  <img src={record.image} alt={record.title} className="vinyl-overlay-image" />
+                  <img 
+                    src={record.image} 
+                    alt={record.title} 
+                    className="vinyl-overlay-image"
+                    style={{ transform: `scale(${record.zoom || 1})` }}
+                  />
                 )}
                 <div className="vinyl-grooves"></div>
                 <div className="vinyl-label">
