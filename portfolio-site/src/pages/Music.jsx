@@ -11,7 +11,7 @@ function Music() {
 
   // Vinyl records - 8 records for the music section
   const vinylRecords = [
-    { id: 1, title: "Track 1", image: null, color: "#1a1a1a" },
+    { id: 1, title: "Cosign", image: `${baseUrl}Cosign.jpg`, color: "#1a1a1a" },
     { id: 2, title: "Track 2", image: null, color: "#1a1a1a" },
     { id: 3, title: "Track 3", image: null, color: "#1a1a1a" },
     { id: 4, title: "Track 4", image: null, color: "#1a1a1a" },
@@ -140,11 +140,12 @@ function Music() {
           {vinylRecords.map((record) => (
             <div key={record.id} className="vinyl-record">
               <div className="vinyl-disc">
+                {record.image && (
+                  <img src={record.image} alt={record.title} className="vinyl-overlay-image" />
+                )}
                 <div className="vinyl-grooves"></div>
                 <div className="vinyl-label">
-                  {record.image ? (
-                    <img src={record.image} alt={record.title} className="vinyl-label-image" />
-                  ) : (
+                  {!record.image && (
                     <div className="vinyl-label-placeholder">
                       <span>{record.id}</span>
                     </div>
