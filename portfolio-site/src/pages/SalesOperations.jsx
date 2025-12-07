@@ -1,13 +1,12 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ToolsCarousel, { allToolFilenames, formatToolLabel } from "../components/ToolsCarousel";
+import ToolsCarousel from "../components/ToolsCarousel";
 import AboutMeSection from "../components/AboutMeSection";
 import "../App.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Get image path helper (same as in companies.js)
 const getImagePath = (filename) => {
   const baseUrl = import.meta.env.BASE_URL || '/';
   const cleanBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
@@ -15,288 +14,275 @@ const getImagePath = (filename) => {
   return `${cleanBase}${cleanFilename}`;
 };
 
+const companies = [
+  {
+    id: "connecteam",
+    name: "Connecteam",
+    role: "Sales Development Representative",
+    period: "2024",
+    logo: "connecteam.png",
+    color: "#6366f1",
+    description: "Strengthened operational expertise through daily workflows using Salesloft, HubSpot, and Looker. Created and implemented HighlightZone—a tool that improved accuracy and significantly sped up the lead review process.",
+    skills: ["Salesloft", "HubSpot", "Looker", "Process Optimization"]
+  },
+  {
+    id: "haika",
+    name: "Haika Real Estate",
+    role: "Sales Operations",
+    period: "2023 - 2024",
+    logo: "hakiala.png",
+    color: "#10b981",
+    description: "Full Sales Operations role managing Salesforce administration, Looker dashboards, KPI tracking, forecasting, and cross-functional communication across Sales, Marketing, and Customer Success.",
+    skills: ["Salesforce", "Looker", "Forecasting", "Data Analytics"]
+  },
+  {
+    id: "abilisense",
+    name: "Abilisense",
+    role: "Full Stack Developer",
+    period: "2022 - 2023",
+    logo: "abil.png",
+    color: "#8b5cf6",
+    description: "Built end-to-end web applications using React.js, HTML5, CSS3, and Node.js. Integrated RESTful APIs and collaborated on debugging and performance optimization.",
+    skills: ["React.js", "Node.js", "REST APIs", "Full Stack"]
+  },
+  {
+    id: "elal",
+    name: "El Al Airlines",
+    role: "Back Office Representative",
+    period: "2021 - 2022",
+    logo: "elal1.png",
+    color: "#0ea5e9",
+    description: "Provided administrative support and coordinated between internal departments. Assisted with real-time issue resolution and streamlined operational processes.",
+    skills: ["Operations", "Customer Service", "Data Accuracy"]
+  },
+  {
+    id: "etoro",
+    name: "eToro",
+    role: "Technical Support",
+    period: "2020 - 2021",
+    logo: "eToro.png",
+    color: "#22c55e",
+    description: "Technical assistance for users trading stocks, cryptocurrencies, and commodities. Resolved platform issues and managed account verification processes.",
+    skills: ["Fintech", "Technical Support", "Compliance"]
+  }
+];
+
 function SalesOperations() {
   const contentRef = useRef(null);
 
   useEffect(() => {
     if (!contentRef.current) return;
 
-    const contentElements = Array.from(
-      contentRef.current.querySelectorAll(
-        ".sales-ops-section, .tools-carousel-section"
-      )
-    );
-
-    if (contentElements.length > 0) {
-      gsap.fromTo(
-        contentElements,
-        {
-          opacity: 0,
-        },
+    // Animate company cards on scroll
+    gsap.utils.toArray(".company-card").forEach((card, i) => {
+      gsap.fromTo(card,
+        { opacity: 0, y: 60, scale: 0.95 },
         {
           opacity: 1,
+          y: 0,
+          scale: 1,
           duration: 0.8,
-          stagger: 0.18,
-          ease: "power3.out",
-          delay: 0.3,
-        }
-      );
-    }
-  }, []);
-  useEffect(() => {
-    if (!contentRef.current) return;
-
-    const sections = contentRef.current.querySelectorAll(".sales-ops-section");
-
-    const triggers = [];
-
-    sections.forEach((section) => {
-      const animation = gsap.fromTo(
-        section,
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: section,
-            start: "top 90%",
-            end: "bottom 10%",
-            scrub: true,
-            invalidateOnRefresh: true,
-            toggleActions: "play reverse play reverse",
-          },
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
         }
       );
-
-      if (animation.scrollTrigger) {
-        triggers.push(animation.scrollTrigger);
-      }
     });
 
-    return () => {
-      triggers.forEach((trigger) => trigger && trigger.kill());
-    };
+    // Animate section headers
+    gsap.utils.toArray(".section-header").forEach((header) => {
+      gsap.fromTo(header,
+        { opacity: 0, x: -30 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.6,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: header,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
+
+    // Animate project cards
+    gsap.utils.toArray(".project-card").forEach((card, i) => {
+      gsap.fromTo(card,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: i * 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
+
   }, []);
 
   return (
-    <div className="page sales-ops-page">
+    <div className="page sales-ops-page-new">
       <AboutMeSection />
-      <main className="content" ref={contentRef}>
-        <section id="companies" className="companies-section">
-          <div className="sales-ops-section connecteam-section" data-direction="right">
-          <div className="connecteam-logo-container">
-            {/* Logo size can be adjusted by changing the max-width and max-height values below */}
-            <img 
-              src={getImagePath('connecteam.png')} 
-              alt="Connecteam logo" 
-              className="connecteam-logo"
-              style={{ maxWidth: '460px', maxHeight: '460px' }}
-            />
-          </div>
-          <div className="connecteam-description">
-            <h2>Connecteam</h2>
-            <p>
-              As an SDR, I strengthened my operational expertise through hands-on daily workflows using Salesloft, HubSpot, and Looker.
-            </p>
-            <p>
-              I was also assigned to identify friction in the team's workflow, which led to the creation and implementation of HighlightZone - a tool that improved accuracy and significantly sped up the lead review process.
-            </p>
-            <p>
-              This gave me a unique mix of SDR experience + operational thinking + technical problem-solving.
-            </p>
-          </div>
-        </div>
-
-        <div className="sales-ops-section haika-section" data-direction="left">
-          <div className="haika-description">
-            <h2>Haika Real Estate</h2>
-            <p>
-              At Haika, I worked in a full Sales Operations role, managing Salesforce administration including reports, fields, and permissions, as well as Looker dashboards and KPI tracking. I oversaw forecasting and pipeline monitoring, maintained data integrity and operational structure, and facilitated cross-functional communication across Sales, Marketing, and Customer Success.
-            </p>
-            <p>
-              This experience gave me a deep understanding of B2B sales cycles, key metrics, and organizational alignment, while sharpening my ability to create efficient workflows and actionable insights.
-            </p>
-          </div>
-          <div className="haika-logo-container">
-            {/* Logo size can be adjusted by changing the max-width and max-height values below */}
-            <img 
-              src={getImagePath('hakiala.png')} 
-              alt="Haika logo" 
-              className="haika-logo"
-              style={{ maxWidth: '1400px', maxHeight: '1400px' }}
-            />
-          </div>
-        </div>
-
-        <div className="sales-ops-section abilisense-section" data-direction="right">
-          <div className="abilisense-logo-container">
-            {/* Logo size can be adjusted by changing the max-width and max-height values below */}
-            <img 
-              src={getImagePath('abil.png')} 
-              alt="Abilisense logo" 
-              className="abilisense-logo"
-              style={{ maxWidth: '400px', maxHeight: '400px' }}
-            />
-          </div>
-          <div className="abilisense-description">
-            <h2>Abilisense</h2>
-            <p>
-              As a Full Stack Developer at Abilisense, I built end-to-end web applications using React.js, HTML5, CSS3, and Node.js.
-            </p>
-            <p>
-              I integrated RESTful APIs to connect front-end interfaces with scalable back-end systems, and collaborated on debugging and performance optimization to ensure smooth user experiences across platforms.
-            </p>
-            <p>
-              This technical foundation strengthened my problem-solving abilities and gave me hands-on experience building tools that support operational workflows—skills I've since applied to creating sales operations solutions.
-            </p>
-          </div>
-        </div>
-
-        <div className="sales-ops-section elal-section" data-direction="left">
-          <div className="elal-description">
-            <h2>El Al Airlines</h2>
-            <p>
-              As a Back Office Representative, I provided administrative support and coordinated between internal departments to ensure efficient operations.
-            </p>
-            <p>
-              I assisted customer service agents with real-time issue resolution, retrieved and verified passenger information quickly, and streamlined operational processes to meet service-level deadlines.
-            </p>
-            <p>
-              This experience taught me the importance of cross-departmental communication, data accuracy, and process efficiency—all critical skills I now apply to sales operations and workflow optimization.
-            </p>
-          </div>
-          <div className="elal-logo-container">
-            {/* Logo size can be adjusted by changing the max-width and max-height values below */}
-            <img 
-              src={getImagePath('elal1.png')} 
-              alt="El Al Airlines logo" 
-              className="elal-logo"
-              style={{ maxWidth: '400px', maxHeight: '400px' }}
-            />
-          </div>
-        </div>
-
-          <div className="sales-ops-section etoro-section" data-direction="right">
-          <div className="etoro-logo-container">
-            {/* Logo size can be adjusted by changing the max-width and max-height values below */}
-            <img 
-              src={getImagePath('eToro.png')} 
-              alt="eToro logo" 
-              className="etoro-logo"
-              style={{ maxWidth: '400px', maxHeight: '400px' }}
-            />
-          </div>
-          <div className="etoro-description">
-            <h2>eToro</h2>
-            <p>
-              As a Technical Support representative at eToro, a leading multi-asset investment and social trading platform, I provided technical assistance to users trading stocks, cryptocurrencies, commodities, and other financial instruments.
-            </p>
-            <p>
-              I resolved platform issues, investigated trade execution problems, and helped users navigate the platform's social trading features. I also managed account verification processes and ensured compliance with regulatory requirements.
-            </p>
-            <p>
-              This role developed my technical troubleshooting skills, attention to detail in financial data, and ability to communicate complex technical concepts clearly—all valuable in sales operations where system reliability and data accuracy are critical.
-            </p>
-          </div>
+      
+      <main className="main-content" ref={contentRef}>
+        {/* Experience Section */}
+        <section id="companies" className="experience-section">
+          <header className="section-header">
+            <span className="section-label">Experience</span>
+            <h2 className="section-title">Where I've Worked</h2>
+          </header>
+          
+          <div className="company-grid">
+            {companies.map((company, index) => (
+              <article 
+                key={company.id} 
+                className="company-card"
+                style={{ '--accent-color': company.color }}
+              >
+                <div className="company-card-header">
+                  <div className="company-logo-wrapper">
+                    <img 
+                      src={getImagePath(company.logo)} 
+                      alt={`${company.name} logo`}
+                      className="company-logo"
+                    />
+                  </div>
+                  <div className="company-meta">
+                    <span className="company-period">{company.period}</span>
+                  </div>
+                </div>
+                
+                <div className="company-card-body">
+                  <h3 className="company-name">{company.name}</h3>
+                  <p className="company-role">{company.role}</p>
+                  <p className="company-description">{company.description}</p>
+                </div>
+                
+                <div className="company-card-footer">
+                  <div className="company-skills">
+                    {company.skills.map((skill, i) => (
+                      <span key={i} className="skill-tag">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="company-card-accent"></div>
+              </article>
+            ))}
           </div>
         </section>
 
-        <section id="tools" className="tools-anchor" aria-label="Tools carousel">
+        {/* Tools Section */}
+        <section id="tools" className="tools-section">
+          <header className="section-header">
+            <span className="section-label">Tech Stack</span>
+            <h2 className="section-title">Tools & Technologies</h2>
+          </header>
           <ToolsCarousel />
         </section>
-        <section id="projects" className="projects-list" aria-label="Projects">
-          <header className="projects-list__header">
-            <p>Projects</p>
-            <h2>Tools I’ve shipped</h2>
+
+        {/* Projects Section */}
+        <section id="projects" className="projects-section">
+          <header className="section-header">
+            <span className="section-label">Projects</span>
+            <h2 className="section-title">Things I've Built</h2>
           </header>
-          <div className="projects-list__grid">
-            <article className="highlightzone-card">
-              <div className="highlightzone-card__header">
-                <div className="highlightzone-card__icon" aria-hidden="true" />
-                <div>
-                  <p className="highlightzone-card__eyebrow">Chrome extension</p>
-                  <h3>HighlightZone</h3>
-                  <span>November 2025 · Manifest V3</span>
+          
+          <div className="projects-grid">
+            <article className="project-card project-card--featured">
+              <div className="project-card-content">
+                <span className="project-type">Chrome Extension</span>
+                <h3 className="project-title">HighlightZone</h3>
+                <p className="project-description">
+                  Detects timezone and local time for any U.S. or Canadian phone number
+                  you highlight in the browser. Instant insights without copying.
+                </p>
+                <ul className="project-features">
+                  <li>🕒 Instant timezone detection</li>
+                  <li>⚡ Works inline on any webpage</li>
+                  <li>🔒 Privacy-first, no data collection</li>
+                </ul>
+                <div className="project-actions">
+                  <a 
+                    href="https://chromewebstore.google.com/detail/highlightzone/ioijeggbkkmefoolcebgaogdmnnfompj"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="project-btn project-btn--primary"
+                  >
+                    View Extension
+                  </a>
                 </div>
               </div>
-              <p className="highlightzone-card__description">
-                HighlightZone detects the timezone and local time for any U.S. or Canadian phone number you highlight
-                in the browser, so you can instantly understand when it’s best to connect without copying anything out
-                of the page.
-              </p>
-              <ul className="highlightzone-card__bullets">
-                <li>🕒 Instantly shows timezone &amp; local time for every highlighted number.</li>
-                <li>⚡ Works inline on any webpage, no external tooling required.</li>
-                <li>🔒 Built with privacy in mind—no data collection, just local computation.</li>
-              </ul>
-              <div className="highlightzone-card__actions">
-                <a
-                  className="highlightzone-card__action"
-                  href="https://chromewebstore.google.com/detail/highlightzone/ioijeggbkkmefoolcebgaogdmnnfompj?utm_source=chatgpt.com"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  View
-                </a>
+              <div className="project-visual">
+                <div className="project-icon">🎯</div>
               </div>
             </article>
 
-            <article className="highlightzone-card weatherhunt-card">
-              <div className="highlightzone-card__header">
-                <div className="highlightzone-card__icon" aria-hidden="true" />
-                <div>
-                  <p className="highlightzone-card__eyebrow">Web app</p>
-                  <h3>Weather Hunt</h3>
-                  <span>2025 · React · AccuWeather API</span>
+            <article className="project-card">
+              <div className="project-card-content">
+                <span className="project-type">Web App</span>
+                <h3 className="project-title">Weather Hunt</h3>
+                <p className="project-description">
+                  React app fetching AccuWeather data with client-side API key storage.
+                </p>
+                <ul className="project-features">
+                  <li>🛰️ AccuWeather API integration</li>
+                  <li>🧠 LocalStorage for API keys</li>
+                  <li>🎯 Create React App build</li>
+                </ul>
+                <div className="project-actions">
+                  <a 
+                    href="https://mattanadi.github.io/WeatherHunt/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="project-btn"
+                  >
+                    Live Demo
+                  </a>
+                  <a 
+                    href="https://github.com/MattanAdi/WeatherHunt"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="project-btn project-btn--outline"
+                  >
+                    GitHub
+                  </a>
                 </div>
-              </div>
-              <p className="highlightzone-card__description">
-                Weather Hunt is a Create React App that surfaces current conditions by fetching AccuWeather data; it
-                keeps your API key out of the bundle by asking you to paste it into the search card and storing it in
-                localStorage so searches remain usable between reloads.
-              </p>
-              <ul className="highlightzone-card__bullets">
-                <li>🛰️ Powered by the AccuWeather REST API for localized weather snapshots.</li>
-                <li>🧠 Stores the key inside the browser so deployments (even GitHub Pages) stay client-side.</li>
-                <li>🎯 Built with Create React App for fast iterations and easy builds.</li>
-              </ul>
-              <div className="highlightzone-card__actions">
-                <a
-                  className="highlightzone-card__action"
-                  href="https://mattanadi.github.io/WeatherHunt/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  View
-                </a>
-                <a
-                  className="highlightzone-card__action highlightzone-card__action--github"
-                  href="https://github.com/MattanAdi/WeatherHunt"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                </a>
               </div>
             </article>
           </div>
         </section>
 
-        {/* Let's Connect Footer */}
-        <section className="connect-footer" id="connect">
-          <h2 className="connect-footer__title">Let's Connect</h2>
-          <div className="connect-footer__links">
-            <a href="https://www.linkedin.com/in/mattan-adi/" target="_blank" rel="noreferrer" className="connect-footer__btn">
-              LinkedIn
-            </a>
-            <a href="https://github.com/MattanAdi" target="_blank" rel="noreferrer" className="connect-footer__btn">
-              GitHub
-            </a>
-            <a href="mailto:mattanadi1@gmail.com" className="connect-footer__btn">
-              Email
-            </a>
+        {/* Connect Section */}
+        <section className="connect-section" id="connect">
+          <div className="connect-content">
+            <h2 className="connect-title">Let's Connect</h2>
+            <p className="connect-subtitle">Open to opportunities and collaborations</p>
+            <div className="connect-links">
+              <a href="https://www.linkedin.com/in/mattan-adi/" target="_blank" rel="noreferrer" className="connect-btn">
+                <span>LinkedIn</span>
+                <span className="connect-btn-arrow">→</span>
+              </a>
+              <a href="https://github.com/MattanAdi" target="_blank" rel="noreferrer" className="connect-btn">
+                <span>GitHub</span>
+                <span className="connect-btn-arrow">→</span>
+              </a>
+              <a href="mailto:mattanadi1@gmail.com" className="connect-btn">
+                <span>Email</span>
+                <span className="connect-btn-arrow">→</span>
+              </a>
+            </div>
           </div>
         </section>
       </main>
@@ -305,4 +291,3 @@ function SalesOperations() {
 }
 
 export default SalesOperations;
-

@@ -1669,3 +1669,516 @@ body.dark-mode .mobile-nav__about-link {
     display: none;
   }
 }
+
+/* ========================================
+   NEW STUNNING REDESIGN STYLES
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
+
+.sales-ops-page-new {
+  min-height: 100vh;
+  background: #fafafa;
+  color: #0a0a0a;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  overflow-x: hidden;
+  padding-top: 0;
+}
+
+body.dark-mode .sales-ops-page-new {
+  background: #0a0a0a;
+  color: #fafafa;
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Headers */
+.section-header {
+  margin-bottom: 3rem;
+  padding-left: 8rem;
+}
+
+.section-label {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #64ffda;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* ========================================
+   EXPERIENCE / COMPANY CARDS
+   ======================================== */
+
+.experience-section {
+  padding: 6rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.company-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  padding-left: 8rem;
+}
+
+.company-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+body.dark-mode .company-card {
+  background: rgba(25, 25, 25, 0.8);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.company-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+body.dark-mode .company-card:hover {
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+.company-card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent-color, #64ffda);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.company-card:hover .company-card-accent {
+  transform: scaleY(1);
+}
+
+.company-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.company-logo-wrapper {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.company-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+body.dark-mode .company-logo {
+  filter: brightness(1.1);
+}
+
+.company-period {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #888;
+  letter-spacing: 0.05em;
+}
+
+.company-card-body {
+  margin-bottom: 1.5rem;
+}
+
+.company-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+}
+
+.company-role {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent-color, #64ffda);
+  margin: 0 0 1rem 0;
+}
+
+.company-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #555;
+  margin: 0;
+}
+
+body.dark-mode .company-description {
+  color: #a0a0a0;
+}
+
+.company-card-footer {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .company-card-footer {
+  border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+.company-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  background: rgba(100, 255, 218, 0.1);
+  color: #64ffda;
+  border: 1px solid rgba(100, 255, 218, 0.2);
+}
+
+/* ========================================
+   TOOLS SECTION
+   ======================================== */
+
+.tools-section {
+  padding: 6rem 4rem;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+body.dark-mode .tools-section {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ========================================
+   PROJECTS SECTION
+   ======================================== */
+
+.projects-section {
+  padding: 6rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  padding-left: 8rem;
+}
+
+.project-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+body.dark-mode .project-card {
+  background: rgba(25, 25, 25, 0.8);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .project-card:hover {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.project-card--featured {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.project-card-content {
+  flex: 1;
+}
+
+.project-type {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #64ffda;
+  margin-bottom: 0.75rem;
+}
+
+.project-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+}
+
+.project-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 0 1.5rem 0;
+}
+
+body.dark-mode .project-description {
+  color: #a0a0a0;
+}
+
+.project-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.project-features li {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+body.dark-mode .project-features li {
+  color: #999;
+}
+
+.project-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: #0a0a0a;
+  color: #fafafa;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .project-btn {
+  background: #fafafa;
+  color: #0a0a0a;
+}
+
+.project-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.project-btn--primary {
+  background: #64ffda;
+  color: #0a0a0a;
+}
+
+.project-btn--outline {
+  background: transparent;
+  color: #0a0a0a;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .project-btn--outline {
+  color: #fafafa;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.project-visual {
+  flex-shrink: 0;
+}
+
+.project-icon {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+}
+
+/* ========================================
+   CONNECT SECTION
+   ======================================== */
+
+.connect-section {
+  padding: 8rem 4rem;
+  text-align: center;
+  background: linear-gradient(180deg, transparent 0%, rgba(100, 255, 218, 0.05) 100%);
+}
+
+body.dark-mode .connect-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(100, 255, 218, 0.03) 100%);
+}
+
+.connect-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.connect-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+}
+
+.connect-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0 0 2.5rem 0;
+}
+
+body.dark-mode .connect-subtitle {
+  color: #999;
+}
+
+.connect-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.connect-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0a0a0a;
+  background: transparent;
+  border: 2px solid #0a0a0a;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .connect-btn {
+  color: #fafafa;
+  border-color: #fafafa;
+}
+
+.connect-btn:hover {
+  background: #0a0a0a;
+  color: #fafafa;
+  transform: translateY(-3px);
+}
+
+body.dark-mode .connect-btn:hover {
+  background: #fafafa;
+  color: #0a0a0a;
+}
+
+.connect-btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.connect-btn:hover .connect-btn-arrow {
+  transform: translateX(5px);
+}
+
+/* ========================================
+   RESPONSIVE - NEW DESIGN
+   ======================================== */
+
+@media (max-width: 1100px) {
+  .section-header {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .company-grid {
+    padding-left: 0;
+  }
+
+  .projects-grid {
+    padding-left: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .project-card--featured {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .project-visual {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .experience-section,
+  .tools-section,
+  .projects-section,
+  .connect-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .company-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .company-card {
+    padding: 1.5rem;
+  }
+
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  .project-actions {
+    flex-direction: column;
+  }
+
+  .project-btn {
+    justify-content: center;
+  }
+
+  .connect-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .connect-btn {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+  }
+}
