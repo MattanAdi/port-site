@@ -118,6 +118,18 @@ function Music() {
           <span>•</span>
           <span>💿 NEW RECORDS COMING SOON</span>
           <span>•</span>
+          <span>🎧 EXCLUSIVE BEATS AVAILABLE</span>
+          <span>•</span>
+          <span>🔥 LIMITED MERCH DROP</span>
+          <span>•</span>
+          <span>💿 NEW RECORDS COMING SOON</span>
+          <span>•</span>
+          <span>🎧 EXCLUSIVE BEATS AVAILABLE</span>
+          <span>•</span>
+          <span>🔥 LIMITED MERCH DROP</span>
+          <span>•</span>
+          <span>💿 NEW RECORDS COMING SOON</span>
+          <span>•</span>
         </div>
       </div>
 

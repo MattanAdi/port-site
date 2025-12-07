@@ -308,8 +308,8 @@
 .music-banner-scroll {
   display: flex;
   gap: 2rem;
-  animation: scrollBanner 20s linear infinite;
-  white-space: nowrap;
+  width: max-content;
+  animation: scrollBanner 15s linear infinite;
 }
 
 .music-banner-scroll span {
@@ -317,6 +317,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  flex-shrink: 0;
 }
 
 @keyframes scrollBanner {
