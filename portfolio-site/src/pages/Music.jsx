@@ -13,7 +13,7 @@ function Music() {
   const vinylRecords = [
     { id: 1, title: "Cosign", image: `${baseUrl}Cosign.jpg`, color: "#1a1a1a" },
     { id: 2, title: "Man Can't Stop", image: `${baseUrl}Man cant stop.jpg`, color: "#1a1a1a" },
-    { id: 3, title: "Track 3", image: null, color: "#1a1a1a" },
+    { id: 3, title: "Deni Avdija", image: `${baseUrl}Deni.jpg`, color: "#1a1a1a" },
     { id: 4, title: "Track 4", image: null, color: "#1a1a1a" },
     { id: 5, title: "Track 5", image: null, color: "#1a1a1a" },
     { id: 6, title: "Track 6", image: null, color: "#1a1a1a" },
