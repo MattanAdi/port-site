@@ -7,73 +7,32 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Header */
-.music-header {
+/* Back Button */
+.music-back-btn-fixed {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(10px);
-  z-index: 100;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.music-back-link {
+  top: 1.5rem;
+  left: 1.5rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: color 0.3s ease;
-}
-
-.music-back-link:hover {
-  color: #64ffda;
-}
-
-.music-top-nav {
-  display: flex;
-  gap: 2.5rem;
-}
-
-.music-top-nav a {
+  padding: 0.75rem 1.25rem;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: #ffffff;
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  transition: color 0.3s ease;
-  position: relative;
+  letter-spacing: 0.08em;
+  z-index: 100;
+  transition: all 0.3s ease;
 }
 
-.music-top-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #64ffda;
-  transition: width 0.3s ease;
-}
-
-.music-top-nav a:hover::after {
-  width: 100%;
-}
-
-.music-header-right {
-  display: flex;
-  align-items: center;
+.music-back-btn-fixed:hover {
+  background: rgba(100, 255, 218, 0.15);
+  border-color: #64ffda;
+  color: #64ffda;
 }
 
 /* Hero Section */
@@ -517,12 +476,11 @@
 }
 
 @media (max-width: 768px) {
-  .music-header {
-    padding: 1rem;
-  }
-
-  .music-top-nav {
-    display: none;
+  .music-back-btn-fixed {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
   }
 
   .music-hero {

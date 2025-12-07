@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
-import DarkModeToggle from "../components/DarkModeToggle";
 import "./Music.css";
 
 function Music() {
@@ -77,23 +76,13 @@ function Music() {
 
   return (
     <div className="music-page" ref={pageRef}>
-      {/* Top Navigation */}
-      <header className="music-header">
-        <Link to="/" className="music-back-link">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
-          <span>Portfolio</span>
-        </Link>
-        <nav className="music-top-nav">
-          <a href="#records">Records</a>
-          <a href="#shop">Shop</a>
-          <a href="#about">About</a>
-        </nav>
-        <div className="music-header-right">
-          <DarkModeToggle />
-        </div>
-      </header>
+      {/* Back Button */}
+      <Link to="/" className="music-back-btn-fixed">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span>Career</span>
+      </Link>
 
       {/* Hero Section */}
       <section className="music-hero">
