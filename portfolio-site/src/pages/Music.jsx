@@ -14,7 +14,7 @@ function Music() {
     { id: 1, title: "Cosign", image: `${baseUrl}Cosign.jpg`, color: "#1a1a1a" },
     { id: 2, title: "Man Can't Stop", image: `${baseUrl}Man cant stop.jpg`, color: "#1a1a1a" },
     { id: 3, title: "Deni Avdija", image: `${baseUrl}Deni.jpg`, color: "#1a1a1a" },
-    { id: 4, title: "SEO Anthem", image: `${baseUrl}SEO.png`, color: "#1a1a1a", zoom: 1.4 },
+    { id: 4, title: "SEO Anthem", image: `${baseUrl}SEO.png`, color: "#1a1a1a" },
     { id: 5, title: "Track 5", image: null, color: "#1a1a1a" },
     { id: 6, title: "Track 6", image: null, color: "#1a1a1a" },
     { id: 7, title: "Track 7", image: null, color: "#1a1a1a" },
@@ -141,12 +141,7 @@ function Music() {
             <div key={record.id} className="vinyl-record">
               <div className="vinyl-disc">
                 {record.image && (
-                  <img 
-                    src={record.image} 
-                    alt={record.title} 
-                    className="vinyl-overlay-image" 
-                    style={record.zoom ? { transform: `scale(${record.zoom})` } : {}}
-                  />
+                  <img src={record.image} alt={record.title} className="vinyl-overlay-image" />
                 )}
                 <div className="vinyl-grooves"></div>
                 <div className="vinyl-label">
