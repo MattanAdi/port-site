@@ -7,7 +7,8 @@ function Music() {
   const pageRef = useRef(null);
   const [activeCategory, setActiveCategory] = useState("beats");
   const [playingId, setPlayingId] = useState(null);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const audioRef = useRef(null);
   const defaultAudioRef = useRef(null);
 
@@ -114,57 +115,59 @@ function Music() {
     );
   }, [activeCategory]);
 
-  // Play default song on first user interaction (scroll or click)
+  // Initialize audio on mount
   useEffect(() => {
-    let hasStarted = false;
-    
     defaultAudioRef.current = new Audio(defaultSong);
     defaultAudioRef.current.loop = true;
     defaultAudioRef.current.volume = 0;
 
-    const fadeIn = () => {
-      let vol = 0;
-      const fadeInterval = setInterval(() => {
-        if (vol < 0.5) {
-          vol += 0.02;
-          if (defaultAudioRef.current) {
-            defaultAudioRef.current.volume = Math.min(vol, 0.5);
-          }
-        } else {
-          clearInterval(fadeInterval);
-        }
-      }, 50);
-    };
-
-    const startMusic = () => {
-      if (hasStarted || isMuted) return;
-      hasStarted = true;
-      
-      if (defaultAudioRef.current) {
-        defaultAudioRef.current.play().then(() => {
-          fadeIn();
-        }).catch(() => {
-          console.log("Audio play failed");
-        });
-      }
-      
-      // Remove listeners after first trigger
-      window.removeEventListener('scroll', startMusic);
-      window.removeEventListener('click', startMusic);
-    };
-
-    window.addEventListener('scroll', startMusic, { once: true });
-    window.addEventListener('click', startMusic, { once: true });
-
     return () => {
-      window.removeEventListener('scroll', startMusic);
-      window.removeEventListener('click', startMusic);
       if (defaultAudioRef.current) {
         defaultAudioRef.current.pause();
         defaultAudioRef.current = null;
       }
     };
   }, []);
+
+  // Fade in function
+  const fadeInAudio = () => {
+    if (!defaultAudioRef.current) return;
+    let vol = 0;
+    defaultAudioRef.current.volume = 0;
+    const fadeInterval = setInterval(() => {
+      if (vol < 0.5) {
+        vol += 0.02;
+        defaultAudioRef.current.volume = Math.min(vol, 0.5);
+      } else {
+        clearInterval(fadeInterval);
+      }
+    }, 50);
+  };
+
+  // Start music on first scroll or click
+  useEffect(() => {
+    if (hasInteracted) return;
+
+    const handleInteraction = () => {
+      if (!hasInteracted) {
+        setHasInteracted(true);
+        setIsMuted(false);
+        if (defaultAudioRef.current) {
+          defaultAudioRef.current.play().then(() => {
+            fadeInAudio();
+          }).catch(err => console.log("Play failed:", err));
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleInteraction);
+    window.addEventListener('click', handleInteraction);
+
+    return () => {
+      window.removeEventListener('scroll', handleInteraction);
+      window.removeEventListener('click', handleInteraction);
+    };
+  }, [hasInteracted]);
 
   // Handle mute toggle
   const toggleMute = () => {
