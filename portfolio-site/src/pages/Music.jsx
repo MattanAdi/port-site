@@ -21,7 +21,7 @@ function Music() {
     { id: 2, title: "Man Can't Stop", image: `${baseUrl}Man cant stop.jpg`, color: "#1a1a1a", audio: `${baseUrl}Kiddish x Low-j -  Man Can't Stop (Official Visualizer).mp3` },
     { id: 3, title: "Deni Avdija", image: `${baseUrl}Deni.jpg`, color: "#1a1a1a", audio: null },
     { id: 4, title: "SEO Anthem", image: `${baseUrl}SEO.png`, color: "#1a1a1a", audio: null },
-    { id: 5, title: "Track 5", image: null, color: "#1a1a1a", audio: null },
+    { id: 5, title: "MAD", image: `${baseUrl}MAD.jpg`, color: "#1a1a1a", audio: null },
     { id: 6, title: "Track 6", image: null, color: "#1a1a1a", audio: null },
     { id: 7, title: "Track 7", image: null, color: "#1a1a1a", audio: null },
     { id: 8, title: "Track 8", image: null, color: "#1a1a1a", audio: null },
