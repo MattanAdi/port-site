@@ -114,6 +114,24 @@ function Music() {
         </div>
       </section>
 
+      {/* Announcement Banner */}
+      <div className="music-banner">
+        <div className="music-banner-scroll">
+          <span>🎧 EXCLUSIVE BEATS AVAILABLE</span>
+          <span>•</span>
+          <span>🔥 LIMITED MERCH DROP</span>
+          <span>•</span>
+          <span>💿 NEW RECORDS COMING SOON</span>
+          <span>•</span>
+          <span>🎧 EXCLUSIVE BEATS AVAILABLE</span>
+          <span>•</span>
+          <span>🔥 LIMITED MERCH DROP</span>
+          <span>•</span>
+          <span>💿 NEW RECORDS COMING SOON</span>
+          <span>•</span>
+        </div>
+      </div>
+
       {/* Vinyl Records Section */}
       <section className="vinyl-section" id="records">
         <div className="vinyl-section-bg">
@@ -150,24 +168,6 @@ function Music() {
           ))}
         </div>
       </section>
-
-      {/* Announcement Banner */}
-      <div className="music-banner">
-        <div className="music-banner-scroll">
-          <span>🎧 EXCLUSIVE BEATS AVAILABLE</span>
-          <span>•</span>
-          <span>🔥 LIMITED MERCH DROP</span>
-          <span>•</span>
-          <span>💿 NEW RECORDS COMING SOON</span>
-          <span>•</span>
-          <span>🎧 EXCLUSIVE BEATS AVAILABLE</span>
-          <span>•</span>
-          <span>🔥 LIMITED MERCH DROP</span>
-          <span>•</span>
-          <span>💿 NEW RECORDS COMING SOON</span>
-          <span>•</span>
-        </div>
-      </div>
 
       {/* Shop Section */}
       <section className="shop-section" id="shop">
