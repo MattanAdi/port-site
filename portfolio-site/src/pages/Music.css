@@ -180,15 +180,15 @@
   transition: box-shadow 0.3s ease;
 }
 
-/* Different spin speeds and directions for each record */
+/* Different spin speeds for each record */
 .vinyl-record:nth-child(1) .vinyl-disc { animation: spin 6s linear infinite; }
-.vinyl-record:nth-child(2) .vinyl-disc { animation: spin-reverse 7s linear infinite; }
+.vinyl-record:nth-child(2) .vinyl-disc { animation: spin 7s linear infinite; }
 .vinyl-record:nth-child(3) .vinyl-disc { animation: spin 5s linear infinite; }
-.vinyl-record:nth-child(4) .vinyl-disc { animation: spin-reverse 8s linear infinite; }
+.vinyl-record:nth-child(4) .vinyl-disc { animation: spin 8s linear infinite; }
 .vinyl-record:nth-child(5) .vinyl-disc { animation: spin 7s linear infinite; }
-.vinyl-record:nth-child(6) .vinyl-disc { animation: spin-reverse 6s linear infinite; }
+.vinyl-record:nth-child(6) .vinyl-disc { animation: spin 6s linear infinite; }
 .vinyl-record:nth-child(7) .vinyl-disc { animation: spin 9s linear infinite; }
-.vinyl-record:nth-child(8) .vinyl-disc { animation: spin-reverse 5s linear infinite; }
+.vinyl-record:nth-child(8) .vinyl-disc { animation: spin 5s linear infinite; }
 
 .vinyl-record:hover .vinyl-disc {
   box-shadow: 
@@ -201,11 +201,6 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-@keyframes spin-reverse {
-  0% { transform: rotate(360deg); }
-  100% { transform: rotate(0deg); }
 }
 
 .vinyl-overlay-image {
