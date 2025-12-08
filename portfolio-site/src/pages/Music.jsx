@@ -258,7 +258,44 @@ function Music() {
           <span>💿 NEW RECORDS COMING SOON</span>
           <span>•</span>
         </div>
-      </div>
+        </div>
+
+      {/* Shop Section */}
+      <section className="shop-section" id="shop">
+        {/* Category Filter */}
+        <nav className="shop-category-nav">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              className={`shop-nav-item ${activeCategory === cat.id ? "shop-nav-item--active" : ""}`}
+              onClick={() => setActiveCategory(cat.id)}
+            >
+              {cat.label}
+            </button>
+          ))}
+      </nav>
+
+        {/* Product Grid */}
+        <div className="shop-grid">
+          {currentItems.map((item) => (
+            <div key={item.id} className="shop-card">
+              <div 
+                className="shop-card-image" 
+                style={{ backgroundColor: item.color }}
+              >
+                <div className="shop-card-overlay">
+                  <span className="shop-card-action">View</span>
+                </div>
+              </div>
+              <div className="shop-card-info">
+                <h3 className="shop-card-title">{item.title}</h3>
+                <p className="shop-card-subtitle">{item.subtitle}</p>
+                <span className="shop-card-price">{item.price}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Vinyl Records Section */}
       <section className="vinyl-section" id="records">
@@ -293,43 +330,6 @@ function Music() {
                 )}
               </div>
               <p className="vinyl-title">{record.title}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Shop Section */}
-      <section className="shop-section" id="shop">
-        {/* Category Filter */}
-        <nav className="shop-category-nav">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              className={`shop-nav-item ${activeCategory === cat.id ? "shop-nav-item--active" : ""}`}
-              onClick={() => setActiveCategory(cat.id)}
-            >
-              {cat.label}
-            </button>
-          ))}
-      </nav>
-
-        {/* Product Grid */}
-        <div className="shop-grid">
-          {currentItems.map((item) => (
-            <div key={item.id} className="shop-card">
-              <div 
-                className="shop-card-image" 
-                style={{ backgroundColor: item.color }}
-              >
-                <div className="shop-card-overlay">
-                  <span className="shop-card-action">View</span>
-                </div>
-              </div>
-              <div className="shop-card-info">
-                <h3 className="shop-card-title">{item.title}</h3>
-                <p className="shop-card-subtitle">{item.subtitle}</p>
-                <span className="shop-card-price">{item.price}</span>
-              </div>
             </div>
           ))}
         </div>
